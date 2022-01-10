@@ -11,7 +11,7 @@ public class ArrayQuestions {
         int [] intArray= new int[]{2,7,11,15};
         String [] stringArray = new String[]{"Sumit","Gaddar","Bhulan","Ramu"};
 
-        /*Array-Traversal*/
+        /*Array-Reversal*/
         //mySolutionReverseArray(intArray);
         //gfgSolutionWithBetterLogic(intArray);
         //gfgUsingCollection(intArray);
@@ -199,6 +199,5 @@ public class ArrayQuestions {
             System.out.print(val+",");
         }
     }
-
 
 }
