@@ -6,21 +6,27 @@ import java.util.Collections;
 
 public class ArrayQuestions {
     public static void main(String[] args) {
-        int [] intArray= new int[]{5, 23, 28, 2, 40};
+        int [] intArray= new int[]{2,7,11,15};
         String [] stringArray = new String[]{"Sumit","Gaddar","Bhulan","Ramu"};
 
-        /*Array-Traversal*/
+        /*Array-Reversal*/
         //mySolutionReverseArray(intArray);
         //gfgSolutionWithBetterLogic(intArray);
         //gfgUsingCollection(intArray);
 
         /*Array Sort Check*/
-        //System.out.println(mySolutionSortCheck(false,intArray));
+//        System.out.println(mySolutionSortCheck(false,intArray));
+
         //TODO: check with recursive method(GFG solution)
 
         /*Find Maximum in array*/
-        System.out.println(String.valueOf(mySolutionMaximumInArray(intArray)));
-        
+       // System.out.println(String.valueOf(mySolutionMaximumInArray(intArray)));
+       // System.out.println(gaddarArray.reversArray(intArray));
+
+        int cor[] = gaddarArray.pairSum(intArray,26);
+        for (int val : cor){
+            System.out.print(val+",");
+        }
     }
 
     private static int mySolutionMaximumInArray(int[] intArray) {
@@ -116,6 +122,5 @@ public class ArrayQuestions {
             System.out.print(val+",");
         }
     }
-
 
 }
