@@ -23,4 +23,39 @@ public class gaddarArray {
        }
     return inputArr;
    }
+
+    public  static int maxElement(int [] inputArr){
+       int max = inputArr[0];
+
+        for (int i = 1; i < inputArr.length; i++) {
+
+            if (max > inputArr[i]){
+                max = inputArr[i];
+                System.out.println(inputArr[i]);
+            }
+        }
+        return max;
+    }
+
+
+    public  static int minElement(int [] inputArr){
+        int min = inputArr[0];
+        for (int i = 1; i < inputArr.length; i++) {
+
+            if (min < inputArr[i]){
+                min = inputArr[i];
+                System.out.println(inputArr[i]);
+
+            }
+        }
+
+        return min;
+    }
+
+    public int peekElement(int [] arr, int n){
+        for (int i = 1; i < arr.length; i++) {
+
+        }
+       return 0;
+    }
 }

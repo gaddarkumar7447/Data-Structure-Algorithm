@@ -1,6 +1,7 @@
 package code.missiongoogle;
 
 
+import java.net.PortUnreachableException;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
@@ -8,7 +9,7 @@ import java.util.Map;
 
 public class ArrayQuestions {
     public static void main(String[] args) {
-        int [] intArray= new int[]{2,7,11,15};
+        int [] intArray= new int[]{2,7,11,15,58,78,14,96,25,75,105,79,89,56,23,74,19,70};
         String [] stringArray = new String[]{"Sumit","Gaddar","Bhulan","Ramu"};
 
         /*Array-Reversal*/
@@ -54,17 +55,47 @@ public class ArrayQuestions {
 
 
         /**/
-        pairSum(intArray,9);
+//        pairSum(intArray,9);
 
-
-
-
-
-
-
-
-
+//        System.out.println(fun2("Geeks"));
+        kthSmallest(intArray,intArray.length,15);
     }
+
+
+    static StringBuilder fun2(String  str)
+
+    {
+        StringBuilder s1 = new StringBuilder();
+        for(int i = str.length()-1; i >= 0; i-- ){
+            s1.append(str.charAt(i));
+        }
+
+        return s1;
+    }
+
+
+    public static int kthSmallest(int [] arr, int n, int k){
+        int temp = -1;
+        int counter=1;
+        Arrays.sort(arr);
+        for (int i = 0; i < arr.length; i++) {
+            System.out.println(i + ". "+ arr[i]);
+
+        }
+        for (int i = 0; i < arr.length; i++) {
+            if (temp<arr[i]){
+                temp = arr[i];
+                if (k==counter){
+                    return  temp;
+                }
+                counter++;
+            }
+        }
+        return 0;
+    }
+//    static int kthSmallestWithRecursion(){
+//        return 0;
+//    }
 
     private static void pairSum(int[] intArray,int target) {
         /*2,7,11,15*/
@@ -79,9 +110,6 @@ public class ArrayQuestions {
             indexVal.put(intArray[i],i);
         }
         System.out.println(indexes);
-
-
-
     }
 
 
@@ -138,21 +166,17 @@ public class ArrayQuestions {
             }
         }
         return isSorted;
-
-
     }
 
     private static void gfgUsingCollection(int[] intArray) {
         Collections.reverse(Arrays.asList(intArray));
         System.out.println(Arrays.asList(intArray));
 
-
-
     }
 
-    private static void gfgSolutionWithBetterLogic(int[] intArray) {
+   /* private static void gfgSolutionWithBetterLogic(int[] intArray) {
         int n= intArray.length;
-        int t;
+        int t;*/
         /*For input: 12,-7,-8,4,-1,-6,
         * i will be > 0,1,2,3,4,5
         * n will be > 5,4,3,2,1,0
@@ -162,7 +186,7 @@ public class ArrayQuestions {
         *
         *  */
 
-        for (int i = 0; i < n / 2; i++) {
+      /*  for (int i = 0; i < n / 2; i++) {
             t = intArray[i];
             intArray[i] = intArray[n - i - 1];
             intArray[n - i - 1] = t;
@@ -170,7 +194,19 @@ public class ArrayQuestions {
         for (int val : intArray){
             System.out.print(val+",");
         }
-    }
+    }*/
+
+    /*static void fun(int x)
+    {
+
+        if(x > 0)
+        {
+            System.out.println("Current x = "+ x);
+            fun(--x);
+            System.out.println(x + " ");
+            fun(--x);
+        }
+    }*/
 
     private static void mySolutionReverseArray(int[] intArray) {
         int start=0;
