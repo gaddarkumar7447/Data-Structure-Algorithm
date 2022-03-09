@@ -1,17 +1,375 @@
 package code.missiongoogle;
+import org.w3c.dom.ls.LSOutput;
 
-
-import java.net.PortUnreachableException;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.*;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
 public class ArrayQuestions {
-    public static void main(String[] args) {
-        int [] intArray= new int[]{2,7,11,15,58,78,14,96,25,75,105,79,89,56,23,74,19,70};
-        String [] stringArray = new String[]{"Sumit","Gaddar","Bhulan","Ramu"};
+    public static int Search(int intArray[],int key, int lenght){
+        for (int i = 0; i < lenght; i++) {
+            if (intArray[i] == key){
+                return i;
+            }
+        }
+        return  -1;
+    }
 
+    /*static  {
+        System.out.println("Hello");
+    }*/
+
+    public static void fibo(int num){
+        int n1 = 0, n2 = 1, n3;
+        if (num > 0)
+        {
+            n3 = n1 + n2;
+            n1 = n2;
+            n2 = n3;
+            System.out.print(" "+n3);
+            fibo(num - 1);
+        }
+    }
+
+    private static void isPelindrom(int num) {
+       int rem, tem = num;
+        int  sum = 0;
+        while (num>0){
+            rem = num % 10;
+            sum = sum * 10 + rem;
+            num /= 10;
+        }
+        if (tem == sum) System.out.println("yes"); else System.out.println("No");
+
+    }
+
+    public static void f(int num){
+        if (num <= 1){
+            return ;
+        }
+//        return f(num - 1) + f(num - 2);
+        int a = 0, b = 1;
+        System.out.print(" "+a);
+        for (int i = 1; i < num; i++) {
+            System.out.print(" "+b);
+            int c = a+b;
+            a = b;
+            b = c;
+        }
+    }
+
+    public static int findFibbo(int num){
+        if (num == 0 || num == 1) return num;
+        return findFibbo(num-1) + findFibbo(num -2);
+    }
+    public static void honnoiTower(int num, char from, char top, char des) {
+        if (num == 1){ System.out.printf("Move disk 1 from %c to %c\n",from,top); return;}
+        honnoiTower(num-1,from,des,top);
+        System.out.printf("Move disk %d from %c to %c\n",num,from,top);
+        honnoiTower(num -1,des,top,from);
+    }
+
+    public static int findPower(int num, int po){
+        if (po == 0) return 1;
+        return num * findPower(num, po - 1);
+    }
+
+    public static void  merge1(int []arr, int l,int h){
+        if (l < h){
+            int mid = (l+h) / 2;
+
+            merge1(arr,l,mid);
+            merge1(arr,mid+1,h);
+            mergeSo(arr,l,mid,h);
+        }
+    }
+
+    private static void mergeSo(int[] arr, int l, int mid, int h) {
+        int n1 = (mid - l + 1);
+        int n2 = (h - mid);
+        int i , j, k;
+        int []L = new int[n1];
+        int []R = new int[n2];
+
+        for (i = 0; i < n1; i++) {
+            L[i] = arr[l+i];
+        }
+
+        for (j = 0; j < n2; j++) {
+            R[j] = arr[mid + j + 1];
+        }
+
+        i = 0; j = 0; k = l;
+        while (i < n1 && j < n2){
+            if (L[i] <= R[j]){
+                arr[k++] = L[i++];
+            }
+            else {
+                arr[k++] = R[j++];
+            }
+        }
+        while (i < n1){
+            arr[k++] = L[i++];
+        }
+        while (j < n2){
+            arr[k++] = R[j++];
+        }
+    }
+
+    public static void printArray(int []arr){
+        for (int i = 0; i < arr.length; i++) {
+            System.out.printf("%d ",arr[i]);
+        }
+    }
+
+    public static void opp(String a, int l){
+        if (l == 0){
+            System.out.println(a.charAt(l));
+            return;
+        }
+        System.out.println(a.charAt(l));
+        opp(a,l-1);
+    }
+
+    static int fun1(int a, int b)
+    {
+        if (b == 0)
+            return 0;
+        if (b % 2 == 0)
+            return fun1(a + a, b/2);
+
+        return fun1(a + a, b/2) + a;
+    }
+
+    public static void luckyNumber(long num){
+        int a = 0;
+        while (num != 0){
+            if (num % 10 == 4 || num % 10 == 7){
+                a++;
+            }
+            num = num /  10;
+        }
+        if (a==7 || a == 4){
+            System.out.println("YES");
+        }
+        else
+            System.out.println("No");
+    }
+
+    public static int sumA(int []arr){
+        int sum = 0;
+        for (int i = 0; i < arr.length; i++) {
+            sum += arr[i];
+        }
+        return sum;
+    }
+
+    public static void merge(int[] nums1, int m, int[] nums2, int n) {
+        int index = nums1.length-1;
+        while (m>0 && n>0){
+            if (nums1[m-1] < nums2[n-1]){
+                if (nums1[index--] == nums2[--n]);
+            }
+            else {
+                nums1[index--] = nums1[--m];
+            }
+            while (m>0){
+                nums1[index--] = nums1[--m];
+            }
+            while (n>0){
+                nums1[index--] = nums2[--n];
+            }
+        }
+        for (int i = 0; i < nums1.length; i++) {
+            System.out.print(" "+nums1[i]);
+        }
+    }
+    public static void subArray(int []arr){
+        int max = arr[0];
+        int cur = max;
+        for (int i = 1; i < arr.length; i++) {
+            cur = Math.max(arr[i] + cur, arr[i]);
+            max = Math.max(cur,max);
+        }
+        System.out.println(max);
+    }
+
+    public static void kadens(int []arr){
+        int max = arr[0];
+        int cur = 0;
+        for (int i = 0; i < arr.length; i++) {
+            cur = cur + arr[i];
+            if (cur > max){
+                max = cur;
+            }
+            if (cur < 0){
+                cur = 0;
+            }
+            if (arr[i] > cur){
+                cur = arr[i];
+            }
+        }
+        System.out.println("Maximum: "+max);
+    }
+    public static void main(String[] args) throws IOException {
+        HashMap<Character,Integer> hashMap = new HashMap<>();
+        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+        hashMap.put('I',1);
+        hashMap.put('V',5);
+        hashMap.put('X',10);
+        hashMap.put('L',50);
+        hashMap.put('C',100);
+        hashMap.put('D',500);
+        hashMap.put('M',1000);
+        String s = bf.readLine();
+        int result = hashMap.get(s.charAt(s.length()-1));
+        for (int i = s.length()-2; i >= 0; i--) {
+            if (hashMap.get(s.charAt(i)) < hashMap.get(s.charAt(i + 1))){
+                result -= hashMap.get(s.charAt(i));
+            }
+            else result += hashMap.get(s.charAt(i));
+        }
+        System.out.println(result);
+        /*int []arr = {1,2,3,0,0,0};
+        int[] arr1 = {2,5,6};
+        int m = 3, n= 3;*/
+
+
+        /*for(int i = 0; i<n; i++){
+            arr[m + i] = arr1[i];
+        }
+        System.out.print(" "+Arrays.toString(arr));*/
+        /*System.out.println();
+        for (int i = 0; i < copy.length; i++) {
+            for (int j = i+1; j < copy.length; j++) {
+                if (copy[i] > copy[j]){
+                    int tem = copy[i];
+                    copy[i] = copy[j];
+                    copy[j] = tem;
+                }
+            }
+        }
+        System.out.println(Arrays.toString(copy));*/
+
+//        kadens(arr);
+        /*int []num1 = {1,2,3,0,0,0};
+        int []num2 = {2,5,6};
+        merge(num1,3,num2,3);*/
+//        System.out.println(sumA(arr));
+        /*String []cu = {"flower","flow","flight"};
+        String a = cu[0];
+        for (int i = 0; i < cu.length; i++) {
+            while (cu[i].indexOf(a) != 0){
+                a = a.substring(0, a.length()-1);
+            }
+            System.out.println(a);
+        }*/
+        /*Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the  number: ");
+        long num = sc.nextLong();
+        luckyNumber(num);*/
+//        int [] intArray= new int[]{5,7,2,9,6};
+        /*String a = "abcd";
+            opp(a,3);*/
+//        System.out.println(fun1(4,5));
+        /*System.out.println("After sorting array");
+        merge1(intArray,0, intArray.length-1);
+        printArray(intArray);*/
+
+
+
+        /*Scanner sc = new Scanner(new BufferedReader(new InputStreamReader(System.in)));
+        System.out.println("Enter the number: ");*/
+//        int num = sc.nextInt();
+//        Scanner sc = new Scanner(System.in);
+        /*int num = sc.nextInt();
+        int power = sc.nextInt();
+       int a = findPower(num, power);
+        System.out.println(a);*/
+
+//        honnoiTower(num, 'A', 'C', 'B');
+
+//        int [] fibo= new int[]{0,1,1,2,3,5,8,13};
+//        Scanner sc = new Scanner(new BufferedReader(new InputStreamReader(System.in)));
+        /*System.out.println("Enter the number");
+        int num = sc.nextInt();
+        f(num);*/
+
+       /*int num = sc.nextInt();
+        int a = findFibbo(num);
+        System.out.println(a);
+        for (int i = 0; i <= num ; i++) {
+            System.out.print(" \n"+findFibbo(i));
+        }*/
+
+
+//        LinkedList<Integer> linkedList = new LinkedList<>(Arrays.asList(11,20,44,23,45,22,12,89,45,34));
+
+//        System.out.println(" "+linkedList);
+//        isPelindrom(num);*/
+//        System.out.println(" "+f(num));
+        /*String original, reverse = ""; // Objects of String class
+        Scanner in = new Scanner(System.in);
+        System.out.println("Enter a string/number to check if it is a palindrome");
+        original = in.nextLine();
+        int length = original.length();
+        for ( int i = length - 1; i >= 0; i-- )
+            reverse = reverse + original.charAt(i);
+        if (original.equals(reverse))
+            System.out.println("Entered string/number is a palindrome.");
+        else
+            System.out.println("Entered string/number isn't a palindrome.");*/
+
+        /*String original;
+        String reverse = "";
+        System.out.println("Enter number/ string: ");
+        original = sc.nextLine();
+        int l = original.length();
+        for (int i = l-1; i >= 0 ; i--) {
+            reverse = reverse + original.charAt(i);
+        }
+        if (original.equals(reverse)) System.out.println("yes");
+        else System.out.println("No");*/
+
+
+        /*int num = sc.nextInt();
+        System.out.println("Fibonacci series");
+        System.out.print("0 1 ");
+        fibo(num - 2);*/
+        /*System.out.println("Enter the power of the number");
+        int p = sc.nextInt();
+        System.out.println(Math.pow(num,p));*/
+//        System.out.println("Gaddar");
+        /*Character charecter;
+        String str;
+        System.out.println("Input charecter: ");*/
+//        charecter = sc.next().charAt(5);
+//        System.out.println("Input charecter is : "+charecter);
+//        System.out.println("Enter the String: ");
+//        str = sc.nextLine();
+//        System.out.println("Input String is: "+str);
+        /*int a = Search(intArray,15, intArray.length);
+        if (a == -1){
+            System.out.println("Key is present in the array");
+        }
+        else {
+            System.out.println(a+1);
+        }*/
+        /*mergeSort(intArray,0,intArray.length -1);
+        System.out.println("After sorted array");
+
+        System.out.println(Arrays.toString(intArray));*/
+
+
+
+        /*String [] stringArray = new String[]{"Sumit","Gaddar","Bhulan","Ramu"};*/
+
+//        sum(2583);
         /*Array-Reversal*/
         //mySolutionReverseArray(intArray);
         //gfgSolutionWithBetterLogic(intArray);
@@ -21,6 +379,7 @@ public class ArrayQuestions {
        // System.out.println(mySolutionSortCheck(true,intArray));
 
         //TODO: check with recursive method(GFG solution)
+
 
         /*Find Maximum in array*/
        // System.out.println(String.valueOf(mySolutionMaximumInArray(intArray)));
@@ -58,8 +417,214 @@ public class ArrayQuestions {
 //        pairSum(intArray,9);
 
 //        System.out.println(fun2("Geeks"));
-        kthSmallest(intArray,intArray.length,15);
+//        kthSmallest(intArray,intArray.length,15);
+//        System.out.println(print(12));
+//        print(12);
+        /*1+2+3+4a+5*/
+//        System.out.println(sumOfn(4));
+//        System.out.println(sumOfDigitR(12434));
+//        sum(023);
+
+        /*int ma = 35;
+        int in = 67;
+        int sta = recurse(ma, in);
+        System.out.println("static = " + sta + "tic");*/
+
+        /*int ma = 35;
+        int in = 67;
+        int sta = recurse(ma, in);
+        System.out.println("static = " + sta + "tic");*/
+
+//        int a = 4;
+//        fun(a);
+//        System.out.println(" " + fun("SUMIT"));
+//        abc("xyz");
+//        fun(3);
+        /*square(intArray);*/
+
+//        duplicateArray(intArray);
+
+
+
+//        findPrevious(fibo, 13);
     }
+
+    private static void findPrevious(int[] fibo,int num) {
+        double k,p,num1;
+        k = 1.0 + Math.sqrt(5);
+        p = Math.round((2 * num) / (double)k);
+        System.out.println(p);
+    }
+
+
+
+    /*Merge sort*/
+
+    public static void merge(int [] array, int p, int q, int r){
+        int n1 = q - p + 1;
+        int n2 = r - q;
+
+        int[] L = new int[n1];
+        int[] M = new int[n2];
+
+        for (int i = 0; i < n1; i++) {
+            L[i] = array[p+i];
+        }
+        for (int j = 0; j < n2; j++){
+            M[j] = array[q+1+j];
+        }
+
+        int i = 0,j = 0,k = p;
+        while (i < n1 && j < n2){
+            if (L[i] <= M[j]){
+                array[k] = L[i];
+                i++;
+            }
+            else {
+                array[k] = M[j];
+                j++;
+            }
+            k++;
+        }
+        while (i < n1){
+            array[k] = L[i];
+            i++;
+            k++;
+        }
+
+        while(j< n2){
+            array[k] = M[j];
+            j++;
+            k++;
+        }
+
+    }
+
+
+    /*Merge sort*/
+    public static void mergeSort(int array[], int left, int right){
+        if (left < right){
+            int mid = (right + left) / 2;
+            mergeSort(array,left, mid);
+            mergeSort(array,mid + 1, right);
+            merge(array,left,mid, right);
+        }
+
+    }
+
+
+
+
+    /*Remove Duplicates from Sorted Array*/
+    private static void duplicateArray(int[] intArray) {
+        for (int i = 0; i < intArray.length; i++) {
+
+        }
+    }
+
+
+
+
+    private static void square(int[] intArray) {
+        for (int i = 0; i < intArray.length; i++) {
+            if (i % 2 == 0){
+                intArray[i] = intArray[i] * intArray[i];
+            }
+        }
+        for (int i = 0; i < intArray.length; i++) {
+            System.out.print(" "+intArray[i]);
+        }
+    }
+
+
+    static void fun(int n)
+    {
+        if(n > 0)
+        {
+            fun(n - 1);
+            System.out.print(n+" ");
+            fun(n - 1);
+        }
+    }
+
+    static void abc(String s)
+    {
+        if(s.length() == 0)
+            return;
+        abc(s.substring(1));
+        abc(s.substring(1));
+        System.out.print(" "+s.charAt(0));
+    }
+
+    static String fun(String  x)
+    {
+       return x.substring(1,3);
+    }
+
+    /*static void fun(int x)
+    {
+        if(x > 0)
+        {
+            fun(--x);
+            System.out.print(x + " ");
+            fun(++x);
+        }
+    }*/
+
+
+    public static int recurse(int pub, int lic)
+    {
+        if (pub % 13 == 0)
+        {
+            return pub + lic;
+        }
+        return recurse(pub++, lic / 2);
+    }
+
+    /*public static int recurse(int pub, int lic)
+    {
+        if (pub % 13 == 0)
+        {
+            return pub + lic;
+        }
+        return recurse(++pub, lic / 2);
+    }*/
+
+    private static void sum(double num) {
+
+        double rem, sum = 0;
+        while (num != 0){
+            rem = num % 10;
+            sum = sum + rem;
+            num = num / 10;
+        }
+        System.out.println(sum);
+    }
+
+    
+    public static int sumOfDigitR(int num){
+
+        return  num == 0 ? 0: num % 10 + sumOfDigitR(num/10);
+    }
+
+    public static int sumOfn(int num){
+        int sum = 0;
+        if (num > 0){
+            return 0;
+        }
+        else
+            return num + sumOfn(num-1);
+    }
+    
+
+    public static void print(int num){
+        if (num == 0){
+            return;
+        }
+        System.out.print(num%2);
+        print(num/2);
+    }
+
 
 
     static StringBuilder fun2(String  str)
@@ -80,7 +645,6 @@ public class ArrayQuestions {
         Arrays.sort(arr);
         for (int i = 0; i < arr.length; i++) {
             System.out.println(i + ". "+ arr[i]);
-
         }
         for (int i = 0; i < arr.length; i++) {
             if (temp<arr[i]){
@@ -171,7 +735,6 @@ public class ArrayQuestions {
     private static void gfgUsingCollection(int[] intArray) {
         Collections.reverse(Arrays.asList(intArray));
         System.out.println(Arrays.asList(intArray));
-
     }
 
    /* private static void gfgSolutionWithBetterLogic(int[] intArray) {
@@ -217,6 +780,9 @@ public class ArrayQuestions {
             }else {
                 try{
                     intArray[start]=intArray[start]*intArray[end];
+//                     tem = a * b
+//                    b = a / b
+//                    tem = a/b
                     intArray[end]= intArray[start]/intArray[end];
                     intArray[start]= intArray[start]/intArray[end];
 
@@ -234,6 +800,9 @@ public class ArrayQuestions {
         for (int val : intArray){
             System.out.print(val+",");
         }
+        /*Quick sort */
+
+
     }
 
 }

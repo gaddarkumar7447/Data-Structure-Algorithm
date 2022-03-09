@@ -36,6 +36,15 @@ public class Recursion {
     }
 */
 
+    public static void print(int num){
+        if (num == 0){
+            return;
+        }
+        System.out.println("%d "+num%2);
+        print(num/2);
+
+    }
+
    static String fun2(String  str)
 
     {
@@ -64,5 +73,4 @@ public class Recursion {
     public static void main(String[] args) {
         System.out.println(fun2("",0));
     }*/
-
 }
