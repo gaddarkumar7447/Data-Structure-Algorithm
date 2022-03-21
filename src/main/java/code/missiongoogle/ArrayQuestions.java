@@ -1,6 +1,7 @@
 package code.missiongoogle;
 import org.w3c.dom.ls.LSOutput;
 
+import javax.swing.plaf.synth.SynthOptionPaneUI;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -10,7 +11,85 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
+class one{
+    public void g(){
+        System.out.println("Gaddar");
+    }
+}
+class two {
+    public void k(){
+        System.out.println("Kumar");
+    }
+}
+class three  {
+    public void c(){
+        System.out.println("Chaudhary");
+    }
+}
+class four extends one {
+    public void c(){
+        System.out.println("Siliguri Institute of technology");
+    }
+}
+
+class bicycle{
+    int gear, speed;
+    bicycle(int g, int s){
+        this.gear = g;
+        this.speed = s;
+    }
+    public void applyBreak(int decrement){
+        speed -= decrement;
+    }
+    public void gear(int increment){
+        speed += increment;
+    }
+    public String a(){
+        return "gear "+gear+"speed "+speed;
+    }
+}
+
+class mountainCycle extends bicycle{
+    int seatHeight;
+    mountainCycle(int g, int s,int start) {
+        super(g, s);
+        seatHeight = start;
+    }
+    public void setHeight(int newValue){
+        seatHeight = newValue;
+    }
+    public String toString(){
+        return super.toString()+" SeatHeight "+seatHeight;
+    }
+}
+
+/*Multilevel inheritance */
+class maruti{
+    public void typeOf(){
+        System.out.println("The type of car: Maruti");
+    }
+}
+class marutiDeasel extends maruti{
+    public void typeOfD(){
+        System.out.println("This car take runing to diesel");
+    }
+}
+class maruti800 extends marutiDeasel{
+    public void newModel(){
+        System.out.println("This is the new model of the car");
+    }
+}
 public class ArrayQuestions {
+
+    public  int sum(int a, int b, int c){
+        return a+b+c;
+    }
+    public  int sum(int a, int b){
+        return a+b;
+    }
+    public int sum(double a, int b){
+        return (int) a+b;
+    }
     public static int Search(int intArray[],int key, int lenght){
         for (int i = 0; i < lenght; i++) {
             if (intArray[i] == key){
@@ -216,8 +295,22 @@ public class ArrayQuestions {
         }
         System.out.println("Maximum: "+max);
     }
-    public static void main(String[] args) throws IOException {
-        HashMap<Character,Integer> hashMap = new HashMap<>();
+    String a ="Black";
+    static class ineer extends ArrayQuestions{
+        String a = "Blue";
+        public void show(){
+            System.out.println(a);
+            System.out.println(super.a);
+        }
+    }
+    public static void main(String[] args) {
+        ineer ineer = new ineer();
+        ineer.show();
+        /*ArrayQuestions a = new ArrayQuestions();
+        System.out.println(a.sum(10,20));
+        System.out.println(a.sum(10,20,40));
+        System.out.println(a.sum(10.3,20));*/
+        /*HashMap<Character,Integer> hashMap = new HashMap<>();
         BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
         hashMap.put('I',1);
         hashMap.put('V',5);
@@ -234,7 +327,7 @@ public class ArrayQuestions {
             }
             else result += hashMap.get(s.charAt(i));
         }
-        System.out.println(result);
+        System.out.println(result);*/
         /*int []arr = {1,2,3,0,0,0};
         int[] arr1 = {2,5,6};
         int m = 3, n= 3;*/
@@ -477,25 +570,18 @@ public class ArrayQuestions {
         int i = 0,j = 0,k = p;
         while (i < n1 && j < n2){
             if (L[i] <= M[j]){
-                array[k] = L[i];
-                i++;
+                array[k++] = L[i++];
             }
             else {
-                array[k] = M[j];
-                j++;
+                array[k++] = M[j++];
             }
-            k++;
         }
         while (i < n1){
-            array[k] = L[i];
-            i++;
-            k++;
+            array[k++] = L[i++];
         }
 
         while(j< n2){
-            array[k] = M[j];
-            j++;
-            k++;
+            array[k++] = M[j++];
         }
 
     }
@@ -601,7 +687,7 @@ public class ArrayQuestions {
         System.out.println(sum);
     }
 
-    
+
     public static int sumOfDigitR(int num){
 
         return  num == 0 ? 0: num % 10 + sumOfDigitR(num/10);
@@ -615,7 +701,7 @@ public class ArrayQuestions {
         else
             return num + sumOfn(num-1);
     }
-    
+
 
     public static void print(int num){
         if (num == 0){
@@ -662,6 +748,7 @@ public class ArrayQuestions {
 //    }
 
     private static void pairSum(int[] intArray,int target) {
+
         /*2,7,11,15*/
         String indexes=null;
         HashMap<Integer, Integer> indexVal = new HashMap<>();
@@ -801,8 +888,6 @@ public class ArrayQuestions {
             System.out.print(val+",");
         }
         /*Quick sort */
-
-
     }
 
 }

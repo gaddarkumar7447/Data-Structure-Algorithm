@@ -5,28 +5,57 @@ import java.util.Arrays;
 import java.util.Scanner;
 import java.util.Stack;
 
-class student{
-    int roll;
-    String name;
-    public int getRoll() {
-        return roll;
+abstract class teacher{
+    teacher(){
+        System.out.println("Welcome students");
     }
-
-    public void setRoll(int roll) {
-        this.roll = roll;
+    public void teach(){
+        System.out.println("Teacher's is teaching us");
     }
-
-    public String getName() {
-        return name;
+}
+class School extends teacher{
+    School(){
+        super();
     }
+    public void teach(){
+        System.out.println("Teacher's is teaching math");
+    }
+}
 
-    public void setName(String name) {
-        this.name = name;
+class collage extends teacher{
+    collage(){
+        super();
+    }
+    public void teach(){
+        System.out.println("Teacher's is teaching english");
     }
 }
 
 
 public class Test {
+    static private int age;
+    static String name;
+    static String branch;
+    public String nam(){
+        return name;
+    }
+    public int ag(){
+        return age;
+    }
+    public String b(){
+        return branch;
+    }
+
+    public void setName(String name1){
+        name = name1;
+    }
+    public void setBranch(String branch1)
+    {
+        branch = branch1;
+    }
+    public void setAge(int age1){
+        age = age1;
+    }
     /*static class A{
 
             public void show1(){
@@ -204,8 +233,17 @@ public class Test {
 
 
     public static void main(String[] args) {
-
-
+        collage c = new collage();
+        School sc = new School();
+        c.teach();
+        sc.teach();
+        /*Test t = new Test();
+        t.setAge(455);
+        t.setName("Gaddar");
+        t.setBranch("CSE");
+        System.out.println(t.ag());
+        System.out.println(t.b());
+        System.out.println(t.nam());*/
         /*Scanner keyboard = new Scanner (System.in);
         System.out.print("Please Type a word: ");
         String word = keyboard.nextLine();
