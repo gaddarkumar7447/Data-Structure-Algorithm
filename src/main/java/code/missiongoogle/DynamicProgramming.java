@@ -1,17 +1,18 @@
 package code.missiongoogle;
 import javax.swing.plaf.basic.BasicInternalFrameTitlePane;
-
+//import static java.lang.System.out;
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
-import static java.lang.System.out;
 
 public class DynamicProgramming {
 
 /*----------------------------------------------------------------------------------------*/
+
     public static int fibo(String str, int num){
-        out.println(str+num);
+        System.out.println(str+num);
         if (num == 1 || num == 0) return num;
 
         return fibo("A   "+str,num-1) + fibo("B   "+str,num-2);
@@ -43,6 +44,7 @@ public class DynamicProgramming {
         return b;
     }
 /*--------------------------------------------------------------------------*/
+
     public static int treeStair(int num){
         int []arr = new int[num +1];
         if (num == 0 || num == 1) return 1;
@@ -52,8 +54,9 @@ public class DynamicProgramming {
         }
         return arr[num];
     }
+
     public static int bottomStair(int num){
-        int []arr = new int[num +1];
+        int []arr = new int[num + 1];
         arr[0] = 1;
         arr[1] = 1;
         arr[2]= 2;
@@ -74,7 +77,7 @@ public class DynamicProgramming {
         return c;
     }
     public void show(){
-        out.println(this);
+        System.out.println(this);;
     }
     public static int matrixManipulation(int []matrix,int i, int j){
         if (i==j) return 0;
@@ -88,9 +91,50 @@ public class DynamicProgramming {
         }
         return min;
     }
+    /*--------------Minimum number of jump to nth stair------------ */
 
+    public static int minimumStair(int num){
+        if (num == 0) return 0;
+        if (num == 1 || num == 2 || num == 3) return 1;
+        int a = Math.min(Math.min(minimumStair(num-1),minimumStair(num-2)),minimumStair(num-3));
+        return 1 + a;
+    }
+
+    public static int minimumDown(int num){
+        int a = 0, b = 1, c = 1, d;
+        for (int i = 3; i <= num; i++) {
+            d = 1 + Math.min(Math.min(a,b),c);
+            a = b;
+            b = c;
+            c = d;
+        }
+        return c;
+    }
+    public static int stepDown(int []arr, int num){
+        if (num == 0 ) return 0;
+        if (num == 1 || num ==2 || num == 3) return 1;
+        return 1 + Math.min(Math.min(stepDown(arr, num-1),stepDown(arr, num-2)),stepDown(arr, num-3));
+    }
+    public static int stepUp(int num){
+        int []arr = new int[num + 1];
+        arr[0] = 0;
+        arr[1] = 1;
+        arr[2] = 1;
+        for (int i = 3; i <= num; i++) {
+            arr[i] = 1 + Math.min(Math.min(arr[i-1], arr[i-2]),arr[i-3]);
+        }
+        return arr[num];
+    }
+
+    
     public static void main(String[] args) {
-        DynamicProgramming d = new DynamicProgramming();
+        int num = 7;
+        System.out.println(minimumDown(7));
+        //System.out.println(stepDown(arr,num));
+
+
+//        System.out.println(minimumDown(40));
+
 
 
         /*int []matrix = {5,4,6,2,7};
@@ -106,23 +150,5 @@ public class DynamicProgramming {
         /*int n = 5;
         int []arr = new int[n+1];
         out.println(TopDown(arr,n));*/
-    }
-}
-class A{
-    /*public void show(){
-        out.println("Hello java");
-    }*/
-    A(int a){
-        out.println("Hey " +a);
-    }
-}
-class B extends A{
-    /*public void show(){
-        super.show();
-        out.println("Hello python");
-    }*/
-    B(){
-        super(100);
-        out.println("Gaddar");
     }
 }

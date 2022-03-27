@@ -1,12 +1,12 @@
 package code.missiongoogle;
-
+import javax.imageio.plugins.tiff.ExifInteroperabilityTagSet;
 import java.math.BigInteger;
-import java.sql.Time;
 import java.time.LocalDate;
 import java.util.*;
 import java.util.List;
 
 public class LeeCode {
+
     /*static Node head;
     public static class Node {
         int data;
@@ -130,6 +130,7 @@ public static int fibo(int num){
 
 public static boolean check(int num){
     boolean []arr = new boolean[1000];
+
 //    Arrays.fill(arr,false);
     while(num != 0){
         int sum = 0;
@@ -148,7 +149,7 @@ public static boolean check(int num){
 }
 
     /*Cracking the coding interview*/
-    public static   boolean isUnique(String input) {
+    public static boolean isUnique(String input) {
         if (input.length() > 26) return false;
         char []c = input.toCharArray();
         Arrays.sort(c);
@@ -451,6 +452,7 @@ public static boolean check(int num){
             result ^= i;
         }
         return result;*/
+
         Arrays.sort(arr);
         for (int i = 0; i < arr.length; i += 2) {
             if (arr[i] != arr[i]){
@@ -472,7 +474,6 @@ public static boolean check(int num){
                 if (c[i] != c1[i]){
                     return false;
                 }
-
         }
         return true;
     }
@@ -486,6 +487,7 @@ public static boolean check(int num){
             sum = sum * 10 + rem;
             num/= 10;
         }
+
         if (Integer.MAX_VALUE < sum){
             return 0;
         }
@@ -539,7 +541,10 @@ public static boolean check(int num){
         return d;
     }
 
+
+
     public static int majorityElement(int []arr){
+
         /*int maxTerm = 0;
         int index = -1;
         for (int i : arr) {
@@ -569,9 +574,287 @@ public static boolean check(int num){
         }
         return store;
     }
+    public static int stringToInteger(String s){
+        int num = 0;
+//        char []c = s.toCharArray();
+        for (int i = 0; i < s.length(); i++) {
+            num = num * 10 + s.charAt(i);
+
+        }
+        return num;
+    }
+
+    public static int addDigit(int num){
+//        return  num==0 ? 0:(num % 9 == 0 ?0:(num % 9));
+        int temp = 0;
+        while(num > 0){
+            temp = temp + num % 10;
+            if(temp >= 10){
+                temp = temp / 10 + temp % 10;
+            }
+            num /= 10;
+        }
+        return temp;
+    }
+
+
+    public static boolean fourthPower(int num){
+        if( num== 1) return true;
+        for (int i = 0; i < Math.sqrt(num); i++) {
+            if (num == Math.pow(4,i))
+                return true;
+        }
+        return false;
+    }
+
+
+    public static int ncr(int n, int r){
+        if(n <= 0 || r < 0) return 0;
+        if (r > n) return 0;
+        return fact(n)/(fact(n-r) * fact(r));
+    }
+
+    static int fact(int num){
+        if (num == 1 || num == 0) return num;
+        return num * fact(num -1);
+    }
+
+    public static char findTheDifference(String s, String t){
+        if (s.length() == t.length()) return 0;
+        char []as = s.toCharArray();
+        char []at = t.toCharArray();
+        Arrays.sort(as);
+        Arrays.sort(at);
+
+        for (int i = 0; i < as.length; i++) {
+                if (as[i] != at[i]){
+                    return at[i];
+                }
+        }
+        return at[at.length-1];
+    }
+
+    public static void reverseString(char [] c){
+        for (int i = 0; i < c.length/2; i++) {
+            int temp = c.length - 1 - i;
+            char o = c[i];
+            c[i] = c[temp];
+            c[temp] = o;
+        }
+        System.out.println(Arrays.toString(c));
+    }
+
+    public static void swapO(int []arr){
+        int a = arr.length-1;
+        int i = 0;
+        int b = arr[i];
+        while (i < a){
+            arr[a] = arr[a] ^ arr[i];
+            arr[i] = arr[a] ^ arr[i];
+            arr[a] = arr[a] ^ arr[i];
+            a--;
+            i++;
+        }
+        System.out.println(Arrays.toString(arr));
+    }
+
+    public static void putBracket(int num){
+        /*List<String> list = new ArrayList<>();
+        String s = "(";
+        String p = ")";
+        int j = 0;
+        for (int i = 0; i < num; i++) {
+            list.add(s);
+        }
+        for (int i = 0; i < num; i++) {
+            list.add(p);
+        }
+        System.out.print(list);*/
+
+        List<String> result = new ArrayList<>();
+        findAll("(",1,0,result,num);
+        System.out.println(result);
+    }
+
+    public static void findAll(String s, int o, int c, List<String> result, int num) {
+        if(s.length() == 2 * num){
+            result.add(s);
+            return;
+        }
+            if (o < num) findAll(s+"(",o+1,c,result,num);
+            if (c < o) findAll(s+")",o,c+1,result,num);
+    }
+
+    public static int missingNumber(int []arr){
+        int sum = 0;
+        for (int i: arr) {
+            sum += i;
+        }
+        System.out.println(sum);
+        return arr.length * (arr.length + 1) / 2 - sum;
+    }
+
+    public static boolean IsSubsequence(String s, String t){
+        if (s.length() > t.length()) return false;
+        /*int count = 0;
+        for (int i = 0; i < t.length() && count < s.length(); i++) {
+            if (s.charAt(count) == t.charAt(i)){
+                count ++;
+            }
+        }
+        if (count == s.length()) return true;
+        return false;*/
+        char[]a = s.toCharArray();
+        char[]b = t.toCharArray();
+        Arrays.sort(a);
+        Arrays.sort(b);
+        int count = 0;
+        for (int i = 0; i < a.length; i++) {
+            if (a[i] == b[i]){
+                count++;
+            }
+        }
+        return count == a.length;
+    }
+
+    public static boolean ransomNote(String s, String t){
+        char []c = new char[26];
+        char []a = s.toCharArray();
+        char [] b = t.toCharArray();
+        for (char p: b) {
+            c[p - 'a']++;
+        }
+        for (char p: a) {
+            c[p - 'a']--;
+        }
+        for (int i: c) {
+            if (i < 0){
+                return false;
+            }
+        }
+        return true;
+    }
+    public static int binarySe(int []nums, int target){
+        for(int i = 0; i <nums.length; i++){
+            if(nums[i] == target){
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    // TODO: 26-03-2022 Not completed this  question
+    public static int findPoisonedDuration(int[] timeSeries, int duration) {
+        int n = timeSeries.length;
+        for(int i = 1; i < n ; i++){
+            if(duration != i){
+                return timeSeries[i];
+            }
+        }
+        return 1;
+    }
+
+    public static String reverseStr(String s, int k) {
+        char []c = s.toCharArray();
+        for(int i = 0; i < k-1 ; i++ ){
+            int a = k-1;
+            char p = c[i];
+            c[i] = c[a];
+            c[a] = p;
+        }
+        return String.valueOf(c);
+    }
+
+
+    public static int [] twoSum(int []nums, int target){
+        HashMap<Integer, Integer> hash = new HashMap<>();
+        for (int i = 0; i < nums.length; i++){
+            hash.put(nums[i], i);
+        }
+        for (int i = 0; i < nums.length; i++) {
+            int num = nums[i];
+            int rem = target - num;
+            if (hash.containsKey(rem)){
+                int index = hash.get(rem);
+                if (index == i) continue;
+                return new int[]{nums[i], nums[index]};
+            }
+        }
+        return new int[]{};
+    }
+
+
+    public static ArrayList<Integer> threeSum(int []arr){
+        /*Set<List<Integer>> list = new HashSet<>();
+        for(int i = 0; i <arr.length; i++){
+            for(int j = i+1; j <arr.length; j++){
+                for(int k = j+1; k <arr.length; k++){
+                    if(arr[i] + arr[j] + arr[k] == 0){
+                        list.add(Arrays.asList(arr[i],arr[j],arr[k]));
+                    }
+                }
+            }
+        }
+        return new HashSet<>(list);*/
+        /*Arrays.sort(arr);
+        Set<List<Integer>> list = new HashSet<>();
+        for (int i = 0; i < arr.length-2; i++) {
+            int j = i+1;
+            int k = arr.length-1;
+            while (k > j){
+                int sum = arr[j] + arr[k];
+                if (sum == -arr[i]){
+                    list.add(Arrays.asList(arr[i], arr[j++], arr[k--]));
+                }
+                else if (sum > -arr[i]) k--;
+                else if (sum < -arr[i]) j++;
+            }
+        }
+        return new ArrayList<>(list);*/
+        return null;
+    }
+
+    public static  List<List<Integer>> fourSum(int[] nums, int target) {
+        Arrays.sort(nums);
+        Set<List<Integer>> set = new HashSet<>();
+        for(int i = 0; i < nums.length; i++){
+            for(int j = i+1; j < nums.length; j++){
+                for(int k = j+1; k < nums.length; k++){
+                    for(int l = k+1; l < nums.length; l++){
+                        set.add(Arrays.asList(nums[i],nums[j],nums[k],nums[l]));
+                    }
+                }
+            }
+        }
+        return new ArrayList<>(set);
+    }
     public static void main(String[] args) {
-        int []arr = {2,2,1,1,1,2,2};
-        System.out.println(majorityElement(arr));
+        int []arr = {1,0,-1,0,-2,2};
+        System.out.println(fourSum(arr,0));
+        //System.out.println(reverseStr("abcdefg",2));
+        /*int []arr = {1,4};
+        System.out.println(findPoisonedDuration(arr,2));*/
+        //System.out.println(IsSubsequence("axc",""));
+
+        /*int [] arr = {9,6,4,2,3,5,7,1,0};
+        Arrays.sort(arr);
+        System.out.println(missingNumber(arr));
+        putBracket(3);*/
+
+        //System.out.println(Integer.toBinaryString(5));
+
+        /*int []arr = {23,54,23,67,432,45};
+        swapO(arr);*/
+
+        //System.out.println(findTheDifference("abcd", "abcde"));
+//        System.out.println(ncr(9,4));
+//        System.out.println(fourthPower(256));
+        /*int []arr = {-1,0,1,2,-1,-4};
+        threeSum(arr);*/
+       // System.out.println(addDigit(387));
+
+        /*int []arr = {2,2,1,1,1,2,2};
+        System.out.println(majorityElement(arr));*/
 
         /*int []arr = {9,9,9,0,9};
         System.out.println(Arrays.toString(PlusOne(arr)));*/

@@ -1,6 +1,7 @@
 package code.missiongoogle;
 import org.w3c.dom.ls.LSOutput;
 
+import javax.swing.*;
 import javax.swing.plaf.synth.SynthOptionPaneUI;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -71,7 +72,7 @@ class maruti{
 }
 class marutiDeasel extends maruti{
     public void typeOfD(){
-        System.out.println("This car take runing to diesel");
+        System.out.println("This car take running to diesel");
     }
 }
 class maruti800 extends marutiDeasel{
@@ -124,7 +125,6 @@ public class ArrayQuestions {
             num /= 10;
         }
         if (tem == sum) System.out.println("yes"); else System.out.println("No");
-
     }
 
     public static void f(int num){
@@ -152,7 +152,6 @@ public class ArrayQuestions {
         System.out.printf("Move disk %d from %c to %c\n",num,from,top);
         honnoiTower(num -1,des,top,from);
     }
-
     public static int findPower(int num, int po){
         if (po == 0) return 1;
         return num * findPower(num, po - 1);
@@ -201,8 +200,8 @@ public class ArrayQuestions {
     }
 
     public static void printArray(int []arr){
-        for (int i = 0; i < arr.length; i++) {
-            System.out.printf("%d ",arr[i]);
+        for (int j : arr) {
+            System.out.printf("%d ", j);
         }
     }
 
@@ -242,7 +241,7 @@ public class ArrayQuestions {
 
     public static int sumA(int []arr){
         int sum = 0;
-        for (int i = 0; i < arr.length; i++) {
+        for (int i:arr) {
             sum += arr[i];
         }
         return sum;
@@ -303,9 +302,36 @@ public class ArrayQuestions {
             System.out.println(super.a);
         }
     }
+
+    public static void makePattern(int num){
+        for (int i = 1; i <= num; i++) {
+            for (int j = 1; j <= num; j++) {
+                if (j >= 6 - i)
+                    System.out.print("*");
+                else
+                System.out.print(" ");
+            }
+            System.out.print("\n");
+        }
+    }
+
+    public static void makePattern1(int num){
+        for (int i = 1; i <= 5; i++) {
+            for (int j = 1; j <= 2; j++) {
+                if (i >= j){
+                    System.out.print("*");
+                }
+                    System.out.print(" ");
+            }
+            System.out.print("\n");
+        }
+    }
+
+
     public static void main(String[] args) {
-        ineer ineer = new ineer();
-        ineer.show();
+        makePattern1(2);
+        /*ineer ineer = new ineer();
+        ineer.show();*/
         /*ArrayQuestions a = new ArrayQuestions();
         System.out.println(a.sum(10,20));
         System.out.println(a.sum(10,20,40));
