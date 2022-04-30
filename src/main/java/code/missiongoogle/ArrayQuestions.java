@@ -12,74 +12,11 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
-class one{
-    public void g(){
-        System.out.println("Gaddar");
-    }
-}
-class two {
-    public void k(){
-        System.out.println("Kumar");
-    }
-}
-class three  {
-    public void c(){
-        System.out.println("Chaudhary");
-    }
-}
-class four extends one {
-    public void c(){
-        System.out.println("Siliguri Institute of technology");
-    }
-}
 
-class bicycle{
-    int gear, speed;
-    bicycle(int g, int s){
-        this.gear = g;
-        this.speed = s;
-    }
-    public void applyBreak(int decrement){
-        speed -= decrement;
-    }
-    public void gear(int increment){
-        speed += increment;
-    }
-    public String a(){
-        return "gear "+gear+"speed "+speed;
-    }
-}
 
-class mountainCycle extends bicycle{
-    int seatHeight;
-    mountainCycle(int g, int s,int start) {
-        super(g, s);
-        seatHeight = start;
-    }
-    public void setHeight(int newValue){
-        seatHeight = newValue;
-    }
-    public String toString(){
-        return super.toString()+" SeatHeight "+seatHeight;
-    }
-}
 
 /*Multilevel inheritance */
-class maruti{
-    public void typeOf(){
-        System.out.println("The type of car: Maruti");
-    }
-}
-class marutiDeasel extends maruti{
-    public void typeOfD(){
-        System.out.println("This car take running to diesel");
-    }
-}
-class maruti800 extends marutiDeasel{
-    public void newModel(){
-        System.out.println("This is the new model of the car");
-    }
-}
+
 public class ArrayQuestions {
 
     public  int sum(int a, int b, int c){
@@ -295,13 +232,13 @@ public class ArrayQuestions {
         System.out.println("Maximum: "+max);
     }
     String a ="Black";
-    static class ineer extends ArrayQuestions{
+    /*static class ineer extends ArrayQuestions{
         String a = "Blue";
         public void show(){
             System.out.println(a);
             System.out.println(super.a);
         }
-    }
+    }*/
 
     public static void makePattern(int num){
         for (int i = 1; i <= num; i++) {
@@ -327,9 +264,42 @@ public class ArrayQuestions {
         }
     }
 
+    public static <T> Object[] convertLinkedListToArray(LinkedList<T> linkedList){
+        Object[] array = linkedList.toArray();
+        return array;
+    }
+
+    int roll;
+    String name;
+    float salery;
+    ArrayQuestions(int roll, String name, float salery){
+        this.roll = roll;
+        this.name = name;
+        this.salery = salery;
+    }
+
+    void show(){
+        System.out.println(roll+" "+name+" "+salery);
+    }
 
     public static void main(String[] args) {
-        makePattern1(2);
+        ArrayQuestions l = new ArrayQuestions(12,"gaddar",452f);
+        ArrayQuestions l1= new ArrayQuestions(10,"sumit",2563f);
+        l.show();
+        l1.show();
+        /*LinkedList<String> linkedList = new LinkedList<String>();
+
+        // Adding elements to the linked list
+        linkedList.add("G");
+        linkedList.add("e");
+        linkedList.add("e");
+        linkedList.add("k");
+        linkedList.add("s");
+        Object[] objArray = convertLinkedListToArray(linkedList);
+        String[] array = Arrays.copyOf(objArray, objArray.length, String[].class);
+        System.out.println("Array: "+ Arrays.toString(array));*/
+
+       /* makePattern1(2);*/
         /*ineer ineer = new ineer();
         ineer.show();*/
         /*ArrayQuestions a = new ArrayQuestions();
@@ -753,7 +723,7 @@ public class ArrayQuestions {
 
     public static int kthSmallest(int [] arr, int n, int k){
         int temp = -1;
-        int counter=1;
+        int counter = 1;
         Arrays.sort(arr);
         for (int i = 0; i < arr.length; i++) {
             System.out.println(i + ". "+ arr[i]);
@@ -849,7 +819,6 @@ public class ArrayQuestions {
         Collections.reverse(Arrays.asList(intArray));
         System.out.println(Arrays.asList(intArray));
     }
-
    /* private static void gfgSolutionWithBetterLogic(int[] intArray) {
         int n= intArray.length;
         int t;*/

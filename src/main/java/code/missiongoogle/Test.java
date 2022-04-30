@@ -1,19 +1,17 @@
 package code.missiongoogle;
 
 import java.lang.String;
-import java.util.Arrays;
-import java.util.Scanner;
 import java.util.Stack;
 
-abstract class teacher{
-    teacher(){
+abstract class Teacher{
+    Teacher(){
         System.out.println("Welcome students");
     }
     public void teach(){
         System.out.println("Teacher's is teaching us");
     }
 }
-class School extends teacher{
+class School extends Teacher{
     School(){
         super();
     }
@@ -22,7 +20,7 @@ class School extends teacher{
     }
 }
 
-class collage extends teacher{
+class collage extends Teacher{
     collage(){
         super();
     }
@@ -231,12 +229,33 @@ public class Test {
         }
         return stack.isEmpty();*/
 
-
+   static class MyClass{
+        int k, t;
+        MyClass(){
+            System.out.println("Hello there");
+        }
+        MyClass(int a, int b){
+            this.t = a;
+            this.k = b;
+        }
+        public void show(){
+            System.out.println(this.t+" "+this.k);
+        }
+    }
+    public static void main(int a){
+        System.out.println("Java is best");
+    }
     public static void main(String[] args) {
-        collage c = new collage();
+        System.out.println("Hello Gaddar");
+        Test test = new Test();
+        test.main(7);
+
+       /*MyClass my = new MyClass(45,36);
+       my.show();*/
+        /*collage c = new collage();
         School sc = new School();
         c.teach();
-        sc.teach();
+        sc.teach();*/
         /*Test t = new Test();
         t.setAge(455);
         t.setName("Gaddar");
@@ -431,6 +450,5 @@ public class Test {
         int a = Integer.parseInt(b.readLine());
         System.out.println(a);
         Scanner sx = new Scanner(System.in);*/
-
-
 }
+

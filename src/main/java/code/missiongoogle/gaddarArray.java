@@ -84,6 +84,7 @@ public class gaddarArray {
     }
 
     public static void main(String[] args) {
+
        /* int out = 15;
         for (int i = 4; i < 6; i++)
         {
