@@ -1,20 +1,11 @@
 package code.missiongoogle;
 import java.math.BigInteger;
+import java.nio.charset.CharsetEncoder;
 import java.time.LocalDate;
 import java.util.*;
 import java.util.List;
 
-public class LeeCode {
-
-    /*static Node head;
-    public static class Node {
-        int data;
-        Node next;
-        Node(int data) {
-            this.next = null;
-            this.data = data;
-        }
-    }*/
+public class LeeCode{
     public void addList(int data) {
         Node newNode = new Node(data);
         if (head == null) {
@@ -1427,6 +1418,7 @@ public class LeeCode {
         }
         return arr;
     }
+
     public static void printMatrix(){
         int [][] matrix = new int[3][3];
         for (int[] ints : matrix) {
@@ -1570,8 +1562,323 @@ public class LeeCode {
         return (i * col + j + total - k) % total;
     }*/
 
-    public static void main(String[] args) {
+    public static List<Integer> spiralMatrixOrder(int [][]matrix){
+        List<Integer> list = new ArrayList<>();
+        int row = matrix.length;
+        int col = matrix[0].length;
+        int left = 0, right = col -1,  bottom = row -1,top = 0, dir = 0;
+        while(left <= right && top <= bottom){
+            if (dir == 0){
+                for (int i = left; i <= right; i++) {
+                    list.add(matrix[top][i]);
+                }
+                dir = 1;
+                top++;
+            }
+            else if (dir == 1){
+                for (int i = top; i <= bottom; i++) {
+                    list.add(matrix[i][right]);
+                }
+                right--;
+                dir = 2;
+            }
+            else if(dir == 2){
+                for (int i = left; i >= right ; i--) {
+                    list.add(matrix[bottom][i]);
+                }
+                bottom--;
+                dir = 3;
+            }
+            else {
+                for (int i = bottom; i >= top; i--) {
+                    list.add(matrix[i][left]);
+                }
+                left++;
+                dir = 0;
+            }
+        }
+        return list;
+    }
 
+    public static int [][]generateMatrix(int num){
+        int left = 0, right = num -1;
+        int top = 0, bottom = num -1;
+        int val = 1;
+        int [][]matrix = new int[num][num];
+        while(left <= right && top <= bottom){
+            for (int i = left; i <= right; i++)
+                matrix[top][i] = val++;
+                top++;
+
+            for (int i = top; i <= bottom ; i++)
+                matrix[i][right] = val++;
+                right--;
+
+            for (int i = right; i >= left ; i--)
+                matrix[bottom][i] = val++;
+                bottom--;
+
+            for (int i = bottom; i >= top; i--)
+                matrix[i][left] = val++;
+                left++;
+
+        }
+        return matrix;
+    }
+
+    public static int [][]matrix(int num){
+        int [][]m = new int[num][num];
+        int val = 1;
+            for (int i = 0; i < m.length; i++) {
+                for (int j = 0; j < m[0].length; j++) {
+                    m[i][j] = val++;
+                }
+            }
+        return m;
+    }
+
+    public static void m(int m){
+        int [][]matrix = new int[m][m];
+        int val = 0;
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[0].length; j++) {
+                matrix[i][j] = val++;
+                System.out.print(" "+matrix[i][j]);
+            }
+            System.out.println();
+        }
+    }
+
+    static HashMap<String, String> hashMap = new HashMap<>();
+    public static String encode(String longURL){
+        String s = "http://LC/"+hashMap.size();
+        hashMap.put(s,longURL);
+        return s;
+    }
+    public static String decode(String shortURL){
+        return hashMap.get(shortURL);
+    }
+
+    public static boolean backSpaceStringCompare(String s, String t){
+        Stack<Character> stack1 = new Stack<>();
+        Stack<Character> stack2 = new Stack<>();
+        char [] c = s.toCharArray();
+        for (int i = 0; i < c.length; i++){
+            if (c[i] !='#'){
+                stack1.push(s.charAt(i));
+            }
+            else if(stack1.size() == 0){
+                continue;
+            }
+            else
+                stack1.pop();
+        }
+
+        for (int i = 0; i < c.length; i++){
+            if (c[i] !='#'){
+                stack2.push(s.charAt(i));
+            }
+            else if(stack2.size() == 0){
+                continue;
+            }
+            else
+                stack2.pop();
+        }
+        if (stack1.equals(stack2)) return true;
+        return false;
+    }
+    public static int [] sortedArrayByPriority(int []nums){
+        int []arr = new int[nums.length];
+        int first = 0, last = nums.length - 1;
+        // 3 1 2 4
+        for (int num : nums) {
+            if (num % 2 == 0) {
+                arr[first] = num;
+                first++;
+
+            } else {
+                arr[last] = num;
+                last--;
+            }
+        }
+        return arr;
+    }
+    public static List<Integer> findDisappearedNumber(int [] nums){
+        /*List<Integer> list = new ArrayList<>();
+        List<Integer> list1 = new ArrayList<>();
+        int []arr = new int[nums.length];
+        for (int i = 1; i < nums.length+1; i++){
+            list.add(i);
+        }
+        *//*for (int i = 0; i < nums.length; i++) {
+            arr[i] = list.get(i);
+        }*//*
+
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] == list.indexOf(i)){
+                list.remove(nums[i]);
+            }
+        }
+        return list;*/
+
+        List<Integer> ans= new ArrayList<Integer>();
+
+        for(int i=0; i<nums.length; i++){
+            if(nums[Math.abs(nums[i])-1]>0)
+                nums[Math.abs(nums[i])-1]=-nums[Math.abs(nums[i])-1];
+        }
+
+        for(int j=0; j<nums.length;j++){
+            if(nums[j]>0)
+                ans.add(j+1);
+        }
+
+        return ans;
+    }
+
+    public static int findUnsortedSubArray(int []nums){
+        int count = 0;
+        int []copy = new int[nums.length];
+        System.arraycopy(nums, 0, copy, 0, nums.length);
+        int start = 0, end = nums.length-1;
+        for (; start < nums.length; start++) {
+            if(nums[start] != copy[start]){
+                break;
+            }
+        }
+        for (; end >= 0 ; end--) {
+            if(nums[end] != copy[end]){
+                break;
+            }
+        }
+        System.out.println("Start "+start);
+        System.out.println("end "+end);
+        return end+start-1;
+    }
+
+    public static int []intersectionOfTwoArray(int []nums1, int[]nums2){
+        HashSet<Integer> hashSet = new HashSet<>();
+        for (int i: nums1) {
+            hashSet.add(i);
+        }
+        HashSet<Integer> hash = new HashSet<>();
+        for (int i: nums2) {
+            if (hashSet.contains(i)){
+                hash.add(i);
+            }
+        }
+        int []copy = new int[hash.size()];
+        int index = 0;
+        for(int i:hash){
+            copy[index++] = i;
+        }
+
+        return copy;
+    }
+
+    public static int maxOperations(int[] nums, int k) {
+        int first = 0, last = nums.length-1;
+        Arrays.sort(nums);
+        int ans = 0;
+        while(last > first){
+            if(k == nums[first] + nums[last]){
+                ++ans;
+                --last;
+                ++first;
+            }
+            else if(k > nums[first] + nums[last]){
+                ++first;
+            }
+            else
+                --last;
+        }
+        return ans;
+
+    }
+    public static int []insertionOfTwoArray(int []nums1,int [] nums2){
+        Arrays.sort(nums1);
+        Arrays.sort(nums2);
+        List<Integer> lis = new ArrayList<>();
+        int i = 0, j = 0;
+        while (i < nums1.length && j < nums2.length){
+            if (nums1[i] < nums2[j]){
+                i++;
+            }
+            else if (nums1[i] > nums2[j]){
+                j++;
+            }
+            else if(nums1[i] == nums2[j]){
+                lis.add(nums1[i]);
+                i++;
+                j++;
+            }
+        }
+        int []copy = new int[lis.size()];
+        for(int k = 0; k < lis.size(); k++){
+            copy[i] = lis.get(i);
+        }
+        return copy;
+    }
+
+    public static void main(String[] args) {
+        int []nums1 = {1,2,2,1};
+        int [] nums2 = {2,2};
+        System.out.println(Arrays.toString(insertionOfTwoArray(nums1, nums2)));
+
+        /*int []nums = {3,1,3,4,3};
+        System.out.println(maxOperations(nums, 6));*/
+
+        /*List<Integer> list = new ArrayList<>();
+        list.add(12);
+        list.add(65);
+        list.add(32);
+        list.add(51);
+        list.add(54);
+        int []copy = new int[list.size()];*/
+
+        /*for (int i = 0; i<list.size(); i++){
+            copy[i] = list.get(i);
+        }*/
+        //We copy in the array with the help of forEach and For loop
+        /*int i = 0;
+        for(int a: list){
+            copy[i++] = a;
+        }
+        System.out.println(Arrays.toString(copy));*/
+
+        /*int []nums1 = {1,2,2,1};
+        int []nums2 = {2,2};
+        System.out.println(Arrays.toString(intersectionOfTwoArray(nums1, nums2)));*/
+
+
+        /*int []nums1 = {45,25,36,96};
+        int []merge = new int[nums.length+nums1.length];
+        for (int i = 0; i < nums.length; i++) {
+            merge[i] = nums[i];
+        }
+        for (int j = nums.length, i = 0; j < merge.length; j++, i++) {
+            merge[j] = nums1[i];
+        }
+        System.out.println(Arrays.toString(merge));*/
+
+
+        /*String s = "ab#c";
+        String t = "c";
+        System.out.println(backSpaceStringCompare(s,t));*/
+
+
+        /*int []arr = new int[nums.length + 1];
+        for(int a: nums){
+            arr[a] = a;
+        }
+        System.out.println(Arrays.toString(arr));*/
+        /*System.out.println(Arrays.toString(sortedArrayByPriority(nums)));*/
+
+        //System.out.println(Arrays.deepToString(matrix(3)));
+        //m(5);
+
+        /*int [][]matrix = {{1,2,3,4}, {5,6,7,8}, {9,10,11,12}};
+        System.out.println(spiralMatrixOrder(matrix));*/
         /*int [][]grid = {{1,2,3},{4,5,6},{7,8,9}};
         System.out.println(shift2DGrid(grid,1));*/
 
