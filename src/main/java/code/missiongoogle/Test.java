@@ -3,6 +3,20 @@ package code.missiongoogle;
 import java.lang.String;
 import java.util.Stack;
 
+class A{
+    A show(){
+        System.out.println("Hello");
+        return this;
+    }
+}
+class B extends A{
+    B show(){
+        super.show();
+        System.out.println("Gaddar");
+        return this;
+    }
+}
+
 abstract class Teacher{
     Teacher(){
         System.out.println("Welcome students");
@@ -245,10 +259,15 @@ public class Test {
     public static void main(int a){
         System.out.println("Java is best");
     }
+
     public static void main(String[] args) {
-        System.out.println("Hello Gaddar");
+
+       B b = new B();
+        b.show();
+
+        /*System.out.println("Hello Gaddar");
         Test test = new Test();
-        test.main(7);
+        test.main(7);*/
 
        /*MyClass my = new MyClass(45,36);
        my.show();*/

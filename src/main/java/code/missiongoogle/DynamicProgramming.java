@@ -8,13 +8,10 @@ import java.util.Scanner;
 
 
 public class DynamicProgramming {
-
-/*----------------------------------------------------------------------------------------*/
-
+/* ---------------------------------------------------------------------------------------- */
     public static int fibo(String str, int num){
         System.out.println(str+num);
         if (num == 1 || num == 0) return num;
-
         return fibo("A   "+str,num-1) + fibo("B   "+str,num-2);
     }
 
@@ -43,6 +40,7 @@ public class DynamicProgramming {
         }
         return b;
     }
+
 /*--------------------------------------------------------------------------*/
 
     public static int treeStair(int num){
@@ -176,7 +174,7 @@ public class DynamicProgramming {
 
 
     public static void main(String[] args) {
-
+        System.out.println(fibo("",5));
 
         /*String s1 = "abde";
         String s2 = "acd";

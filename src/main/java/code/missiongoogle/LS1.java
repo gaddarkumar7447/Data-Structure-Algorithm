@@ -11,7 +11,7 @@ public class LS1 {
         }
     }
 
-    public void AddList(int data){
+    public void addList(int data){
         Node newNode = new Node(data);
         if (head == null){
             head = newNode;
@@ -21,7 +21,7 @@ public class LS1 {
         head = newNode;
     }
 
-    public void AddLast(int data){
+    public void addLast(int data){
         Node new1Node = new Node(data);
         if (head  == null){
             head = new1Node;
@@ -53,12 +53,12 @@ public class LS1 {
 
     public static void main(String[] args) {
         LS1 li = new LS1();
-        li.AddList(100);
-        li.AddList(200);
-        li.AddList(300);
-        li.AddList(400);
+        li.addList(100);
+        li.addList(200);
+        li.addList(300);
+        li.addList(400);
 
-        li.AddLast(1000);
+        li.addLast(1000);
 
         li.printList();
 

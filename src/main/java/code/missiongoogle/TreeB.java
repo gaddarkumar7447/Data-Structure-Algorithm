@@ -1,11 +1,7 @@
 package code.missiongoogle;
-
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
 public class TreeB {
-
     static class Node{
         int data;
         Node left;
@@ -18,9 +14,9 @@ public class TreeB {
         }
     }
 
-    static class BinaryTree{
-
+    static class BinaryTree {
         static int index = -1;
+        // Covariant return type
         public Node buildTree(int []Node ){
             index++;
             if (Node[index] == -1){
@@ -34,7 +30,7 @@ public class TreeB {
     }
 
     public static void preOrder(Node root){
-        List<Integer> res = new LinkedList<>();
+        List<Integer> res = new LinkedList<Integer>();
         if (root == null) return;
         System.out.print(root.data+" ");
         preOrder(root.left);
@@ -56,6 +52,7 @@ public class TreeB {
     }
 
     public static void levelOrderTraversal(Node root){
+        List<List<Integer>> list = new ArrayList<>();
        if (root == null) return;
         Queue<Node> q = new LinkedList<>();
         q.add(root);
@@ -69,6 +66,7 @@ public class TreeB {
             }
             else{
                 System.out.print(curNode.data+" ");
+                list.add(Collections.singletonList(curNode.data));
             if (curNode.left != null) q.add(curNode.left);
             if (curNode.right != null) q.add(curNode.right);}
         }
@@ -87,20 +85,21 @@ public class TreeB {
         int rightSum = sumOfNodes(root.right);*/
         return sumOfNodes(root.left)+sumOfNodes(root.right) + root.data;
     }
-    public static int heightOfTheThree(Node root){
+    public static int heightOfTheTree(Node root){
         if (root == null) return 0;
         /*int leftHeight = heightOfTheThree(root.left);
         int rightHeight = heightOfTheThree(root.right);
         int maxHeight = Math.max(leftHeight, rightHeight);*/
-        return Math.max(heightOfTheThree(root.left), heightOfTheThree(root.right)) + 1;
+        return Math.max(heightOfTheTree(root.left), heightOfTheTree(root.right)) + 1;
     }
 
     public static int diameter(Node root){
         if (root ==  null) return  0;
         int dia1 = diameter(root.left);
         int dia2 = diameter(root.right);
-        int dia3 = heightOfTheThree(root.left) + heightOfTheThree(root.right) + 1;
+        int dia3 = heightOfTheTree(root.left) + heightOfTheTree(root.right) + 1;
         return Math.max(dia3,Math.max(dia1,dia2));
+
         /*int lDia = diameter(root.left);
         int rDia = diameter(root.right);
         return Math.max(lDia + rDia + 1 , Math.max(dia1,dia2));*/
@@ -122,7 +121,7 @@ public class TreeB {
         System.out.println("Number of node present in the tree = "+a);
         int sum = sumOfNodes(root);
         System.out.print("Sum of node = "+sum);
-        int height = heightOfTheThree(root);
+        int height = heightOfTheTree(root);
         System.out.print("\nHeight of the tree = "+height);
         int dia = diameter(root);
         System.out.print("\nDiameter of the tree = "+dia);

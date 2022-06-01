@@ -17,7 +17,7 @@ import java.util.Map;
 
 /*Multilevel inheritance */
 
-public class ArrayQuestions {
+public class ArrayQuestions extends DemoClass{
 
     public  int sum(int a, int b, int c){
         return a+b+c;
@@ -283,10 +283,15 @@ public class ArrayQuestions {
     }
 
     public static void main(String[] args) {
-        ArrayQuestions l = new ArrayQuestions(12,"gaddar",452f);
-        ArrayQuestions l1= new ArrayQuestions(10,"sumit",2563f);
-        l.show();
-        l1.show();
+        int []arr = {4,7,6,5,3};
+        /*DemoClass demo = new DemoClass();
+        DemoClass.BinaryTreeBST p = new BinaryTreeBST();
+        p.buildTree(arr);*/
+        HashSet<Integer> set = new HashSet<>();
+        Hashtable<Integer, Integer> hashtable = new Hashtable<>();
+        HashMap<Integer, Integer> hashMap = new HashMap<>();
+        set.add(1000000000);
+
         /*LinkedList<String> linkedList = new LinkedList<String>();
 
         // Adding elements to the linked list
@@ -382,7 +387,7 @@ public class ArrayQuestions {
         System.out.println(a);*/
 
 //        honnoiTower(num, 'A', 'C', 'B');
-
+        //Todo Scanner s = new Scanner(new BufferedReader(new InputStreamReader(System.in)));
 //        int [] fibo= new int[]{0,1,1,2,3,5,8,13};
 //        Scanner sc = new Scanner(new BufferedReader(new InputStreamReader(System.in)));
         /*System.out.println("Enter the number");
