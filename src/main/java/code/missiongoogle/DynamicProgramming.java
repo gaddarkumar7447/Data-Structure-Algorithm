@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class DynamicProgramming {
 /* ---------------------------------------------------------------------------------------- */
     public static int fibo(String str, int num){
-        System.out.println(str+num);
+        System.out.println(str + num);
         if (num == 1 || num == 0) return num;
         return fibo("A   "+str,num-1) + fibo("B   "+str,num-2);
     }
@@ -174,13 +174,13 @@ public class DynamicProgramming {
 
 
     public static void main(String[] args) {
-        System.out.println(fibo("",5));
+//        System.out.println(fibo("",5));
 
-        /*String s1 = "abde";
-        String s2 = "acd";
+        String s1 = "abcde";
+        String s2 = "ace";
+        System.out.println(lcs(s1, s2, s1.length(), s2.length()));
 
-        System.out.println(DynamicProgramming.lcs(s1, s2, s1.length(), s2.length()));
-        Integer[][] arr = new Integer[s1.length() + 1][s2.length() + 1];
+        /*Integer[][] arr = new Integer[s1.length() + 1][s2.length() + 1];
         System.out.println(DynamicProgramming.lcsTopDown(s1, s2, s1.length(), s2.length(), arr));
         System.out.println(lcsBottomUp(s1, s2, s1.length(), s2.length()));*/
 
@@ -204,6 +204,7 @@ public class DynamicProgramming {
 //        Scanner sc = new Scanner(System.in);
         // 0 1 1 2 3 5 8 13 21
         /*int n = 5;
+
         int []arr = new int[n+1];
         out.println(TopDown(arr,n));*/
 

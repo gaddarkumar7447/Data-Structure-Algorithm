@@ -9,6 +9,7 @@ import java.util.Locale;
 import java.util.Scanner;
 
 public class Graph {
+
     /*static LinkedList<Integer> []adj;
     public Graph(int v){
         adj = new LinkedList[v];
@@ -117,7 +118,7 @@ public class Graph {
     private  Queue<Integer> queue;
 
     Graph(int v){
-        this.vertex = v;
+        vertex = v;
         adj = new LinkedList[v];
         for (int i = 0; i < v; i++) {
             adj[i] = new LinkedList<>();

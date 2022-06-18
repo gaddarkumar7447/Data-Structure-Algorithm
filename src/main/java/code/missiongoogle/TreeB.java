@@ -104,6 +104,43 @@ public class TreeB {
         int rDia = diameter(root.right);
         return Math.max(lDia + rDia + 1 , Math.max(dia1,dia2));*/
     }
+
+    public static List<String> possibleChanges(List<String> usernames) {
+        List<String> list = new ArrayList<>();
+        for(int i = 0; i < usernames.size(); i++){
+            String s = usernames.get(i);
+            char []chars = s.toCharArray();
+            int flag = 0;
+            for (int j = 0; j < s.length() -1; j++) {
+                if ((chars[j] - '0') > (chars[j+1] - '0')){
+                    list.add("YES");
+                    flag = 1;
+                    break;
+                }
+            }
+            if (flag == 0){
+                list.add("NO");
+            }
+        }
+        return list;
+
+    }
+
+    public static int filledOrders(List<Integer> order, int k) {
+        int len = order.size();
+        int count = 0;
+        Collections.sort(order);
+        for(int ord : order)
+        {
+            if(ord <= k)
+            {
+                count++;
+                k = k - ord;
+            }
+        }
+        return count;
+
+    }
     public static void main(String[] args) {
         int []node = new int[] {1,2,4,-1,-1,5,-1,-1,3,-1,6,-1,-1};
         BinaryTree binaryTree = new BinaryTree();

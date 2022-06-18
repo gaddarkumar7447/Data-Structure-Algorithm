@@ -287,10 +287,10 @@ public class ArrayQuestions extends DemoClass{
         /*DemoClass demo = new DemoClass();
         DemoClass.BinaryTreeBST p = new BinaryTreeBST();
         p.buildTree(arr);*/
-        HashSet<Integer> set = new HashSet<>();
+        /*HashSet<Integer> set = new HashSet<>();
         Hashtable<Integer, Integer> hashtable = new Hashtable<>();
         HashMap<Integer, Integer> hashMap = new HashMap<>();
-        set.add(1000000000);
+        set.add(1000000000);*/
 
         /*LinkedList<String> linkedList = new LinkedList<String>();
 
@@ -541,6 +541,10 @@ public class ArrayQuestions extends DemoClass{
 
 
 //        findPrevious(fibo, 13);
+
+        int []nums = {3,5,8,1,2,4,7,6};
+        mergeSort(nums,0,arr.length-1);
+        printArrays(nums, nums.length);
     }
 
     private static void findPrevious(int[] fibo,int num) {
@@ -549,26 +553,27 @@ public class ArrayQuestions extends DemoClass{
         p = Math.round((2 * num) / (double)k);
         System.out.println(p);
     }
-
-
-
     /*Merge sort*/
-
-    public static void merge(int [] array, int p, int q, int r){
-        int n1 = q - p + 1;
-        int n2 = r - q;
+    public static void printArrays(int []arr, int n){
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(" "+arr[i]);
+        }
+    }
+    public static void merge(int [] array, int l, int m, int r){
+        int n1 = m - l + 1;
+        int n2 = r - m;
 
         int[] L = new int[n1];
         int[] M = new int[n2];
 
         for (int i = 0; i < n1; i++) {
-            L[i] = array[p+i];
+            L[i] = array[l+i];
         }
         for (int j = 0; j < n2; j++){
-            M[j] = array[q+1+j];
+            M[j] = array[m+1+j];
         }
 
-        int i = 0,j = 0,k = p;
+        int i = 0,j = 0,k = l;
         while (i < n1 && j < n2){
             if (L[i] <= M[j]){
                 array[k++] = L[i++];
@@ -581,13 +586,11 @@ public class ArrayQuestions extends DemoClass{
             array[k++] = L[i++];
         }
 
-        while(j< n2){
+        while(j < n2){
             array[k++] = M[j++];
         }
 
     }
-
-
     /*Merge sort*/
     public static void mergeSort(int array[], int left, int right){
         if (left < right){
@@ -596,7 +599,6 @@ public class ArrayQuestions extends DemoClass{
             mergeSort(array,mid + 1, right);
             merge(array,left,mid, right);
         }
-
     }
 
 
