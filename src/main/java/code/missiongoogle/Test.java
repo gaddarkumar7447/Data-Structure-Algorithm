@@ -96,17 +96,17 @@ public class Test {
     static class myThread {
         int[] a = {2, 3, 5, 7, 9, 5, 4, 3};
 
-        public void s() {
+        /*public void s() {
             for (int i = 0; i < a.length; i++) {
                 a[i] = a[i] * 2;
                 System.out.println(a[i]);
                 try {
-                    Thread.sleep(1);
+                    ThreadClass.sleep(1);
                 } catch (Exception e) {
 
                 }
             }
-        }
+        }*/
 
     }
 

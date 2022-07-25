@@ -1,11 +1,6 @@
 package code.missiongoogle;
-import org.w3c.dom.ls.LSOutput;
 
-import javax.swing.*;
-import javax.swing.plaf.synth.SynthOptionPaneUI;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.awt.*;
 import java.util.*;
 import java.util.Arrays;
 import java.util.Collections;
@@ -17,7 +12,7 @@ import java.util.Map;
 
 /*Multilevel inheritance */
 
-public class ArrayQuestions extends DemoClass{
+public class ArrayQuestions  {
 
     public  int sum(int a, int b, int c){
         return a+b+c;
@@ -245,8 +240,7 @@ public class ArrayQuestions extends DemoClass{
             for (int j = 1; j <= num; j++) {
                 if (j >= 6 - i)
                     System.out.print("*");
-                else
-                System.out.print(" ");
+                else System.out.print(" ");
             }
             System.out.print("\n");
         }
@@ -283,7 +277,8 @@ public class ArrayQuestions extends DemoClass{
     }
 
     public static void main(String[] args) {
-        int []arr = {4,7,6,5,3};
+
+
         /*DemoClass demo = new DemoClass();
         DemoClass.BinaryTreeBST p = new BinaryTreeBST();
         p.buildTree(arr);*/
@@ -542,9 +537,9 @@ public class ArrayQuestions extends DemoClass{
 
 //        findPrevious(fibo, 13);
 
-        int []nums = {3,5,8,1,2,4,7,6};
+        /*int []nums = {3,5,8,1,2,4,7,6};
         mergeSort(nums,0,arr.length-1);
-        printArrays(nums, nums.length);
+        printArrays(nums, nums.length);*/
     }
 
     private static void findPrevious(int[] fibo,int num) {

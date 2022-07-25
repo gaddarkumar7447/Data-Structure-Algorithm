@@ -25,6 +25,15 @@ public class DemoClass {
             newNode.right = buildTree(arr);
             return newNode;
         }
+    }
+    public class Encap{
+       private int cap;
+        public int getCap() {
+            return cap;
+        }
 
+        public void setCap(int cap) {
+            this.cap = cap;
+        }
     }
 }

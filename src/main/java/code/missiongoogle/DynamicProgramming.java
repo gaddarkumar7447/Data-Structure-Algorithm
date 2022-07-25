@@ -1,10 +1,7 @@
 package code.missiongoogle;
 import javax.swing.plaf.basic.BasicInternalFrameTitlePane;
 //import static java.lang.System.out;
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 
 public class DynamicProgramming {
@@ -171,14 +168,80 @@ public class DynamicProgramming {
         }
         return arr[n][m];
     }
+    public static int longestPalindromeSubSequence(String str , int start, int end, int [][]dp){
+        if (start > end) return 0;
+        if (start == end) return 1;
+        if (dp[start][end] == 0){
+            if (str.charAt(start) == str.charAt(end)){
+                dp[start][end] = 2 + longestPalindromeSubSequence(str, start + 1, end - 1, dp);
+            }
+            else {
+                dp[start][end] = Math.max(longestPalindromeSubSequence(str, start + 1, end, dp), longestPalindromeSubSequence(str, start, end -1, dp));
+            }
+        }
+        return dp[start][end];
+    }
 
+    public static int longestPalindromeSubseq(String s) {
+        return lcs(s, s.length());
+    }
+    public static int lcs(String s, int n){
+        int [][]dp = new int [n][n];
+        for(int i = n - 2; i >= 0 ; i--){
+            for(int j = i + 1; j < n; j++){
+                if(s.charAt(i + 1) == s.charAt(j - 1)){
+                    dp[i][j] = 2 + dp[i + 1][j -1];
+                }
+                else{
+                    dp[i][j] = Math.max(dp[i+1][j], dp[i][j - 1]);
+                }
+            }
+        }
+        return dp[0][n-1];
+    }
+    public static List<List<Integer>> permute(int []nums){
+        List<List<Integer>> list = new ArrayList<>();
+        canPermute(nums,list, 0);
+        return list;
+    }
+    private static void canPermute(int []nums,List<List<Integer>> list, int index) {
+        if (nums.length == index){
+            list.add(toList(nums));
+        }else {
+            for (int i = index; i < nums.length; i++) {
+                swap(i, index,  nums);
+                canPermute(nums, list, index + 1);
+                swap(i,index, nums);
+            }
+        }
+    }
+    private static void swap(int i, int index, int[] nums) {
+        int tem = nums[i];
+        nums[i] = nums[index];
+        nums[index] = tem;
+    }
+
+    public static List<Integer> toList(int []nums){
+        List<Integer> l = new ArrayList<>();
+        for (int i : nums){
+            l.add(i);
+        }
+        return l;
+    }
 
     public static void main(String[] args) {
-//        System.out.println(fibo("",5));
+        Set<List<Integer>> set = new HashSet<>();
+        set.add(Collections.singletonList(54));
+        int []nums = {1,2,3};
+        System.out.println(permute(nums));
 
-        String s1 = "abcde";
+        /*String str = "bbbab";
+        int [][]dp = new int[str.length()][str.length()];
+        System.out.println(longestPalindromeSubseq(str));*/
+
+        /*String s1 = "abcde";
         String s2 = "ace";
-        System.out.println(lcs(s1, s2, s1.length(), s2.length()));
+        System.out.println(lcs(s1, s2, s1.length(), s2.length()));*/
 
         /*Integer[][] arr = new Integer[s1.length() + 1][s2.length() + 1];
         System.out.println(DynamicProgramming.lcsTopDown(s1, s2, s1.length(), s2.length(), arr));
