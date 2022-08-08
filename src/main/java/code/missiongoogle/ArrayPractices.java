@@ -1,9 +1,8 @@
 package code.missiongoogle;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
-public class Array {
+public class ArrayPractices {
     /*public static int sortedArray(int []array, int lenght){
         if (lenght == 1 || lenght == 0){
             return  0;

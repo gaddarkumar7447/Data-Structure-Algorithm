@@ -1,6 +1,9 @@
 package code.missiongoogle;
 
+
+import java.nio.channels.Pipe;
 import java.util.*;
+import java.util.concurrent.ScheduledExecutorService;
 import java.util.stream.StreamSupport;
 
 public class Oops extends Thread{
@@ -103,9 +106,14 @@ class Super{
     }
 }
 class Sub extends  Super{
-    public  void show(){
+    public void show(){
+        System.out.println("Sub");
         super.show();
-        System.out.println("sub class");
+    }
+
+    public static void main(String[] args) {
+        Sub a = new Sub();
+        a.show();
     }
 }
 // Multilevel inheritance
@@ -384,12 +392,12 @@ interface Af{
     private void show(){
         System.out.println(2+6);
     }
+
 }
 class Call implements Af{
     void show(int a, int b){
         System.out.println(a + b);
     }
-
     public static void main(String[] args) {
         Call a = new Call();
         a.show(12,21); a.call();
@@ -433,7 +441,10 @@ class Var{
 }
 
 // Exception handling
-class Exception{
+ class Exception{
+     Exception(){
+
+    }
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int a = 10, b = 0, c ;
@@ -444,11 +455,197 @@ class Exception{
         catch (ArithmeticException e){
             System.out.println(e);
         }*/
-        String str = null;
+        /*String str = null;
         try {
             System.out.println(str.toUpperCase());
         }catch (NullPointerException e){
             System.out.println(e);
+        }*/
+
+        try{
+            System.out.println("Statement1");
+            System.out.println("Statement2");
+            c = a/2;
+            System.out.println(c);
+            String n = null;
+            String p = n.toUpperCase();
+            System.out.println("Statement3");
         }
+        catch (ArithmeticException o){
+            System.out.println(o);
+        }
+        catch (NullPointerException r){
+            System.out.println("Hello");
+        }
+        finally {
+            System.out.println("Finally block");
+        }
+        System.out.println("Gaddar");
+    }
+}
+
+class Check{
+    public void m1(){
+        System.out.println("Rajen");
+    }
+}
+class Che extends Check{
+    @Override
+    public void m1() {
+        super.m1();
+        System.out.println("Gaddar");
+    }
+
+    public static void main(String[] args) {
+        Che a = new Che();
+        a.m1();
+    }
+}
+
+// Inheritance
+class Inheritance {
+    static class A1 {
+        A1(){
+            System.out.println("Constructor");
+        }
+        void method(int a, int b){
+            System.out.println(a + b);
+            System.out.println("Gaddar");
+        }
+    }
+    static class A2 extends A1{
+        void method() {
+            super.method(1,2);
+            System.out.println("Another method");
+        }
+        public static void main(String[] args) {
+            A2 a = new A2();
+            a.method();
+        }
+    }
+}
+
+// Object class
+
+class Finalize{
+    public static void main(String[] args) {
+        Finalize a = new Finalize();
+        System.out.println(a.hashCode());
+        a = null;
+        System.out.println(a);
+        System.out.println("end garbage collector");
+    }
+}
+// Throw
+class ThrowKey{
+    public static int check(int a, int b) throws ArithmeticException{
+        return a/b;
+    }
+    public static void main(String[] args) throws InvalidAgeException {
+        /*try {
+            check(23,0);
+        }catch (ArithmeticException e){
+            System.out.println("Cont divided in to zero");
+        }
+        System.out.println("rest");*/
+        Scanner sc = new Scanner(System.in);
+        int num = sc.nextInt();
+        if (num < 18){
+            throw new InvalidAgeException("Not handle");
+        }
+    }
+
+    private static class InvalidAgeException extends Throwable {
+        public InvalidAgeException(String st){
+            System.out.println(st);
+        }
+    }
+}
+
+class Assignment4{
+
+    void show(int a, int b){
+        System.out.println(Math.max(a,b));
+    }
+
+    void show(double a, double b){
+        System.out.println(Math.max(a,b));
+    }
+
+    public static void main(String[] args) {
+        Assignment4 a = new Assignment4();
+        a.show(1,2);
+        a.show(1.1,12.1);
+    }
+}
+
+class Point{
+    int x, y;
+    Point(){
+        this.x = 0;
+        this.y = 0;
+    }
+    public Point(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+    void calDis(Point b){
+        int pow = (int) Math.pow((this.x-b.x),2);
+    }
+}
+
+class Complex{
+    int r, i;
+    Complex(){
+        this.i = 0;
+        this.r = 0;
+    }
+    void setR(int r){
+        this.r = r;
+    }
+    void setI(int i){
+        this.i = i;
+    }
+    int getR(){
+        return this.r;
+    }
+    int getI(){
+        return this.i;
+    }
+    void add(Complex b){
+        System.out.println((this.r + b.r)+"+"+"i"+(this.i + b.i));
+    }
+
+    public static void main(String[] args) {
+        Complex a = new Complex();
+        a.setI(3);
+        a.setR(5);
+        a.add(a);
+    }
+}
+
+class Shape{
+    int x, y;
+    void getXY(int x, int y){
+        this.x = x;
+        this.y = y;
+    }
+    void showXY(){
+        System.out.println(this.x +" "+this.y);
+    }
+    public static void main(String[] args) {
+        Rectangle a = new Rectangle();
+        a.getXY(3,5);
+        a.showXY();
+    }
+}
+class Rectangle extends Shape{
+    @Override
+    void getXY(int len, int bre) {
+        super.getXY(bre, len);
+        areaRec(len, bre);
+    }
+    void areaRec(int l, int b){
+        System.out.println(l * b);
     }
 }

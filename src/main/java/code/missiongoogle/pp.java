@@ -59,7 +59,7 @@ class pp{
         return head;
     }
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args)  {
         /*BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
         StringReader s = new StringReader(bf.readLine());*/
             ListNode list1 = new ListNode(1);

@@ -3,8 +3,7 @@ import javax.swing.plaf.basic.BasicInternalFrameTitlePane;
 //import static java.lang.System.out;
 import java.util.*;
 
-
-public class DynamicProgramming {
+class DynamicProgramming {
 /* ---------------------------------------------------------------------------------------- */
     public static int fibo(String str, int num){
         System.out.println(str + num);
@@ -14,7 +13,8 @@ public class DynamicProgramming {
 
     public static int TopDown(int []arr,int num){
         if (num < 2) return num;
-        if (arr[num] == 0) return arr[num] = TopDown(arr,num-1) + TopDown(arr,num-2);
+        if (arr[num] == 0)
+            return arr[num] = TopDown(arr,num-1) + TopDown(arr,num-2);
         return arr[num];
     }
 
@@ -230,10 +230,12 @@ public class DynamicProgramming {
     }
 
     public static void main(String[] args) {
-        Set<List<Integer>> set = new HashSet<>();
+        int []nums = new int[5];
+        System.out.println(TopDown(nums,4));
+        /*Set<List<Integer>> set = new HashSet<>();
         set.add(Collections.singletonList(54));
         int []nums = {1,2,3};
-        System.out.println(permute(nums));
+        System.out.println(permute(nums));*/
 
         /*String str = "bbbab";
         int [][]dp = new int[str.length()][str.length()];

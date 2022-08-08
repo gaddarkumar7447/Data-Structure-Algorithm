@@ -1,7 +1,6 @@
 package code.missiongoogle;
 
 import java.util.Scanner;
-
 public class DemoClass {
         static class Node{
         int data;
@@ -36,4 +35,5 @@ public class DemoClass {
             this.cap = cap;
         }
     }
+
 }
