@@ -1,10 +1,7 @@
 package code.missiongoogle;
 
 
-import java.nio.channels.Pipe;
 import java.util.*;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.stream.StreamSupport;
 
 public class Oops extends Thread{
     /*@Override
@@ -441,7 +438,7 @@ class Var{
 }
 
 // Exception handling
- class Exception{
+ class Exception extends Throwable {
      Exception(){
 
     }
@@ -647,5 +644,170 @@ class Rectangle extends Shape{
     }
     void areaRec(int l, int b){
         System.out.println(l * b);
+    }
+}
+
+class Add{
+    int a, b;
+    Add(int a, int b){
+        this.a = a;
+        this.b = b;
+    }
+     void sub(Add b){
+        System.out.println((b.b + this.b)+" "+(b.a + this.a));
+    }
+
+    @Override
+    public String toString() {
+        return "Add{" + "a=" + a + ", b=" + b + '}';
+    }
+
+    public static void main(String[] args) {
+        Add a = new Add(1,2);
+        Add b = new Add(3,4);
+        System.out.println(a);
+        a.sub(b);
+    }
+}
+
+class Shape1{
+    int x, y;
+
+    void getXY(){
+        Scanner sc = new Scanner(System.in);
+        x = sc.nextInt();
+        y = sc.nextInt();
+    }
+    void show(){
+        System.out.println("X "+x);
+        System.out.println("Y "+y);
+    }
+}
+class Rectangle1 extends Shape1{
+    int len, bre;
+    @Override
+    void getXY() {
+        super.getXY();
+        System.out.println("Enter the len and bre");
+        Scanner sc = new Scanner(System.in);
+        len = sc.nextInt();
+        bre = sc.nextInt();
+    }
+    @Override
+    void show() {
+        super.show();
+        System.out.println("rectangle: "+len*bre);
+    }
+
+    public static void main(String[] args) {
+        Shape1 a = new Rectangle1();
+        a.getXY();
+        a.show();
+    }
+}
+
+abstract class Dimension{
+    double height, width;
+    void setValue(int height, int width){
+        this.height = height;
+        this.width = width;
+    }
+
+    public double getHeight() {
+        return height;
+    }
+
+    public double getWidth() {
+        return width;
+    }
+    abstract double getA();
+}
+class Rec extends Dimension{
+
+    @Override
+    double getA() {
+        return getHeight() * getWidth();
+    }
+}
+class Tri extends Dimension{
+    @Override
+        double getA(){
+            return (getHeight() * getWidth())/2;
+        }
+}
+class Test1{
+    public static void main(String[] args) {
+        Dimension a = new Rec();
+        a.setValue(2,7);
+        System.out.println(a.getA());
+
+        a = new Tri();
+        a.setValue(2,7);
+        System.out.println(a.getA());
+    }
+}
+
+interface Area{
+    double pi = 3.14;
+    double cal(double w, double h);
+
+}
+class Rect implements Area{
+    @Override
+    public double cal(double r, double h){
+        return 4 * r;
+    }
+}
+class Cir implements Area{
+
+    @Override
+    public double cal(double r, double h) {
+        return pi * r * r;
+    }
+}
+class Test2{
+    public static void main(String[] args) {
+        Area a = new Rect();
+        System.out.println(a.cal(12,5));
+        Area b = new Cir();
+        System.out.println(b.cal(12,4));
+    }
+}
+
+interface Area1{
+    double compute(double x, double y);
+    final double pi = 3.14;
+}
+interface Display{
+    void show(double r);
+}
+class Rect1 implements Area1, Display{
+    @Override
+    public double compute(double x, double y) {
+        return 0;
+    }
+
+    @Override
+    public void show(double r) {
+        System.out.println("Show interfce rex");
+    }
+}
+class Cir1 implements Area1, Display{
+    @Override
+    public double compute(double x, double y) {
+        return 0;
+    }
+
+    @Override
+    public void show(double r) {
+        System.out.println("Multiple interface circle");
+    }
+}
+class Te{
+    public static void main(String[] args) {
+        Area1 a = new Rect1();
+        a.compute(12,34);
+        Display d = new Rect1();
+        d.show(2);
     }
 }

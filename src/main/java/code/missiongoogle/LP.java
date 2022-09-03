@@ -6,7 +6,7 @@ import java.util.LinkedList;
 
 public class LP {
     static Node head;
-    class Node{
+    static class Node{
         int data;
         Node next;
         Node(int d){
@@ -139,6 +139,9 @@ public class LP {
        la.addFirst(500);
        la.addFirst(600);
        la.addFirst(700);
+
+
+       la.displayList();
 
       /* la.addLast(900);
        la.addLast(800);

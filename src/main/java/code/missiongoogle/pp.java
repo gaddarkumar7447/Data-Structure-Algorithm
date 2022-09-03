@@ -1,10 +1,11 @@
 package code.missiongoogle;
 
 import jdk.jshell.spi.ExecutionControlProvider;
-
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.StringReader;
+
+import java.util.Arrays;
 
 class pp{
     static class ListNode {
@@ -60,6 +61,7 @@ class pp{
     }
 
     public static void main(String[] args)  {
+        Arrays.sort(new int[]{12,3,3});
         /*BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
         StringReader s = new StringReader(bf.readLine());*/
             ListNode list1 = new ListNode(1);
