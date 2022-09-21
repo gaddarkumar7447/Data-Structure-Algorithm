@@ -12,221 +12,209 @@ import java.util.Map;
 
 /*Multilevel inheritance */
 
-public class ArrayQuestions  {
+public class ArrayQuestions {
 
-    public  int sum(int a, int b, int c){
-        return a+b+c;
+    public int sum(int a, int b, int c) {
+        return a + b + c;
     }
-    public  int sum(int a, int b){
-        return a+b;
+
+    public int sum(int a, int b) {
+        return a + b;
     }
-    public int sum(double a, int b){
-        return (int) a+b;
+
+    public int sum(double a, int b) {
+        return (int) a + b;
     }
-    public static int Search(int intArray[],int key, int lenght){
+
+    public static int Search(int intArray[], int key, int lenght) {
         for (int i = 0; i < lenght; i++) {
-            if (intArray[i] == key){
+            if (intArray[i] == key) {
                 return i;
             }
         }
-        return  -1;
+        return -1;
     }
 
     /*static  {
         System.out.println("Hello");
     }*/
 
-    public static void fibo(int num){
+    public static void fibo(int num) {
         int n1 = 0, n2 = 1, n3;
-        if (num > 0)
-        {
+        if (num > 0) {
             n3 = n1 + n2;
             n1 = n2;
             n2 = n3;
-            System.out.print(" "+n3);
+            System.out.print(" " + n3);
             fibo(num - 1);
         }
     }
 
     private static void isPelindrom(int num) {
-       int rem, tem = num;
-        int  sum = 0;
-        while (num>0){
+        int rem, tem = num;
+        int sum = 0;
+        while (num > 0) {
             rem = num % 10;
             sum = sum * 10 + rem;
             num /= 10;
         }
-        if (tem == sum) System.out.println("yes"); else System.out.println("No");
+        if (tem == sum) System.out.println("yes");
+        else System.out.println("No");
     }
 
-    public static void f(int num){
-        if (num <= 1){
-            return ;
+    public static void f(int num) {
+        if (num <= 1) {
+            return;
         }
 //        return f(num - 1) + f(num - 2);
         int a = 0, b = 1;
-        System.out.print(" "+a);
+        System.out.print(" " + a);
         for (int i = 1; i < num; i++) {
-            System.out.print(" "+b);
-            int c = a+b;
+            System.out.print(" " + b);
+            int c = a + b;
             a = b;
             b = c;
         }
     }
 
-    public static int findFibbo(int num){
+    public static int findFibbo(int num) {
         if (num == 0 || num == 1) return num;
-        return findFibbo(num-1) + findFibbo(num -2);
+        return findFibbo(num - 1) + findFibbo(num - 2);
     }
+
     public static void honnoiTower(int num, char from, char top, char des) {
-        if (num == 1){ System.out.printf("Move disk 1 from %c to %c\n",from,top); return;}
-        honnoiTower(num-1,from,des,top);
-        System.out.printf("Move disk %d from %c to %c\n",num,from,top);
-        honnoiTower(num -1,des,top,from);
+        if (num == 1) {
+            System.out.printf("Move disk 1 from %c to %c\n", from, top);
+            return;
+        }
+        honnoiTower(num - 1, from, des, top);
+        System.out.printf("Move disk %d from %c to %c\n", num, from, top);
+        honnoiTower(num - 1, des, top, from);
     }
-    public static int findPower(int num, int po){
+
+    public static int findPower(int num, int po) {
         if (po == 0) return 1;
         return num * findPower(num, po - 1);
     }
 
-    public static void  merge1(int []arr, int l,int h){
-        if (l < h){
-            int mid = (l+h) / 2;
+    public static void merge1(int[] arr, int l, int h) {
+        if (l < h) {
+            int mid = (l + h) / 2;
 
-            merge1(arr,l,mid);
-            merge1(arr,mid+1,h);
-            mergeSo(arr,l,mid,h);
+            merge1(arr, l, mid);
+            merge1(arr, mid + 1, h);
+            mergeSo(arr, l, mid, h);
         }
     }
 
     private static void mergeSo(int[] arr, int l, int mid, int h) {
         int n1 = (mid - l + 1);
         int n2 = (h - mid);
-        int i , j, k;
-        int []L = new int[n1];
-        int []R = new int[n2];
+        int i, j, k;
+        int[] L = new int[n1];
+        int[] R = new int[n2];
 
         for (i = 0; i < n1; i++) {
-            L[i] = arr[l+i];
+            L[i] = arr[l + i];
         }
 
         for (j = 0; j < n2; j++) {
             R[j] = arr[mid + j + 1];
         }
 
-        i = 0; j = 0; k = l;
-        while (i < n1 && j < n2){
-            if (L[i] <= R[j]){
+        i = 0;
+        j = 0;
+        k = l;
+        while (i < n1 && j < n2) {
+            if (L[i] <= R[j]) {
                 arr[k++] = L[i++];
-            }
-            else {
+            } else {
                 arr[k++] = R[j++];
             }
         }
-        while (i < n1){
+        while (i < n1) {
             arr[k++] = L[i++];
         }
-        while (j < n2){
+        while (j < n2) {
             arr[k++] = R[j++];
         }
     }
 
-    public static void printArray(int []arr){
+    public static void printArray(int[] arr) {
         for (int j : arr) {
             System.out.printf("%d ", j);
         }
     }
 
-    public static void opp(String a, int l){
-        if (l == 0){
+    public static void opp(String a, int l) {
+        if (l == 0) {
             System.out.println(a.charAt(l));
             return;
         }
         System.out.println(a.charAt(l));
-        opp(a,l-1);
+        opp(a, l - 1);
     }
 
-    static int fun1(int a, int b)
-    {
+    static int fun1(int a, int b) {
         if (b == 0)
             return 0;
         if (b % 2 == 0)
-            return fun1(a + a, b/2);
+            return fun1(a + a, b / 2);
 
-        return fun1(a + a, b/2) + a;
+        return fun1(a + a, b / 2) + a;
     }
 
-    public static void luckyNumber(long num){
+    public static void luckyNumber(long num) {
         int a = 0;
-        while (num != 0){
-            if (num % 10 == 4 || num % 10 == 7){
+        while (num != 0) {
+            if (num % 10 == 4 || num % 10 == 7) {
                 a++;
             }
-            num = num /  10;
+            num = num / 10;
         }
-        if (a==7 || a == 4){
+        if (a == 7 || a == 4) {
             System.out.println("YES");
-        }
-        else
+        } else
             System.out.println("No");
     }
 
-    public static int sumA(int []arr){
+    public static int sumA(int[] arr) {
         int sum = 0;
-        for (int i:arr) {
+        for (int i : arr) {
             sum += arr[i];
         }
         return sum;
     }
 
-    public static void merge(int[] nums1, int m, int[] nums2, int n) {
-        int index = nums1.length-1;
-        while (m>0 && n>0){
-            if (nums1[m-1] < nums2[n-1]){
-                if (nums1[index--] == nums2[--n]);
-            }
-            else {
-                nums1[index--] = nums1[--m];
-            }
-            while (m>0){
-                nums1[index--] = nums1[--m];
-            }
-            while (n>0){
-                nums1[index--] = nums2[--n];
-            }
-        }
-        for (int i = 0; i < nums1.length; i++) {
-            System.out.print(" "+nums1[i]);
-        }
-    }
-    public static void subArray(int []arr){
+    public static void subArray(int[] arr) {
         int max = arr[0];
         int cur = max;
         for (int i = 1; i < arr.length; i++) {
             cur = Math.max(arr[i] + cur, arr[i]);
-            max = Math.max(cur,max);
+            max = Math.max(cur, max);
         }
         System.out.println(max);
     }
 
-    public static void kadens(int []arr){
+    public static void kadens(int[] arr) {
         int max = arr[0];
         int cur = 0;
         for (int i = 0; i < arr.length; i++) {
             cur = cur + arr[i];
-            if (cur > max){
+            if (cur > max) {
                 max = cur;
             }
-            if (cur < 0){
+            if (cur < 0) {
                 cur = 0;
             }
-            if (arr[i] > cur){
+            if (arr[i] > cur) {
                 cur = arr[i];
             }
         }
-        System.out.println("Maximum: "+max);
+        System.out.println("Maximum: " + max);
     }
-    String a ="Black";
+
+    String a = "Black";
     /*static class ineer extends ArrayQuestions{
         String a = "Blue";
         public void show(){
@@ -235,7 +223,7 @@ public class ArrayQuestions  {
         }
     }*/
 
-    public static void makePattern(int num){
+    public static void makePattern(int num) {
         for (int i = 1; i <= num; i++) {
             for (int j = 1; j <= num; j++) {
                 if (j >= 6 - i)
@@ -246,19 +234,19 @@ public class ArrayQuestions  {
         }
     }
 
-    public static void makePattern1(int num){
+    public static void makePattern1(int num) {
         for (int i = 1; i <= 5; i++) {
             for (int j = 1; j <= 2; j++) {
-                if (i >= j){
+                if (i >= j) {
                     System.out.print("*");
                 }
-                    System.out.print(" ");
+                System.out.print(" ");
             }
             System.out.print("\n");
         }
     }
 
-    public static <T> Object[] convertLinkedListToArray(LinkedList<T> linkedList){
+    public static <T> Object[] convertLinkedListToArray(LinkedList<T> linkedList) {
         Object[] array = linkedList.toArray();
         return array;
     }
@@ -266,14 +254,15 @@ public class ArrayQuestions  {
     int roll;
     String name;
     float salery;
-    ArrayQuestions(int roll, String name, float salery){
+
+    ArrayQuestions(int roll, String name, float salery) {
         this.roll = roll;
         this.name = name;
         this.salery = salery;
     }
 
-    void show(){
-        System.out.println(roll+" "+name+" "+salery);
+    void show() {
+        System.out.println(roll + " " + name + " " + salery);
     }
 
     public static void main(String[] args) {
@@ -299,7 +288,7 @@ public class ArrayQuestions  {
         String[] array = Arrays.copyOf(objArray, objArray.length, String[].class);
         System.out.println("Array: "+ Arrays.toString(array));*/
 
-       /* makePattern1(2);*/
+        /* makePattern1(2);*/
         /*ineer ineer = new ineer();
         ineer.show();*/
         /*ArrayQuestions a = new ArrayQuestions();
@@ -465,16 +454,16 @@ public class ArrayQuestions  {
         //gfgUsingCollection(intArray);
 
         /*Array Sort Check*/
-       // System.out.println(mySolutionSortCheck(true,intArray));
+        // System.out.println(mySolutionSortCheck(true,intArray));
 
         //TODO: check with recursive method(GFG solution)
 
 
         /*Find Maximum in array*/
-       // System.out.println(String.valueOf(mySolutionMaximumInArray(intArray)));
+        // System.out.println(String.valueOf(mySolutionMaximumInArray(intArray)));
 
-     //  AshuArrays.reverseArray(intArray);
-       //AshuArrays.sortCheck(intArray);
+        //  AshuArrays.reverseArray(intArray);
+        //AshuArrays.sortCheck(intArray);
 
         /*Leet-code Problems*/
         /*Given an integer array nums and an integer k, return true if there are two distinct indices i and j in the array such that nums[i] == nums[j] and abs(i - j) <= k.
@@ -534,7 +523,6 @@ public class ArrayQuestions  {
 //        duplicateArray(intArray);
 
 
-
 //        findPrevious(fibo, 13);
 
         /*int []nums = {3,5,8,1,2,4,7,6};
@@ -542,19 +530,21 @@ public class ArrayQuestions  {
         printArrays(nums, nums.length);*/
     }
 
-    private static void findPrevious(int[] fibo,int num) {
-        double k,p,num1;
+    private static void findPrevious(int[] fibo, int num) {
+        double k, p, num1;
         k = 1.0 + Math.sqrt(5);
-        p = Math.round((2 * num) / (double)k);
+        p = Math.round((2 * num) / (double) k);
         System.out.println(p);
     }
+
     /*Merge sort*/
-    public static void printArrays(int []arr, int n){
+    public static void printArrays(int[] arr, int n) {
         for (int i = 0; i < arr.length; i++) {
-            System.out.print(" "+arr[i]);
+            System.out.print(" " + arr[i]);
         }
     }
-    public static void merge(int [] array, int l, int m, int r){
+
+    public static void merge(int[] array, int l, int m, int r) {
         int n1 = m - l + 1;
         int n2 = r - m;
 
@@ -562,41 +552,39 @@ public class ArrayQuestions  {
         int[] M = new int[n2];
 
         for (int i = 0; i < n1; i++) {
-            L[i] = array[l+i];
+            L[i] = array[l + i];
         }
-        for (int j = 0; j < n2; j++){
-            M[j] = array[m+1+j];
+        for (int j = 0; j < n2; j++) {
+            M[j] = array[m + 1 + j];
         }
 
-        int i = 0,j = 0,k = l;
-        while (i < n1 && j < n2){
-            if (L[i] <= M[j]){
+        int i = 0, j = 0, k = l;
+        while (i < n1 && j < n2) {
+            if (L[i] <= M[j]) {
                 array[k++] = L[i++];
-            }
-            else {
+            } else {
                 array[k++] = M[j++];
             }
         }
-        while (i < n1){
+        while (i < n1) {
             array[k++] = L[i++];
         }
 
-        while(j < n2){
+        while (j < n2) {
             array[k++] = M[j++];
         }
 
     }
+
     /*Merge sort*/
-    public static void mergeSort(int array[], int left, int right){
-        if (left < right){
+    public static void mergeSort(int array[], int left, int right) {
+        if (left < right) {
             int mid = (right + left) / 2;
-            mergeSort(array,left, mid);
-            mergeSort(array,mid + 1, right);
-            merge(array,left,mid, right);
+            mergeSort(array, left, mid);
+            mergeSort(array, mid + 1, right);
+            merge(array, left, mid, right);
         }
     }
-
-
 
 
     /*Remove Duplicates from Sorted Array*/
@@ -607,42 +595,36 @@ public class ArrayQuestions  {
     }
 
 
-
-
     private static void square(int[] intArray) {
         for (int i = 0; i < intArray.length; i++) {
-            if (i % 2 == 0){
+            if (i % 2 == 0) {
                 intArray[i] = intArray[i] * intArray[i];
             }
         }
         for (int i = 0; i < intArray.length; i++) {
-            System.out.print(" "+intArray[i]);
+            System.out.print(" " + intArray[i]);
         }
     }
 
 
-    static void fun(int n)
-    {
-        if(n > 0)
-        {
+    static void fun(int n) {
+        if (n > 0) {
             fun(n - 1);
-            System.out.print(n+" ");
+            System.out.print(n + " ");
             fun(n - 1);
         }
     }
 
-    static void abc(String s)
-    {
-        if(s.length() == 0)
+    static void abc(String s) {
+        if (s.length() == 0)
             return;
         abc(s.substring(1));
         abc(s.substring(1));
-        System.out.print(" "+s.charAt(0));
+        System.out.print(" " + s.charAt(0));
     }
 
-    static String fun(String  x)
-    {
-       return x.substring(1,3);
+    static String fun(String x) {
+        return x.substring(1, 3);
     }
 
     /*static void fun(int x)
@@ -656,10 +638,8 @@ public class ArrayQuestions  {
     }*/
 
 
-    public static int recurse(int pub, int lic)
-    {
-        if (pub % 13 == 0)
-        {
+    public static int recurse(int pub, int lic) {
+        if (pub % 13 == 0) {
             return pub + lic;
         }
         return recurse(pub++, lic / 2);
@@ -677,7 +657,7 @@ public class ArrayQuestions  {
     private static void sum(double num) {
 
         double rem, sum = 0;
-        while (num != 0){
+        while (num != 0) {
             rem = num % 10;
             sum = sum + rem;
             num = num / 10;
@@ -686,36 +666,32 @@ public class ArrayQuestions  {
     }
 
 
-    public static int sumOfDigitR(int num){
+    public static int sumOfDigitR(int num) {
 
-        return  num == 0 ? 0: num % 10 + sumOfDigitR(num/10);
+        return num == 0 ? 0 : num % 10 + sumOfDigitR(num / 10);
     }
 
-    public static int sumOfn(int num){
+    public static int sumOfn(int num) {
         int sum = 0;
-        if (num > 0){
+        if (num > 0) {
             return 0;
-        }
-        else
-            return num + sumOfn(num-1);
+        } else
+            return num + sumOfn(num - 1);
     }
 
 
-    public static void print(int num){
-        if (num == 0){
+    public static void print(int num) {
+        if (num == 0) {
             return;
         }
-        System.out.print(num%2);
-        print(num/2);
+        System.out.print(num % 2);
+        print(num / 2);
     }
 
 
-
-    static StringBuilder fun2(String  str)
-
-    {
+    static StringBuilder fun2(String str) {
         StringBuilder s1 = new StringBuilder();
-        for(int i = str.length()-1; i >= 0; i-- ){
+        for (int i = str.length() - 1; i >= 0; i--) {
             s1.append(str.charAt(i));
         }
 
@@ -723,18 +699,18 @@ public class ArrayQuestions  {
     }
 
 
-    public static int kthSmallest(int [] arr, int n, int k){
+    public static int kthSmallest(int[] arr, int n, int k) {
         int temp = -1;
         int counter = 1;
         Arrays.sort(arr);
         for (int i = 0; i < arr.length; i++) {
-            System.out.println(i + ". "+ arr[i]);
+            System.out.println(i + ". " + arr[i]);
         }
         for (int i = 0; i < arr.length; i++) {
-            if (temp<arr[i]){
+            if (temp < arr[i]) {
                 temp = arr[i];
-                if (k==counter){
-                    return  temp;
+                if (k == counter) {
+                    return temp;
                 }
                 counter++;
             }
@@ -745,18 +721,18 @@ public class ArrayQuestions  {
 //        return 0;
 //    }
 
-    private static void pairSum(int[] intArray,int target) {
+    private static void pairSum(int[] intArray, int target) {
 
         /*2,7,11,15*/
-        String indexes=null;
+        String indexes = null;
         HashMap<Integer, Integer> indexVal = new HashMap<>();
-        for(int i=0;i<intArray.length;i++){
-            int diff = target-intArray[i];
-            if(indexVal.containsKey(diff)){
-                indexes="first: "+indexVal.get(diff)+" second:"+i;
+        for (int i = 0; i < intArray.length; i++) {
+            int diff = target - intArray[i];
+            if (indexVal.containsKey(diff)) {
+                indexes = "first: " + indexVal.get(diff) + " second:" + i;
                 break;
             }
-            indexVal.put(intArray[i],i);
+            indexVal.put(intArray[i], i);
         }
         System.out.println(indexes);
     }
@@ -765,8 +741,8 @@ public class ArrayQuestions  {
     private static boolean containsDuplicate(int k, int[] intArray) {
         Map<Integer, Integer> map = new HashMap<>();
         int i = 0;
-        for(int num : intArray) {
-            if(map.containsKey(num) && isIndexInRange(i, map.get(num), k)) {
+        for (int num : intArray) {
+            if (map.containsKey(num) && isIndexInRange(i, map.get(num), k)) {
                 return true;
             }
             map.put(num, i);
@@ -777,40 +753,39 @@ public class ArrayQuestions  {
     }
 
 
-
     private static boolean isIndexInRange(int curr_index, int map_index, int k) {
         int x = Math.abs(curr_index - map_index);
         return x <= k ? true : false;
     }
 
     private static int mySolutionMaximumInArray(int[] intArray) {
-        if(intArray.length == 1){
-           return intArray[0];
-        }else {
-            int maxSoFar=-1;
-            for(int i=0;i<intArray.length;i++){
-                System.out.println("index: "+i);
-                if(intArray[i]>maxSoFar)
-                    maxSoFar=intArray[i];
+        if (intArray.length == 1) {
+            return intArray[0];
+        } else {
+            int maxSoFar = -1;
+            for (int i = 0; i < intArray.length; i++) {
+                System.out.println("index: " + i);
+                if (intArray[i] > maxSoFar)
+                    maxSoFar = intArray[i];
             }
             return maxSoFar;
         }
     }
 
-    private static boolean mySolutionSortCheck(boolean isAscending,int [] arr) {
-        boolean isSorted=true;
-        if(arr.length==0){
+    private static boolean mySolutionSortCheck(boolean isAscending, int[] arr) {
+        boolean isSorted = true;
+        if (arr.length == 0) {
             return false;
-        }else {
-            if(isAscending){
-                for (int i=1;i<arr.length;i++){
-                    if(arr[i-1]>arr[i])
-                        isSorted=false;
+        } else {
+            if (isAscending) {
+                for (int i = 1; i < arr.length; i++) {
+                    if (arr[i - 1] > arr[i])
+                        isSorted = false;
                 }
-            }else {
-                for (int i=1;i<arr.length;i++){
-                    if(arr[i-1]<arr[i])
-                        isSorted=false;
+            } else {
+                for (int i = 1; i < arr.length; i++) {
+                    if (arr[i - 1] < arr[i])
+                        isSorted = false;
                 }
             }
         }
@@ -824,14 +799,14 @@ public class ArrayQuestions  {
    /* private static void gfgSolutionWithBetterLogic(int[] intArray) {
         int n= intArray.length;
         int t;*/
-        /*For input: 12,-7,-8,4,-1,-6,
-        * i will be > 0,1,2,3,4,5
-        * n will be > 5,4,3,2,1,0
-        * If we keep subtracting  i from n inside loop we  will get the n's sequence
-        * run the loop by half of the size and remove the start&end variable
-        *
-        *
-        *  */
+    /*For input: 12,-7,-8,4,-1,-6,
+     * i will be > 0,1,2,3,4,5
+     * n will be > 5,4,3,2,1,0
+     * If we keep subtracting  i from n inside loop we  will get the n's sequence
+     * run the loop by half of the size and remove the start&end variable
+     *
+     *
+     *  */
 
       /*  for (int i = 0; i < n / 2; i++) {
             t = intArray[i];
@@ -856,33 +831,33 @@ public class ArrayQuestions  {
     }*/
 
     private static void mySolutionReverseArray(int[] intArray) {
-        int start=0;
-        int end = intArray.length-1;
-        for(int i =0; i<end;i++){
-            if(start==end){
+        int start = 0;
+        int end = intArray.length - 1;
+        for (int i = 0; i < end; i++) {
+            if (start == end) {
                 break;
-            }else {
-                try{
-                    intArray[start]=intArray[start]*intArray[end];
+            } else {
+                try {
+                    intArray[start] = intArray[start] * intArray[end];
 //                     tem = a * b
 //                    b = a / b
 //                    tem = a/b
-                    intArray[end]= intArray[start]/intArray[end];
-                    intArray[start]= intArray[start]/intArray[end];
+                    intArray[end] = intArray[start] / intArray[end];
+                    intArray[start] = intArray[start] / intArray[end];
 
-                }catch (ArithmeticException e){
+                } catch (ArithmeticException e) {
                     /*int temp = intArray[start];
                     intArray[start]=intArray[end];
                     intArray[end]= temp;*/
                 }
 
-                System.out.println("start> "+start+" end>"+end);
+                System.out.println("start> " + start + " end>" + end);
                 start++;
                 end--;
             }
         }
-        for (int val : intArray){
-            System.out.print(val+",");
+        for (int val : intArray) {
+            System.out.print(val + ",");
         }
         /*Quick sort */
     }
