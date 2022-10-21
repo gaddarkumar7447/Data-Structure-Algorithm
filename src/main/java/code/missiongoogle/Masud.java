@@ -1,12 +1,8 @@
 package code.missiongoogle;
 
 
-import javax.swing.plaf.synth.SynthTextAreaUI;
-import java.io.IOException;
-import java.net.InetAddress;
-import java.net.UnknownHostException;
-import java.text.SimpleDateFormat;
 import java.util.*;
+
 /*class Shape11{
     int x, y;
     public void getXY(){
@@ -73,9 +69,9 @@ class Tria extends Dia{
         System.out.println("Area of Triangle: "+l * b * h);
     }
 }*/
-class Masud{
+class Masud {
 
-    static Node head;
+    /*static Node head;
         static class Node{
             int data;
             Node next;
@@ -142,7 +138,7 @@ class Masud{
         System.out.print(" -> Null");
     }
 
-    /*
+    *//*
     * Masud node = new Masud();
             node.addFirst(30);
             node.addLast(9000);
@@ -151,25 +147,35 @@ class Masud{
             node.addLast(1000);
             node.addLast(7000);
             node.DeleteKey(7000);
-            node.display();*/
+            node.display();*//*
+     */
+    public static void main(String[] args) {
+        /*Comparator in java*/
+        /*int[][] twoDim = {{1, 2}, {3, 7}, {8, 9}, {4, 2}, {5, 3}};
+        Arrays.sort(twoDim, (a1, a2) -> a2[0] - a1[0]);
+        System.out.println(Arrays.deepToString(twoDim));*/
+        ArrayList student = new ArrayList<>();
+        student.add(new Student(2, 14, "Gaddar"));
+        student.add(new Student(5, 10, "Karan"));
+        student.add(new Student(1, 17, "Ravi"));
+        student.add(new Student(9, 18, "Sudan"));
+        student.add(new Student(4, 11, "Kudan"));
+        student.add(new Student(8, 15, "Madan"));
 
-        public static void main (String[]args){
+        Collections.sort(student, new Comparator<Student>() {
+            @Override
+            public int compare(Student o1, Student o2) {
+                return o1.rollNumber - o2.rollNumber;
+            }
+        });
 
-
-
-
-
-            /*Iterator<Integer> iterator = list.descendingIterator();
-            while (iterator.hasNext()){
-                System.out.print(" "+ iterator.next());
-            }*/
+        for (Object o : student) {
+            Student student1 = (Student) o;
+            System.out.println(student1.age + " " + student1.rollNumber + " " + student1.name);
         }
 
     }
-
-
-
-
+}
 
        /* int []nums = {12, 31, 25, 8, 32, 17, 40, 42};
         merge1(nums, 0, nums.length - 1);

@@ -1,10 +1,7 @@
 package code.missiongoogle;
 
-import java.util.Collections;
-import java.util.stream.Collectors;
-
-public class LS1 {
-    static Node head;
+public class LinkedListD {
+    /*static Node head;
     public static class Node{
         int data;
         Node next;
@@ -51,19 +48,18 @@ public class LS1 {
         }
         System.out.println(" Null");
 
-    }
+    }*/
+
 
 
     public static void main(String[] args) {
-        LS1 li = new LS1();
+        /*LS1 li = new LS1();
         li.addList(100);
         li.addList(200);
         li.addList(300);
         li.addList(400);
-
         li.addLast(1000);
-
-        li.printList();
+        li.printList();*/
 
     }
 }

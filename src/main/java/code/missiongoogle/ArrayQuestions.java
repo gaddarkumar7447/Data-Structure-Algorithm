@@ -77,9 +77,9 @@ public class ArrayQuestions {
         }
     }
 
-    public static int findFibbo(int num) {
+    public static int findFibo(int num) {
         if (num == 0 || num == 1) return num;
-        return findFibbo(num - 1) + findFibbo(num - 2);
+        return findFibo(num - 1) + findFibo(num - 2);
     }
 
     public static void honnoiTower(int num, char from, char top, char des) {
@@ -246,10 +246,10 @@ public class ArrayQuestions {
         }
     }
 
-    public static <T> Object[] convertLinkedListToArray(LinkedList<T> linkedList) {
+    /*public static <T> Object[] convertLinkedListToArray(LinkedList<T> linkedList) {
         Object[] array = linkedList.toArray();
         return array;
-    }
+    }*/
 
     int roll;
     String name;

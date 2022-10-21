@@ -1,12 +1,6 @@
 package code.missiongoogle;
 
-import org.w3c.dom.Node;
-
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.LinkedList;
-
-public class LP {
+public class LinkedList {
     static Node head;
 
     static class Node {
@@ -128,7 +122,9 @@ public class LP {
     public static void main(String[] args) {
 
 
-        LP la = new LP();
+        LinkedList la = new LinkedList();
+
+        Node a = new Node(23);
 
         la.addFirst(100);
         la.addFirst(200);
@@ -137,8 +133,6 @@ public class LP {
         la.addFirst(500);
         la.addFirst(600);
         la.addFirst(700);
-
-
         la.displayList();
 
       /* la.addLast(900);

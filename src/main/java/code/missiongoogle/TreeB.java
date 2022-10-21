@@ -1,5 +1,6 @@
 package code.missiongoogle;
 import java.util.*;
+import java.util.LinkedList;
 
 public class TreeB {
     static class Node{
@@ -28,7 +29,7 @@ public class TreeB {
     }
 
     public static void preOrder(Node root){
-        List<Integer> res = new LinkedList<>();
+        List<Integer> res = new java.util.LinkedList<>();
         if (root == null) return;
         System.out.print(root.data+" ");
         preOrder(root.left);
