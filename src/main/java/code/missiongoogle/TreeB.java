@@ -76,7 +76,7 @@ public class TreeB {
         if (root == null) return 0;
         int leftNode = countsOfNode(root.left);
         int rightNode = countsOfNode(root.right);
-//        return countsOfNode(root.left) + countsOfNode(root.right) + 1;
+//      return countsOfNode(root.left) + countsOfNode(root.right) + 1;
         return leftNode + rightNode + 1;
     }
 

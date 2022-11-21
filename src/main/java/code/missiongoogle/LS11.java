@@ -1,5 +1,4 @@
 package code.missiongoogle;
-
 public class LS11 {
     static Node head;
     public class Node{

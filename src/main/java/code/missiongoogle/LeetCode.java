@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.util.*;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.concurrent.ArrayBlockingQueue;
 
 public class LeetCode {
     public void addList(int data) {
@@ -1521,36 +1522,7 @@ public class LeetCode {
         }
     }*/
 
-    public static String removeDuplicate(String s) {
-        /*char[] c = s.toCharArray();
-        int i = 0;
-        String res = "";
-        while (c[i] != '\0'){
-            if(c[i] != c[i+1]){
-                res += c[i];
-                i++;
-            }
-            if(c[i+1] != '\0' && c[i] == c[i+1]){
-                while (c[i+1] != '\0' && c[i] == c[i+1]){
-                    i++;
-                }
-                i++;
-            }
-        }*/
-        StringBuilder sb = new StringBuilder();
-        for (char c : s.toCharArray()) {
-            int size = sb.length();
-            if (size > 0 && sb.charAt(size - 1) == c) {
-                sb.deleteCharAt(size - 1);
-            } else {
-                sb.append(c);
-            }
-        }
-        return sb.toString();
-    }
-
     public static String removerAllAdjacentDuplicate(String s, int k) {
-
         Stack<Counter> stack = new Stack<>();
         StringBuilder sb = new StringBuilder();
         for (char chr : s.toCharArray()) {
@@ -2260,18 +2232,6 @@ public class LeetCode {
             }
         }
         return arr;
-    }
-
-    public static int maximum69Number(int num) {
-        //return Integer.parseInt((""+num).replaceFirst("6","9"));
-        StringBuilder s = new StringBuilder(String.valueOf(num));
-        for (int i = 0; i < s.length(); i++) {
-            if (s.charAt(i) != '9') {
-                s.setCharAt(i, '9');
-                break;
-            }
-        }
-        return Integer.parseInt(String.valueOf(s));
     }
 
     public static boolean squareIsWhite(String s) {
@@ -5775,21 +5735,6 @@ public class LeetCode {
         return maxi;
     }
 
-    public static boolean arrayStringsAreEqual(String[] word1, String[] word2) {
-        /*StringBuilder stringBuilder = new StringBuilder();
-        for(String i : word1){
-            stringBuilder.append(i);
-        }
-        StringBuilder stringBuilder1 = new StringBuilder();
-        for(String i : word2){
-            stringBuilder1.append(i);
-        }
-        return stringBuilder.toString().equals(stringBuilder1.toString());*/
-        String str = String.join("", word1);
-        String str1 = String.join("", word2);
-        return str1.equals(str);
-    }
-
     public List<String> cellsInRange(String s) {
         char c1 = s.charAt(0), c2 = s.charAt(3);
         char r1 = s.charAt(1), r2 = s.charAt(4);
@@ -6312,7 +6257,7 @@ public class LeetCode {
             hashMap1.put(s.charAt(i), hashMap1.getOrDefault(s.charAt(i), 0) + 1);
         }
         PriorityQueue<Character>
-        list = new PriorityQueue<>((a, b) -> hashMap1.get(b) - hashMap1.get(a));
+                list = new PriorityQueue<>((a, b) -> hashMap1.get(b) - hashMap1.get(a));
         list.addAll(hashMap1.keySet());
         System.out.println(list);
         StringBuilder str = new StringBuilder();
@@ -6327,8 +6272,203 @@ public class LeetCode {
         return str.toString();
     }
 
+    public static boolean arrayStringsAreEqual(String[] word1, String[] word2) {
+        /*StringBuilder stringBuilder = new StringBuilder();
+        for(String i : word1){
+            stringBuilder.append(i);
+        }
+        StringBuilder stringBuilder1 = new StringBuilder();
+        for(String i : word2){
+            stringBuilder1.append(i);
+        }
+        return stringBuilder.toString().equals(stringBuilder1.toString());*/
+        String str = String.join("", word1);
+        String str1 = String.join("", word2);
+        return str1.equals(str);
+    }
+
+    public static int maximum69Number(int num) {
+        //return Integer.parseInt((""+num).replaceFirst("6","9"));
+        StringBuilder s = new StringBuilder(String.valueOf(num));
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) != '9') {
+                s.setCharAt(i, '9');
+                break;
+            }
+        }
+        return Integer.parseInt(String.valueOf(s));
+    }
+
+    public static String makeGood(String s) {
+        for (int i = 0; i < s.length() - 1; i++) {
+            if (s.charAt(i) == s.charAt(i + 1) + 32 || s.charAt(i) == s.charAt(i + 1) - 32) {
+                return makeGood(s.substring(0, i) + s.substring(i + 2));
+            }
+        }
+        return s;
+    }
+
+    public static int[] applyOperations(int[] nums) {
+        int[] arr = new int[nums.length];
+        for (int i = 0; i < nums.length - 1; i++) {
+            if (nums[i] == nums[i + 1]) {
+                nums[i] = nums[i] * 2;
+                nums[i + 1] = 0;
+                i++;
+            }
+        }
+        int count = 0;
+        for (int num : nums) {
+            if (num != 0) {
+                arr[count++] = num;
+            }
+        }
+        return arr;
+    }
+
+    private static long maximumSubArraySum(int[] A, int k) {
+        HashMap<Integer, Integer> mp = new HashMap<>();
+        long mx = 0, sum = 0;
+        for (int i = 0; i < A.length; i++) {
+            sum += A[i];
+            mp.put(A[i], mp.getOrDefault(A[i], 0) + 1);
+
+            if (i >= k - 1) {
+                if (mp.size() == k) mx = Math.max(mx, sum);
+                sum -= A[i - k + 1];
+                mp.put(A[i - k + 1], mp.get(A[i - k + 1]) - 1);
+                if (mp.get(A[i - k + 1]) == 0) mp.remove(A[i - k + 1]);
+            }
+        }
+        return mx;
+    }
+
+    public static int averageValue(int[] nums) {
+        int sum = 0;
+        for (int i : nums) {
+            if (i % 2 == 0 && i % 3 == 0) {
+                sum += i;
+            }
+        }
+        return sum / 2;
+    }
+
+    //Not implemented
+    public static int minAbsoluteSumDiff(int[] nums1, int[] nums2) {
+        int sum = 0;
+        double module = 1e9 + 7;
+
+        return sum;
+    }
+
+    public static String removeDuplicate(String s) {
+        /*char[] c = s.toCharArray();
+        int i = 0;
+        String res = "";
+        while (c[i] != '\0'){
+            if(c[i] != c[i+1]){
+                res += c[i];
+                i++;
+            }
+            if(c[i+1] != '\0' && c[i] == c[i+1]){
+                while (c[i+1] != '\0' && c[i] == c[i+1]){
+                    i++;
+                }
+                i++;
+            }
+        }*/
+        StringBuilder sb = new StringBuilder();
+        for (char c : s.toCharArray()) {
+            int size = sb.length();
+            if (size > 0 && sb.charAt(size - 1) == c) {
+                sb.deleteCharAt(size - 1);
+            } else {
+                sb.append(c);
+            }
+        }
+        return sb.toString();
+    }
+
+    public static int maxIncreaseKeepingSkyline(int[][] grid) {
+        int n = grid.length;
+        int m = grid[0].length;
+        int []maxRow = new int[n];
+        int []maxCol = new int[m];
+        for (int i = 0; i < n; i++)
+            for (int j = 0; j < m; j++) {
+                maxRow[i] = Math.max(maxRow[i], grid[i][j]);
+                maxCol[j] = Math.max(maxCol[j], grid[i][j]);
+            }
+        int count = 0;
+        for (int i = 0; i < n; i++)
+            for (int j = 0; j < m; j++)
+                count += Math.min(maxRow[i], maxCol[j]) - grid[i][j];
+
+        return count;
+    }
+    public static String reverseWord(String s){
+        String [] words = s.split(" ");
+        StringBuilder sb = new StringBuilder();
+        int end = words.length - 1;
+        for(int i = 0; i<= end; i++){
+            if(!words[i].isEmpty()) {
+                sb.insert(0, words[i]);
+                if(i < end) sb.insert(0, " ");
+            }
+        }
+        return sb.toString();
+    }
+    public static int calculate(String s) {
+        Stack<Integer> stack = new Stack<>();
+        int result = 0;
+        int number = 0;
+        int sign = 1;
+        for(int i = 0; i < s.length(); i++){
+            char c = s.charAt(i);
+            if(Character.isDigit(c)){
+                number = 10 * number + (c - '0');
+            }else if(c == '+'){
+                result += sign * number;
+                number = 0;
+                sign = 1;
+            }else if(c == '-'){
+                result += sign * number;
+                number = 0;
+                sign = -1;
+            }else if(c == '('){
+                stack.push(result);
+                stack.push(sign);
+                sign = 1;
+                result = 0;
+            }else if(c == ')'){
+                result += sign * number;
+                number = 0;
+                result *= stack.pop();
+                result += stack.pop();
+
+            }
+        }
+        if(number != 0) result += sign * number;
+        return result;
+    }
 
     public static void main(String[] args) {
+        /*int [][]grid = {{0,0},
+                        {0,1},
+                        {1,0},
+                        {1,2},
+                        {2,1},
+                        {2,2}};*/
+        /*Character character = 'A';
+        if (Character.isDigit(character)){
+            System.out.println(character);
+        }else {
+            System.out.println("Null");
+        }*/
+
+        /*String []word1 = {"ab", "c"}, word2 = {"a", "bc"};
+        String str = String.join("",word1);
+        System.out.println(str);*/
 
 
         /*System.out.println(Integer.bitCount(2 ^ 6));

@@ -1,12 +1,7 @@
 package code.missiongoogle;
 
-import java.awt.image.AreaAveragingScaleFilter;
 import java.math.BigInteger;
-import java.sql.Struct;
-import java.sql.Time;
 import java.util.*;
-import java.util.LinkedList;
-import java.util.regex.Pattern;
 
 public class GFG {
     private static ArrayList<Integer> duplicates(int[] arr) {
@@ -773,25 +768,155 @@ public class GFG {
 
     public static int getMinimumTrips(List<Integer> weights) {
         int count = 0;
-        int max = 0 ;
-        int []arr = new int[weights.size()];
+        int max = 0;
+        int[] arr = new int[weights.size()];
         int index = 0;
-        for (int i : weights){
+        for (int i : weights) {
             arr[index++] = i;
         }
         Arrays.sort(arr);
         HashMap<Integer, Integer> hashMap1 = new HashMap<>();
-        for (int i : arr){
+        for (int i : arr) {
             hashMap1.put(i, hashMap1.getOrDefault(i, 0) + 1);
         }
         if (hashMap1.containsValue(1)) return -1;
         return hashMap1.size();
     }
 
+    public static int[] reverseSpiral(int R, int C, int[][] matrix) {
+        int[] nums = new int[matrix.length * matrix[0].length];
+        int left = 0, right = matrix.length - 1, high = 0, low = matrix[0].length - 1, dir = 0;
+        int index = 0;
+        while (left <= right && high <= low) {
+            if (dir == 0) {
+                for (int i = left; i <= right; i++) {
+                    nums[index++] = matrix[high][i];
+                }
+                dir = 1;
+                high++;
+            } else if (dir == 1) {
+                for (int i = high; i <= low; i++) {
+                    nums[index++] = matrix[i][right];
+                }
+                right--;
+                dir = 2;
+            } else if (dir == 2) {
+                for (int i = left; i >= right; i--) {
+                    nums[index++] = matrix[low][i];
+                }
+                low--;
+                dir = 3;
+            } else {
+                for (int i = low; i >= high; i--) {
+                    nums[index++] = matrix[i][left];
+                }
+                left++;
+                dir = 0;
+            }
+        }
+        Arrays.sort(nums);
+        return nums;
+    }
+
+    public static List<Integer> spiralMatrixOrder(int[][] matrix) {
+        List<Integer> list = new ArrayList<>();
+        int row = matrix.length;
+        int col = matrix[0].length;
+        int[] nums = new int[matrix.length * matrix[0].length];
+        int index = 0;
+        int left = 0, right = col - 1, bottom = row - 1, top = 0, dir = 0;
+        while (left <= right && top <= bottom) {
+            if (dir == 0) {
+                for (int i = left; i <= right; i++) {
+                    list.add(matrix[top][i]);
+                }
+                dir = 1;
+                top++;
+            } else if (dir == 1) {
+                for (int i = top; i <= bottom; i++) {
+                    list.add(matrix[i][right]);
+                }
+                right--;
+                dir = 2;
+            } else if (dir == 2) {
+                for (int i = left; i >= right; i--) {
+                    list.add(matrix[bottom][i]);
+                }
+                bottom--;
+                dir = 3;
+            } else {
+                for (int i = bottom; i >= top; i--) {
+                    list.add(matrix[i][left]);
+                }
+                left++;
+                dir = 0;
+            }
+        }
+        for (int i : list) {
+            nums[index++] = i;
+        }
+        System.out.println("Ram " + Arrays.toString(nums));
+        return list;
+    }
+
+    public static int[] twoOddNum(int arr[], int N) {
+        TreeMap<Integer, Integer> tm = new TreeMap<>(Collections.reverseOrder());
+        for (int i : arr) {
+            tm.put(i, tm.getOrDefault(i, 0) + 1);
+        }
+        int[] ans = new int[2];
+        int index = 0;
+        for (int i : tm.keySet()) {
+            if (tm.get(i) % 2 != 0) {
+                ans[index++] = i;
+            }
+        }
+        return ans;
+    }
+
+    public int minDifference(int arr[], int n) {
+        int sum = 0;
+        for (int i = 0; i < n; i++) {
+            sum += arr[i];
+        }
+
+        boolean[][] t = new boolean[n + 1][sum + 1];
+        for (int i = 0; i < sum + 1; i++)
+            t[0][i] = false;
+        for (int i = 0; i < n + 1; i++)
+            t[i][0] = true;
+
+        for (int i = 1; i < n + 1; i++) {
+            for (int j = 1; j < sum + 1; j++) {
+                if (arr[i - 1] <= j) {
+                    t[i][j] = t[i - 1][j] || t[i - 1][j - arr[i - 1]];
+                } else {
+                    t[i][j] = t[i - 1][j];
+                }
+            }
+        }
+
+        int mn = Integer.MAX_VALUE;
+        for (int i = 0; i <= sum / 2; i++) {
+            if (t[n][i]) {
+                mn = Math.min(mn, sum - (2 * i));
+            }
+        }
+        return mn;
+    }
 
     public static void main(String[] args) {
-        List<Integer> list = new LinkedList<>(List.of(197));
-        System.out.println(getMinimumTrips(list));
+        int[] Arr = {4, 2, 4, 5, 2, 3, 3, 1};
+        System.out.println(Arrays.toString(twoOddNum(Arr, Arr.length)));
+        /*int [][]a = {{1, 2, 3, 4},
+                {5, 6, 7, 8},
+                {9, 10, 11, 12},
+                {13, 14, 15, 16}};
+        System.out.println(spiralMatrixOrder(a));*/
+        String[] str = {"01:15", "02:00"}, str1 = {"02:00", "03:00"};
+        System.out.println(str1[0].compareTo(str[1]));
+        //System.out.println(Arrays.toString(reverseSpiral(3,3,a)));
+
         /*int n = 2;
         long arr1[] = {10, 12};
         int m = 3;

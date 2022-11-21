@@ -784,7 +784,7 @@ interface Display{
 class Rect1 implements Area1, Display{
     @Override
     public double compute(double x, double y) {
-        return 0;
+        return 7;
     }
 
     @Override
@@ -792,6 +792,7 @@ class Rect1 implements Area1, Display{
         System.out.println("Show interfce rex");
     }
 }
+
 class Cir1 implements Area1, Display{
     @Override
     public double compute(double x, double y) {
@@ -806,7 +807,7 @@ class Cir1 implements Area1, Display{
 class Te{
     public static void main(String[] args) {
         Area1 a = new Rect1();
-        a.compute(12,34);
+        System.out.println(a.compute(12,34));
         Display d = new Rect1();
         d.show(2);
     }
