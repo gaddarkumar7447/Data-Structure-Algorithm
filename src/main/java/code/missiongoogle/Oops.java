@@ -45,7 +45,13 @@ class Cat extends Dog{
             System.out.println("Lion is roaring");
         }
     }
+
+    public static void main(String[] args) {
+        Animals a = new Dog();
+        a.sound();
+    }
 }
+
 // interface
 interface Clint{
      void input();
@@ -92,9 +98,10 @@ class Intence{
     static{
         System.out.println("static");
     }
-    /*public static void main(String[] args) {
+    public static void main(String[] args) {
         Intence a = new Intence();
-    }*/
+
+    }
 }
 // Simple Inheritance
 class Super{
@@ -272,7 +279,7 @@ class TestBank{
 
 // Interface
 interface PrintAble{
-    public void show();
+    void show();
 }
 class Print implements PrintAble{
     @Override
@@ -290,6 +297,7 @@ interface Client{
     void input();
     void output();
 }
+
 class Develop implements Client{
     String name;
     @Override
@@ -315,16 +323,21 @@ class FinalResult{
 //Interface Method
 
 interface Com{
-    public void web();
-    public void tech();
+    void web();
+    void tech();
 }
-abstract class Sumit implements Com{
+abstract class Mon implements Com{
     @Override
-    public void web(){
-        System.out.println("Hiring");
+    public void web() {
+
+    }
+
+    @Override
+    public void tech() {
+
     }
 }
-class Rahul extends Sumit{
+class Rahul extends Mon{
     @Override
     public void web() {
         super.web();
@@ -338,6 +351,23 @@ class Rahul extends Sumit{
         Rahul a = new Rahul();
         a.tech();
         a.web();
+    }
+}
+
+class BB{
+    void dis(){
+        System.out.println("hello");
+    }
+}
+class DD extends  BB{
+    @Override
+    void dis() {
+        super.dis();
+        System.out.println("world");
+    }
+    public static void main(String[] args) {
+        BB a = new DD();
+        a.dis();
     }
 }
 
@@ -389,7 +419,6 @@ interface Af{
     private void show(){
         System.out.println(2+6);
     }
-
 }
 class Call implements Af{
     void show(int a, int b){
@@ -560,11 +589,9 @@ class ThrowKey{
 }
 
 class Assignment4{
-
     void show(int a, int b){
         System.out.println(Math.max(a,b));
     }
-
     void show(double a, double b){
         System.out.println(Math.max(a,b));
     }
@@ -602,12 +629,6 @@ class Complex{
     }
     void setI(int i){
         this.i = i;
-    }
-    int getR(){
-        return this.r;
-    }
-    int getI(){
-        return this.i;
     }
     void add(Complex b){
         System.out.println((this.r + b.r)+"+"+"i"+(this.i + b.i));
@@ -781,7 +802,7 @@ interface Area1{
 interface Display{
     void show(double r);
 }
-class Rect1 implements Area1, Display{
+class Rect1 implements Area1, Display {
     @Override
     public double compute(double x, double y) {
         return 7;
@@ -804,11 +825,124 @@ class Cir1 implements Area1, Display{
         System.out.println("Multiple interface circle");
     }
 }
+class Raju1{
+    public static void functionType(){
+        System.out.println("Raju ne mara");
+    }
+}
 class Te{
+    private int a;
+    static int b;
+    private Te(){}
+    void message(int x, int y){
+        System.out.println(a +""+b);
+    }
+    int count = 90;
+    void mess(Te count){
+        count.count += count.count;
+    }
+
     public static void main(String[] args) {
-        Area1 a = new Rect1();
-        System.out.println(a.compute(12,34));
+        Te a = new Te();
+        System.out.println("Before change "+a.count);
+        a.mess(a);
+        System.out.println("After change: "+a.count);
+        /*float []f = new float[2];
+        Raju1.functionType();
+        System.out.println(5.5 + 2);*/
+       /* System.out.println(a.compute(12,34));
         Display d = new Rect1();
-        d.show(2);
+        d.show(2);*/
+    }
+}
+
+class ThreadPriorityExample extends Thread{
+    public void run(){
+        System.out.println("Inside the run() method");
+    }
+
+    public static void main(String[] args) {
+        ThreadPriorityExample th1 = new ThreadPriorityExample();
+        ThreadPriorityExample th2 = new ThreadPriorityExample();
+        ThreadPriorityExample th3 = new ThreadPriorityExample();
+
+        System.out.println("Display the thread first: "+th1.getPriority());
+        System.out.println("Display the thread first: "+th2.getPriority());
+        System.out.println("Display the thread first: "+th3.getPriority());
+
+        th1.setPriority(10);
+        th2.setPriority(20);
+        th3.setPriority(30);
+
+        System.out.println("Displaying the present thread: "+Thread.currentThread().getName());
+    }
+}
+interface Demo{
+    double area();
+    void setSide();
+}
+class A1 implements Demo {
+    int l, b;
+    @Override
+    public double area() {
+        return l * b;
+    }
+
+    @Override
+    public void setSide() {
+        Scanner sc = new Scanner(System.in);
+        this.l = sc.nextInt();
+        this.b = sc.nextInt();
+    }
+}
+class B1{
+    public static void main(String[] args) {
+        A1 a = new A1();
+        a.setSide();
+        System.out.println(a.area());
+    }
+}
+class AreaAare{
+    public double area(double a){
+        return 3.14 * a;
+    }
+    public double area(double a, double b){
+        return a * b * 3.14;
+    }
+    public double area(double a, double b, double c){
+        return a * b * c;
+    }
+
+    public static void main(String[] args) {
+        AreaAare obj = new AreaAare();
+        String a = args[0];
+        if (a.length() == 1) System.out.println(obj.area(Double.parseDouble(String.valueOf(a.charAt(0)))));
+        else if (a.length() == 2) System.out.println(obj.area(Double.parseDouble(String.valueOf(a.charAt(0))), Double.parseDouble(String.valueOf(a.charAt(1)))));
+        else System.out.println(obj.area(Double.parseDouble(String.valueOf(a.charAt(0))), Double.parseDouble(String.valueOf(a.charAt(1))), Double.parseDouble(String.valueOf(a.charAt(2)))));
+
+        /*double []nums = new double[3];
+        nums[0] = Double.parseDouble(args[0]);
+        nums[1] = Double.parseDouble(args[1]);
+        nums[2] = Double.parseDouble(args[2]);
+        if ((nums[0] == 0 && nums[1] == 0 && nums[2] == 0)) System.out.println("Enter the input: ");
+        else if (nums[1] == 0 && nums[2] == 0) System.out.println(obj.area(nums[0]));
+        else if (nums[2] == 0) System.out.println(obj.area(nums[0], nums[1]));
+        else System.out.println(obj.area(nums[0], nums[1], nums[2]));*/
+    }
+}
+class Room{
+    public void show(int a){
+        System.out.println("Show the data");
+    }
+}
+class RoomClass extends Room{
+    public void show1(){
+        System.out.println("Show Another");
+    }
+}
+class Prac{
+    public static void main(String[] args) {
+        RoomClass a = new RoomClass();
+        a.show1();
     }
 }

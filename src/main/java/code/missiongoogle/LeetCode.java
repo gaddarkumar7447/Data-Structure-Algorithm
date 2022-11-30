@@ -6451,8 +6451,42 @@ public class LeetCode {
         if(number != 0) result += sign * number;
         return result;
     }
+    public static List<List<Integer>> findWinners(int[][] matches) {
+        List<List<Integer>> list = new ArrayList<>();
+        List<Integer> list1 = new ArrayList<>();
+        int n = matches.length;
+        TreeMap<Integer, Integer> map = new TreeMap<>();
+        for (int i = 0; i < n; i++) {
+            if (map.containsKey(matches[i][1])) {
+                map.put(matches[i][1], map.get(matches[i][1]) + 1);
+            } else {
+                map.put(matches[i][1], 1);
+            }
+        }
+        System.out.println(map);
+        for (Map.Entry<Integer, Integer> e : map.entrySet()) {
+            if (e.getValue() == 1) {
+                list1.add(e.getKey());
+            }
+        }
+        TreeSet<Integer> ans = new TreeSet<>();
+        for (int i = 0; i < n; i++) {
+            if (!map.containsKey(matches[i][0])) {
+                ans.add(matches[i][0]);
+            }
+        }
+        List<Integer> list2 = new ArrayList<>(ans);
+//		System.out.println(list1);
+//		System.out.println(list2);
+        list.add(list2);
+        list.add(list1);
+
+        return list;
+    }
 
     public static void main(String[] args) {
+        int [][]matches = {{1,3},{2,3},{3,6},{5,6},{5,7},{4,5},{4,8},{4,9},{10,4},{10,9}};
+        System.out.println(findWinners(matches));
         /*int [][]grid = {{0,0},
                         {0,1},
                         {1,0},

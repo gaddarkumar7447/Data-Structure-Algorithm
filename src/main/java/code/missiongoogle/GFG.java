@@ -906,15 +906,17 @@ public class GFG {
     }
 
     public static void main(String[] args) {
+
         int[] Arr = {4, 2, 4, 5, 2, 3, 3, 1};
-        System.out.println(Arrays.toString(twoOddNum(Arr, Arr.length)));
+        HashMap<Integer, Integer> hashMap = new HashMap<>();
+        /*System.out.println(Arrays.toString(twoOddNum(Arr, Arr.length)));*/
         /*int [][]a = {{1, 2, 3, 4},
                 {5, 6, 7, 8},
                 {9, 10, 11, 12},
                 {13, 14, 15, 16}};
         System.out.println(spiralMatrixOrder(a));*/
-        String[] str = {"01:15", "02:00"}, str1 = {"02:00", "03:00"};
-        System.out.println(str1[0].compareTo(str[1]));
+        /*String[] str = {"01:15", "02:00"}, str1 = {"02:00", "03:00"};
+        System.out.println(str1[0].compareTo(str[1]));*/
         //System.out.println(Arrays.toString(reverseSpiral(3,3,a)));
 
         /*int n = 2;
