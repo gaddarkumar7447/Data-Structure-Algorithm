@@ -904,11 +904,46 @@ public class GFG {
         }
         return mn;
     }
+    public static boolean halvesAreAlike(String s) {
+        String str = s.toLowerCase();
+        char []num1 = new char[str.length()/2];
+        char []num2 = new char[str.length()/2];
+        for (int i = 0; i < str.length()/2; i++) {
+            num1[i] = str.charAt(i);
+        }
+        int j = 0;
+        for (int i = str.length()/2; i < str.length(); i++) {
+            num2[j++] = str.charAt(i);
+        }
+        int count1 = 0;
+        for (char a : num1){
+            if (a == 'a' || a == 'e' || a == 'i' || a == 'o'|| a == 'u') count1++;
+        }
+        int count2 = 0;
+        for (char a : num2){
+            if (a == 'a' || a == 'e' || a == 'i' || a == 'o'|| a == 'u') count2++;
+        }
+        System.out.println(Arrays.toString(num1));
+        System.out.println(Arrays.toString(num2));
+        return count1 == count2;
+    }
+
+    public static boolean checkAlike(String str){
+        HashSet<Character> hashSet = new HashSet<>();
+        for (char a : "aeiouAEIOU".toCharArray()){
+            hashSet.add(a);
+        }
+        int count = 0;
+        for (int i = 0; i < str.length()/2; i++){
+            if (hashSet.contains(str.charAt(i))) count++;
+            if (hashSet.contains(str.charAt(str.length()-1-i))) count--;
+        }
+        return count == 0;
+    }
 
     public static void main(String[] args) {
+        System.out.println(checkAlike("textbook"));
 
-        int[] Arr = {4, 2, 4, 5, 2, 3, 3, 1};
-        HashMap<Integer, Integer> hashMap = new HashMap<>();
         /*System.out.println(Arrays.toString(twoOddNum(Arr, Arr.length)));*/
         /*int [][]a = {{1, 2, 3, 4},
                 {5, 6, 7, 8},
