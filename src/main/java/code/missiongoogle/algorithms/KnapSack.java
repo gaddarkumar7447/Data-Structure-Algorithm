@@ -1,4 +1,4 @@
-package code.missiongoogle;
+package code.missiongoogle.algorithms;
 
 import java.util.Scanner;
 import static java.lang.System.out;

@@ -1,4 +1,4 @@
-package code.missiongoogle;
+package code.missiongoogle.practices;
 
 import java.awt.*;
 import java.util.*;

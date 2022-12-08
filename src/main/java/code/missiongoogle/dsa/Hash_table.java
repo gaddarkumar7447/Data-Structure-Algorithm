@@ -1,4 +1,4 @@
-package code.missiongoogle;
+package code.missiongoogle.dsa;
 
 import java.util.HashMap;
 
@@ -16,6 +16,7 @@ public class Hash_table {
         }
         System.out.println(hashMap);
     }
+
     static boolean [][]has = new boolean[50][2];
     private static void insert(int []arr){
         for (int j : arr) {

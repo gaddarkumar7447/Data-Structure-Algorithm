@@ -6445,7 +6445,6 @@ public class LeetCode {
                 number = 0;
                 result *= stack.pop();
                 result += stack.pop();
-
             }
         }
         if(number != 0) result += sign * number;
@@ -6597,7 +6596,6 @@ public class LeetCode {
         int []nums2 = {2,5,6};
         int n = 3;
         merge(nums1, m, nums2, n);*/
-
         //System.out.println(countPrime(10));
 
 

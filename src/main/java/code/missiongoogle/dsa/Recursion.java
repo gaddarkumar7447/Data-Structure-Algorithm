@@ -1,4 +1,4 @@
-package code.missiongoogle;
+package code.missiongoogle.dsa;
 
 public class Recursion {
     /*static int fun1(int x, int y)

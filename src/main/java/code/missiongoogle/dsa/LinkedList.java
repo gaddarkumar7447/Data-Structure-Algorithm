@@ -1,4 +1,4 @@
-package code.missiongoogle;
+package code.missiongoogle.dsa;
 
 public class LinkedList {
     static Node head;

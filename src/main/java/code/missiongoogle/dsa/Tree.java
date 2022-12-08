@@ -1,8 +1,8 @@
-package code.missiongoogle;
+package code.missiongoogle.dsa;
 import java.util.*;
 import java.util.LinkedList;
 
-public class TreeB {
+public class Tree {
     static class Node{
         int data;
         Node left;

@@ -1,4 +1,4 @@
-package code.missiongoogle;
+package code.missiongoogle.algorithms;
 import javax.swing.plaf.basic.BasicInternalFrameTitlePane;
 //import static java.lang.System.out;
 import java.util.*;
