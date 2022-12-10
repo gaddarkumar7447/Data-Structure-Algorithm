@@ -1,45 +1,35 @@
 package code.missiongoogle.oopsdesign;
 
-
 import java.util.*;
 
-public class Oops extends Thread{
-    /*@Override
-    public void run(){
-        try {
-            System.out.println("Thread is running...");
-        }
-        catch (Exception e){
-            System.out.println("Exception "+e);
-        }
-    }
-    public static void sleep(int i) {
-    }*/
-}
-class Dog{
-    public void bark(){
+
+class Dog {
+    public void bark() {
         System.out.println("Barking");
     }
 }
-class Cat extends Dog{
-    public void bark(){
-        super.bark();
+
+class Cat extends Dog {
+    public void bark() {
         System.out.println("Cat barking");
     }
-    public static abstract class Animals{
-        Animals(){
+
+    public static abstract class Animals {
+        Animals() {
             System.out.println("All animals");
         }
+
         public abstract void sound();
     }
 
-    public static class Dog extends Animals{
+    public static class Dog extends Animals {
         @Override
         public void sound() {
             System.out.println("Dog is barking");
         }
     }
-    public static class Lion extends Animals{
+
+    public static class Lion extends Animals {
         @Override
         public void sound() {
             System.out.println("Lion is roaring");
@@ -53,64 +43,77 @@ class Cat extends Dog{
 }
 
 // interface
-interface Clint{
-     void input();
-     void output();
+interface Clint {
+    void input();
+
+    void output();
 }
 
- class Raju implements Clint{
+class Raju implements Clint {
     String name;
     double sal;
+
     @Override
-    public void input(){
+    public void input() {
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter the name: ");
         name = sc.nextLine();
         System.out.println("Enter the salary");
         sal = sc.nextDouble();
     }
-    public void output(){
-        System.out.println(name +" "+sal);
+
+    public void output() {
+        System.out.println(name + " " + sal);
     }
 }
+
 // constructor overloading
-class Ab{
+class Ab {
     int a;
     String name;
-    Ab(){
+
+    Ab() {
         System.out.println("Default");
     }
-    Ab(int p, String n){
+
+    Ab(int p, String n) {
         a = p;
         name = n;
-        System.out.println(a+" "+n);
+        System.out.println(a + " " + n);
     }
-    Ab(float sal, String na){
+
+    Ab(float sal, String na) {
         name = na;
         a = (int) sal;
     }
 }
+
 // instance & static
-class Intence{
+class Intence {
     {
         System.out.println("Intenece");
     }
-    static{
+
+    static {
         System.out.println("static");
     }
+
     public static void main(String[] args) {
         Intence a = new Intence();
 
     }
+
 }
+
 // Simple Inheritance
-class Super{
-    public  void show(){
+class Super {
+    public void show() {
         System.out.println("super class");
     }
 }
-class Sub extends  Super{
-    public void show(){
+
+class Sub extends Super {
+    public void show() {
         System.out.println("Sub");
         super.show();
     }
@@ -120,33 +123,39 @@ class Sub extends  Super{
         a.show();
     }
 }
+
 // Multilevel inheritance
-class Dina{
+class Dina {
     String son;
     int sal;
-    public void show(){
+
+    public void show() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter son name: ");
         son = scanner.next();
         System.out.println("Enter the salary: ");
         sal = scanner.nextInt();
-        System.out.println(son +" "+sal);
+        System.out.println(son + " " + sal);
     }
 }
-class Ram extends Dina{
+
+class Ram extends Dina {
     String a = son;
     int s = sal;
+
     public void dis() {
         super.show();
-        System.out.println(a+" "+s);
+        System.out.println(a + " " + s);
     }
 }
-class Pawan extends Ram{
+
+class Pawan extends Ram {
     String p = son;
     int anInt = sal;
-    public void pa(){
+
+    public void pa() {
         super.dis();
-        System.out.println(son+" "+anInt);
+        System.out.println(son + " " + anInt);
     }
 
     public static void main(String[] args) {
@@ -158,33 +167,39 @@ class Pawan extends Ram{
 }
 // super keywords
 
-class Veg{
-     Veg(int a){
+class Veg {
+    Veg(int a) {
         System.out.println(a);
     }
 }
 
-class Fruits extends Veg{
+class Fruits extends Veg {
     int b = 38;
-    Fruits(){
+
+    Fruits() {
         super(100); // defaults
         System.out.println(b);
     }
+
     public static void main(String[] args) {
         Fruits g = new Fruits();
     }
 }
+
 // this
-class This{
-    This(){
+class This {
+    This() {
         System.out.println("defaults");
     }
+
     int a; // instance variable
-    This(int b /*local variable*/){
+
+    This(int b /*local variable*/) {
         this();
         this.a = b;
         System.out.println(b);
     }
+
     public static void main(String[] args) {
         This a = new This(100);
     }
@@ -192,8 +207,8 @@ class This{
 
 // method overriding
 
-class MethodOverriding{
-    public void add(){
+class MethodOverriding {
+    public void add() {
         int a = 100, b = 120;
         System.out.println("world");
     }
@@ -210,12 +225,13 @@ class MethodOverriding{
     }*/
 }
 
-class MethodEx extends MethodOverriding{
+class MethodEx extends MethodOverriding {
     @Override
-    public void add(){
+    public void add() {
         super.add();
         System.out.println("hello");
     }
+
     public static void main(String[] args) {
         MethodEx a = new MethodEx();
         a.add();
@@ -223,16 +239,19 @@ class MethodEx extends MethodOverriding{
 }
 // Encapsulation
 
-class Encap{
+class Encap {
     private int value; // data hiding
-    public void setValue(int value){
+
+    public void setValue(int value) {
         this.value = value;
     }
-    public int getValue(){
+
+    public int getValue() {
         return value;
     }
 }
-class Ex extends  Encap{
+
+class Ex extends Encap {
     public static void main(String[] args) {
         Encap a = new Encap();
         a.setValue(43);
@@ -241,47 +260,52 @@ class Ex extends  Encap{
 }
 
 // Abstraction /*Abstract class*/
- class Abstract{
-    public void show(){
+class Abstract {
+    public void show() {
         System.out.println("show");
     }
 }
-class Abc extends Abstract{
+
+class Abc extends Abstract {
     public static void main(String[] args) {
         Abstract a = new Abc();
         a.show();
     }
 }
 
-abstract class Bank{
+abstract class Bank {
     public abstract int getInterest();
 }
-class SBI extends Bank{
+
+class SBI extends Bank {
     @Override
     public int getInterest() {
         return 7;
     }
 }
-class PNB extends Bank{
+
+class PNB extends Bank {
     @Override
-    public int getInterest(){
+    public int getInterest() {
         return 8;
     }
 }
-class TestBank{
+
+class TestBank {
     public static void main(String[] args) {
         Bank b = new SBI();
-        System.out.println("Sbi interest "+b.getInterest());
+        System.out.println("Sbi interest " + b.getInterest());
         b = new PNB();
-        System.out.println("Pnb interest "+b.getInterest());
+        System.out.println("Pnb interest " + b.getInterest());
     }
 }
 
 // Interface
-interface PrintAble{
+interface PrintAble {
     void show();
 }
-class Print implements PrintAble{
+
+class Print implements PrintAble {
     @Override
     public void show() {
         System.out.println("print");
@@ -293,26 +317,29 @@ class Print implements PrintAble{
     }
 }
 
-interface Client{
+interface Client {
     void input();
+
     void output();
 }
 
-class Develop implements Client{
+class Develop implements Client {
     String name;
+
     @Override
     public void input() {
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter the name: ");
         name = sc.nextLine();
     }
+
     @Override
     public void output() {
-        System.out.println("Name : "+name);
+        System.out.println("Name : " + name);
     }
 }
 
-class FinalResult{
+class FinalResult {
     public static void main(String[] args) {
         Develop a = new Develop();
         a.input();
@@ -322,11 +349,13 @@ class FinalResult{
 
 //Interface Method
 
-interface Com{
+interface Com {
     void web();
+
     void tech();
 }
-abstract class Mon implements Com{
+
+abstract class Mon implements Com {
     @Override
     public void web() {
 
@@ -337,13 +366,15 @@ abstract class Mon implements Com{
 
     }
 }
-class Rahul extends Mon{
+
+class Rahul extends Mon {
     @Override
     public void web() {
         super.web();
         System.out.println("Working");
     }
-    public void tech(){
+
+    public void tech() {
         System.out.println("Both");
     }
 
@@ -354,17 +385,19 @@ class Rahul extends Mon{
     }
 }
 
-class BB{
-    void dis(){
+class BB {
+    void dis() {
         System.out.println("hello");
     }
 }
-class DD extends  BB{
+
+class DD extends BB {
     @Override
     void dis() {
         super.dis();
         System.out.println("world");
     }
+
     public static void main(String[] args) {
         BB a = new DD();
         a.dis();
@@ -372,13 +405,15 @@ class DD extends  BB{
 }
 
 // Multiple interface
-interface Mul{
+interface Mul {
     public abstract void s();
 }
-interface Til{
+
+interface Til {
     public abstract void s();
 }
-class Final implements Mul, Til{
+
+class Final implements Mul, Til {
     @Override
     public void s() {
         System.out.println("shoe");
@@ -391,19 +426,22 @@ class Final implements Mul, Til{
 }
 
 // Extending interface
-interface Ex1{
+interface Ex1 {
     public void ga();
 }
-interface pa extends Ex1{
-    public default void pa(){
+
+interface pa extends Ex1 {
+    public default void pa() {
         System.out.println("gda");
     }
 }
-class T implements pa{
+
+class T implements pa {
     @Override
     public void ga() {
         System.out.println("Gaddar");
     }
+
     public static void main(String[] args) {
         T t = new T();
         t.ga();
@@ -412,33 +450,39 @@ class T implements pa{
 }
 
 // After JDK 1.9
-interface Af{
-    default void call(){
+interface Af {
+    default void call() {
         show();
     }
-    private void show(){
-        System.out.println(2+6);
+
+    private void show() {
+        System.out.println(2 + 6);
     }
 }
-class Call implements Af{
-    void show(int a, int b){
+
+class Call implements Af {
+    void show(int a, int b) {
         System.out.println(a + b);
     }
+
     public static void main(String[] args) {
         Call a = new Call();
-        a.show(12,21); a.call();
+        a.show(12, 21);
+        a.call();
     }
 }
+
 // Covarient
-class Covarient{
-    Covarient  method(){
+class Covarient {
+    Covarient method() {
         System.out.println("Super class");
         return this;
     }
 }
-class Co extends Covarient{
+
+class Co extends Covarient {
     @Override
-    Co method(){
+    Co method() {
         super.method();
         System.out.println("Sub class");
         return this;
@@ -451,29 +495,31 @@ class Co extends Covarient{
 }
 
 // Var - args method
-class Var{
-    public static int varMethod(int ... g){
+class Var {
+    public static int varMethod(int... g) {
         int sum = 0;
         for (int i = 0; i < g.length; i++) {
             sum += g[i];
         }
         return sum;
     }
+
     public static void main(String[] args) {
-        System.out.println(varMethod(21,3,4,5,34,34,2,32,43));
-        System.out.println(varMethod(21,3,4,32,43));
-        System.out.println(varMethod(21,3,4,5,2,32,43));
+        System.out.println(varMethod(21, 3, 4, 5, 34, 34, 2, 32, 43));
+        System.out.println(varMethod(21, 3, 4, 32, 43));
+        System.out.println(varMethod(21, 3, 4, 5, 2, 32, 43));
     }
 }
 
 // Exception handling
- class Exception extends Throwable {
-     Exception(){
+class Exception extends Throwable {
+    Exception() {
 
     }
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int a = 10, b = 0, c ;
+        int a = 10, b = 0, c;
         /*try {
             c = a/b;
             System.out.println(c);
@@ -488,34 +534,32 @@ class Var{
             System.out.println(e);
         }*/
 
-        try{
+        try {
             System.out.println("Statement1");
             System.out.println("Statement2");
-            c = a/2;
+            c = a / 2;
             System.out.println(c);
             String n = null;
             String p = n.toUpperCase();
             System.out.println("Statement3");
-        }
-        catch (ArithmeticException o){
+        } catch (ArithmeticException o) {
             System.out.println(o);
-        }
-        catch (NullPointerException r){
+        } catch (NullPointerException r) {
             System.out.println("Hello");
-        }
-        finally {
+        } finally {
             System.out.println("Finally block");
         }
         System.out.println("Gaddar");
     }
 }
 
-class Check{
-    public void m1(){
+class Check {
+    public void m1() {
         System.out.println("Rajen");
     }
 }
-class Che extends Check{
+
+class Che extends Check {
     @Override
     public void m1() {
         super.m1();
@@ -531,19 +575,22 @@ class Che extends Check{
 // Inheritance
 class Inheritance {
     static class A1 {
-        A1(){
+        A1() {
             System.out.println("Constructor");
         }
-        void method(int a, int b){
+
+        void method(int a, int b) {
             System.out.println(a + b);
             System.out.println("Gaddar");
         }
     }
-    static class A2 extends A1{
+
+    static class A2 extends A1 {
         void method() {
-            super.method(1,2);
+            super.method(1, 2);
             System.out.println("Another method");
         }
+
         public static void main(String[] args) {
             A2 a = new A2();
             a.method();
@@ -553,7 +600,7 @@ class Inheritance {
 
 // Object class
 
-class Finalize{
+class Finalize {
     public static void main(String[] args) {
         Finalize a = new Finalize();
         System.out.println(a.hashCode());
@@ -562,11 +609,13 @@ class Finalize{
         System.out.println("end garbage collector");
     }
 }
+
 // Throw
-class ThrowKey{
-    public static int check(int a, int b) throws ArithmeticException{
-        return a/b;
+class ThrowKey {
+    public static int check(int a, int b) throws ArithmeticException {
+        return a / b;
     }
+
     public static void main(String[] args) throws InvalidAgeException {
         /*try {
             check(23,0);
@@ -576,62 +625,70 @@ class ThrowKey{
         System.out.println("rest");*/
         Scanner sc = new Scanner(System.in);
         int num = sc.nextInt();
-        if (num < 18){
+        if (num < 18) {
             throw new InvalidAgeException("Not handle");
         }
     }
 
     private static class InvalidAgeException extends Throwable {
-        public InvalidAgeException(String st){
+        public InvalidAgeException(String st) {
             System.out.println(st);
         }
     }
 }
 
-class Assignment4{
-    void show(int a, int b){
-        System.out.println(Math.max(a,b));
+class Assignment4 {
+    void show(int a, int b) {
+        System.out.println(Math.max(a, b));
     }
-    void show(double a, double b){
-        System.out.println(Math.max(a,b));
+
+    void show(double a, double b) {
+        System.out.println(Math.max(a, b));
     }
 
     public static void main(String[] args) {
         Assignment4 a = new Assignment4();
-        a.show(1,2);
-        a.show(1.1,12.1);
+        a.show(1, 2);
+        a.show(1.1, 12.1);
     }
 }
 
-class Point{
+class Point {
     int x, y;
-    Point(){
+
+    Point() {
         this.x = 0;
         this.y = 0;
     }
+
     public Point(int x, int y) {
         this.x = x;
         this.y = y;
     }
-    void calDis(Point b){
-        int pow = (int) Math.pow((this.x-b.x),2);
+
+    void calDis(Point b) {
+        int pow = (int) Math.pow((this.x - b.x), 2);
     }
 }
 
-class Complex{
+class Complex {
     int r, i;
-    Complex(){
+
+    Complex() {
         this.i = 0;
         this.r = 0;
     }
-    void setR(int r){
+
+    void setR(int r) {
         this.r = r;
     }
-    void setI(int i){
+
+    void setI(int i) {
         this.i = i;
     }
-    void add(Complex b){
-        System.out.println((this.r + b.r)+"+"+"i"+(this.i + b.i));
+
+    void add(Complex b) {
+        System.out.println((this.r + b.r) + "+" + "i" + (this.i + b.i));
     }
 
     public static void main(String[] args) {
@@ -642,40 +699,47 @@ class Complex{
     }
 }
 
-class Shape{
+class Shape {
     int x, y;
-    void getXY(int x, int y){
+
+    void getXY(int x, int y) {
         this.x = x;
         this.y = y;
     }
-    void showXY(){
-        System.out.println(this.x +" "+this.y);
+
+    void showXY() {
+        System.out.println(this.x + " " + this.y);
     }
+
     public static void main(String[] args) {
         Rectangle a = new Rectangle();
-        a.getXY(3,5);
+        a.getXY(3, 5);
         a.showXY();
     }
 }
-class Rectangle extends Shape{
+
+class Rectangle extends Shape {
     @Override
     void getXY(int len, int bre) {
         super.getXY(bre, len);
         areaRec(len, bre);
     }
-    void areaRec(int l, int b){
+
+    void areaRec(int l, int b) {
         System.out.println(l * b);
     }
 }
 
-class Add{
+class Add {
     int a, b;
-    Add(int a, int b){
+
+    Add(int a, int b) {
         this.a = a;
         this.b = b;
     }
-     void sub(Add b){
-        System.out.println((b.b + this.b)+" "+(b.a + this.a));
+
+    void sub(Add b) {
+        System.out.println((b.b + this.b) + " " + (b.a + this.a));
     }
 
     @Override
@@ -684,28 +748,31 @@ class Add{
     }
 
     public static void main(String[] args) {
-        Add a = new Add(1,2);
-        Add b = new Add(3,4);
+        Add a = new Add(1, 2);
+        Add b = new Add(3, 4);
         System.out.println(a);
         a.sub(b);
     }
 }
 
-class Shape1{
+class Shape1 {
     int x, y;
 
-    void getXY(){
+    void getXY() {
         Scanner sc = new Scanner(System.in);
         x = sc.nextInt();
         y = sc.nextInt();
     }
-    void show(){
-        System.out.println("X "+x);
-        System.out.println("Y "+y);
+
+    void show() {
+        System.out.println("X " + x);
+        System.out.println("Y " + y);
     }
 }
-class Rectangle1 extends Shape1{
+
+class Rectangle1 extends Shape1 {
     int len, bre;
+
     @Override
     void getXY() {
         super.getXY();
@@ -714,10 +781,11 @@ class Rectangle1 extends Shape1{
         len = sc.nextInt();
         bre = sc.nextInt();
     }
+
     @Override
     void show() {
         super.show();
-        System.out.println("rectangle: "+len*bre);
+        System.out.println("rectangle: " + len * bre);
     }
 
     public static void main(String[] args) {
@@ -727,9 +795,10 @@ class Rectangle1 extends Shape1{
     }
 }
 
-abstract class Dimension{
+abstract class Dimension {
     double height, width;
-    void setValue(int height, int width){
+
+    void setValue(int height, int width) {
         this.height = height;
         this.width = width;
     }
@@ -741,67 +810,78 @@ abstract class Dimension{
     public double getWidth() {
         return width;
     }
+
     abstract double getA();
 }
-class Rec extends Dimension{
+
+class Rec extends Dimension {
 
     @Override
     double getA() {
         return getHeight() * getWidth();
     }
 }
-class Tri extends Dimension{
+
+class Tri extends Dimension {
     @Override
-        double getA(){
-            return (getHeight() * getWidth())/2;
-        }
+    double getA() {
+        return (getHeight() * getWidth()) / 2;
+    }
 }
-class Test1{
+
+class Test1 {
     public static void main(String[] args) {
         Dimension a = new Rec();
-        a.setValue(2,7);
+        a.setValue(2, 7);
         System.out.println(a.getA());
 
         a = new Tri();
-        a.setValue(2,7);
+        a.setValue(2, 7);
         System.out.println(a.getA());
     }
 }
 
-interface Area{
+interface Area {
     double pi = 3.14;
+
     double cal(double w, double h);
 
 }
-class Rect implements Area{
+
+class Rect implements Area {
     @Override
-    public double cal(double r, double h){
+    public double cal(double r, double h) {
         return 4 * r;
     }
 }
-class Cir implements Area{
+
+class Cir implements Area {
 
     @Override
     public double cal(double r, double h) {
         return pi * r * r;
     }
 }
-class Test2{
+
+class Test2 {
     public static void main(String[] args) {
         Area a = new Rect();
-        System.out.println(a.cal(12,5));
+        System.out.println(a.cal(12, 5));
         Area b = new Cir();
-        System.out.println(b.cal(12,4));
+        System.out.println(b.cal(12, 4));
     }
 }
 
-interface Area1{
+interface Area1 {
     double compute(double x, double y);
+
     final double pi = 3.14;
 }
-interface Display{
+
+interface Display {
     void show(double r);
 }
+
 class Rect1 implements Area1, Display {
     @Override
     public double compute(double x, double y) {
@@ -814,7 +894,7 @@ class Rect1 implements Area1, Display {
     }
 }
 
-class Cir1 implements Area1, Display{
+class Cir1 implements Area1, Display {
     @Override
     public double compute(double x, double y) {
         return 0;
@@ -825,28 +905,35 @@ class Cir1 implements Area1, Display{
         System.out.println("Multiple interface circle");
     }
 }
-class Raju1{
-    public static void functionType(){
+
+class Raju1 {
+    public static void functionType() {
         System.out.println("Raju ne mara");
     }
 }
-class Te{
+
+class Te {
     private int a;
     static int b;
-    private Te(){}
-    void message(int x, int y){
-        System.out.println(a +""+b);
+
+    private Te() {
     }
+
+    void message(int x, int y) {
+        System.out.println(a + "" + b);
+    }
+
     int count = 90;
-    void mess(Te count){
+
+    void mess(Te count) {
         count.count += count.count;
     }
 
     public static void main(String[] args) {
         Te a = new Te();
-        System.out.println("Before change "+a.count);
+        System.out.println("Before change " + a.count);
         a.mess(a);
-        System.out.println("After change: "+a.count);
+        System.out.println("After change: " + a.count);
         /*float []f = new float[2];
         Raju1.functionType();
         System.out.println(5.5 + 2);*/
@@ -856,8 +943,8 @@ class Te{
     }
 }
 
-class ThreadPriorityExample extends Thread{
-    public void run(){
+class ThreadPriorityExample extends Thread {
+    public void run() {
         System.out.println("Inside the run() method");
     }
 
@@ -866,23 +953,27 @@ class ThreadPriorityExample extends Thread{
         ThreadPriorityExample th2 = new ThreadPriorityExample();
         ThreadPriorityExample th3 = new ThreadPriorityExample();
 
-        System.out.println("Display the thread first: "+th1.getPriority());
-        System.out.println("Display the thread first: "+th2.getPriority());
-        System.out.println("Display the thread first: "+th3.getPriority());
+        System.out.println("Display the thread first: " + th1.getPriority());
+        System.out.println("Display the thread first: " + th2.getPriority());
+        System.out.println("Display the thread first: " + th3.getPriority());
 
         th1.setPriority(10);
         th2.setPriority(20);
         th3.setPriority(30);
 
-        System.out.println("Displaying the present thread: "+Thread.currentThread().getName());
+        System.out.println("Displaying the present thread: " + Thread.currentThread().getName());
     }
 }
-interface Demo{
+
+interface Demo {
     double area();
+
     void setSide();
 }
+
 class A1 implements Demo {
     int l, b;
+
     @Override
     public double area() {
         return l * b;
@@ -895,21 +986,25 @@ class A1 implements Demo {
         this.b = sc.nextInt();
     }
 }
-class B1{
+
+class B1 {
     public static void main(String[] args) {
         A1 a = new A1();
         a.setSide();
         System.out.println(a.area());
     }
 }
-class AreaAare{
-    public double area(double a){
+
+class AreaAare {
+    public double area(double a) {
         return 3.14 * a;
     }
-    public double area(double a, double b){
+
+    public double area(double a, double b) {
         return a * b * 3.14;
     }
-    public double area(double a, double b, double c){
+
+    public double area(double a, double b, double c) {
         return a * b * c;
     }
 
@@ -917,8 +1012,10 @@ class AreaAare{
         AreaAare obj = new AreaAare();
         String a = args[0];
         if (a.length() == 1) System.out.println(obj.area(Double.parseDouble(String.valueOf(a.charAt(0)))));
-        else if (a.length() == 2) System.out.println(obj.area(Double.parseDouble(String.valueOf(a.charAt(0))), Double.parseDouble(String.valueOf(a.charAt(1)))));
-        else System.out.println(obj.area(Double.parseDouble(String.valueOf(a.charAt(0))), Double.parseDouble(String.valueOf(a.charAt(1))), Double.parseDouble(String.valueOf(a.charAt(2)))));
+        else if (a.length() == 2)
+            System.out.println(obj.area(Double.parseDouble(String.valueOf(a.charAt(0))), Double.parseDouble(String.valueOf(a.charAt(1)))));
+        else
+            System.out.println(obj.area(Double.parseDouble(String.valueOf(a.charAt(0))), Double.parseDouble(String.valueOf(a.charAt(1))), Double.parseDouble(String.valueOf(a.charAt(2)))));
 
         /*double []nums = new double[3];
         nums[0] = Double.parseDouble(args[0]);
@@ -930,19 +1027,55 @@ class AreaAare{
         else System.out.println(obj.area(nums[0], nums[1], nums[2]));*/
     }
 }
-class Room{
-    public void show(int a){
+
+class Room {
+    public void show(int a) {
         System.out.println("Show the data");
     }
 }
-class RoomClass extends Room{
-    public void show1(){
+
+class RoomClass extends Room {
+    public void show1() {
         System.out.println("Show Another");
     }
 }
-class Prac{
+
+class Prac {
     public static void main(String[] args) {
         RoomClass a = new RoomClass();
         a.show1();
+    }
+}
+
+// call by reference
+class Ref {
+    int len;
+
+    Ref(int a) {
+        this.len = a;
+    }
+
+    public void modify(Ref len) {
+        this.len = 90;
+    }
+
+    public static void main(String[] args) {
+        Ref a1 = new Ref(50);
+        a1.modify(a1);
+        System.out.println(a1.len);
+    }
+}
+// call by value
+class val{
+    int data;
+    public void modify(int data){
+        this.data = 50;
+    }
+
+    public static void main(String[] args) {
+        val a = new val();
+        a.data = 50;
+        a.modify(60);
+        System.out.println(a.data);
     }
 }

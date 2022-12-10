@@ -29,10 +29,21 @@ public class Hash_table {
         }
         return false;
     }
+    static {
+        System.out.println("Jay mata di gaddar ");
+    }
+    int speed = 800;
+    Hash_table (){
+        System.out.println("Speed : "+speed);
+    }
+
+    {
+        speed = 100;
+    }
+
     public static void main(String[] args) {
-        int []arr = {-3,-4,1,-5,6,-2,7,12,-10};
-        insert(arr);
-        System.out.println(search(-6));
+        Hash_table a = new Hash_table();
+
         /*int arr[] = new int[] {12,34,53,23,23,453,234};
         createHashMap(arr);
         HashMap<Integer,String> hash = new HashMap<>();
@@ -58,7 +69,7 @@ public class Hash_table {
             System.out.println(""+key+"->"+st);
         }*/
 
-//        TODO HAsh set doesn't store the duplicate value and key
+//        TODO Hash set doesn't store the duplicate value and key
 //        TODO LInked hash set maintain the insertion order
 
         /*hash.put(10,"Saheb");
