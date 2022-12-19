@@ -5,7 +5,6 @@ import java.time.LocalDate;
 import java.util.*;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.concurrent.ArrayBlockingQueue;
 
 public class LeetCode {
     public void addList(int data) {
@@ -6392,8 +6391,8 @@ public class LeetCode {
     public static int maxIncreaseKeepingSkyline(int[][] grid) {
         int n = grid.length;
         int m = grid[0].length;
-        int []maxRow = new int[n];
-        int []maxCol = new int[m];
+        int[] maxRow = new int[n];
+        int[] maxCol = new int[m];
         for (int i = 0; i < n; i++)
             for (int j = 0; j < m; j++) {
                 maxRow[i] = Math.max(maxRow[i], grid[i][j]);
@@ -6406,50 +6405,53 @@ public class LeetCode {
 
         return count;
     }
-    public static String reverseWord(String s){
-        String [] words = s.split(" ");
+
+    public static String reverseWord(String s) {
+        String[] words = s.split(" ");
         StringBuilder sb = new StringBuilder();
         int end = words.length - 1;
-        for(int i = 0; i<= end; i++){
-            if(!words[i].isEmpty()) {
+        for (int i = 0; i <= end; i++) {
+            if (!words[i].isEmpty()) {
                 sb.insert(0, words[i]);
-                if(i < end) sb.insert(0, " ");
+                if (i < end) sb.insert(0, " ");
             }
         }
         return sb.toString();
     }
+
     public static int calculate(String s) {
         Stack<Integer> stack = new Stack<>();
         int result = 0;
         int number = 0;
         int sign = 1;
-        for(int i = 0; i < s.length(); i++){
+        for (int i = 0; i < s.length(); i++) {
             char c = s.charAt(i);
-            if(Character.isDigit(c)){
+            if (Character.isDigit(c)) {
                 number = 10 * number + (c - '0');
-            }else if(c == '+'){
+            } else if (c == '+') {
                 result += sign * number;
                 number = 0;
                 sign = 1;
-            }else if(c == '-'){
+            } else if (c == '-') {
                 result += sign * number;
                 number = 0;
                 sign = -1;
-            }else if(c == '('){
+            } else if (c == '(') {
                 stack.push(result);
                 stack.push(sign);
                 sign = 1;
                 result = 0;
-            }else if(c == ')'){
+            } else if (c == ')') {
                 result += sign * number;
                 number = 0;
                 result *= stack.pop();
                 result += stack.pop();
             }
         }
-        if(number != 0) result += sign * number;
+        if (number != 0) result += sign * number;
         return result;
     }
+
     public static List<List<Integer>> findWinners(int[][] matches) {
         List<List<Integer>> list = new ArrayList<>();
         List<Integer> list1 = new ArrayList<>();
@@ -6483,9 +6485,21 @@ public class LeetCode {
         return list;
     }
 
+    public static int similarPairs(String[] words) {
+        int count = 0;
+
+        return count;
+    }
+
+
     public static void main(String[] args) {
-        int [][]matches = {{1,3},{2,3},{3,6},{5,6},{5,7},{4,5},{4,8},{4,9},{10,4},{10,9}};
-        System.out.println(findWinners(matches));
+        String[] words = {"aba", "aabb", "abcd", "bac", "aabc"};
+        HashSet<String> hashSet = new HashSet<>();
+        for (String i : words) hashSet.add(i);
+        System.out.println(words[0].contentEquals(words[1]));
+        System.out.println(hashSet);
+
+       // System.out.println(similarPairs(words));
         /*int [][]grid = {{0,0},
                         {0,1},
                         {1,0},
