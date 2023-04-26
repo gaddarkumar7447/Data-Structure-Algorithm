@@ -25,7 +25,9 @@ public class Representation {
         adj.get(1).add(3);
         adj.get(3).add(1);
         adj.get(3).add(10);
+
         System.out.println(adj);
+
 
 
         /*for (int i = 0; i < n; i++) {

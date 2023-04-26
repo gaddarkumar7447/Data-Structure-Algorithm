@@ -514,35 +514,6 @@ public class LeetCode {
     }
 
 
-    public static int majorityElement(int[] arr) {
-
-        /*int maxTerm = 0;
-        int index = -1;
-        for (int i : arr) {
-            int count = 0;
-            for (int j :arr) {
-                if (arr[i] == arr[j])
-                    count++;
-            }
-            if (count > maxTerm){
-                maxTerm = count;
-                index = i;
-            }
-        }
-        if (maxTerm > arr.length/2){
-            return arr[index];
-        }
-     return 0;*/
-        int store = 0;
-        int count = 0;
-        for (int i : arr) {
-            if (count == 0) store = i;
-            if (i == store) count += 1;
-            else count -= 1;
-        }
-        return store;
-    }
-
     public static int stringToInteger(String s) {
         int num = 0;
 //        char []c = s.toCharArray();
@@ -5672,43 +5643,6 @@ public class LeetCode {
         return sb.toString();
     }
 
-    public static boolean isValidParathesis(String s) {
-        /*if(s.length() % 2 != 0) return false;
-        Stack <Character> stack = new Stack<>();
-        for(char c:s.toCharArray()){
-            if(c == '(' || c == '[' || c == '{'){
-                stack.push(c);
-            }
-            else if(c == ')' && !stack.isEmpty() && stack.peek()=='('){
-                stack.pop();
-            }
-             else if(c == ']' && !stack.isEmpty() && stack.peek()=='['){
-                stack.pop();
-            }
-             else if(c == '}' && !stack.isEmpty() && stack.peek() =='{'){
-                stack.pop();
-            }
-
-        }*/
-
-        Stack<Character> stack = new Stack<>();
-
-        for (int i = 0; i < s.length(); i++) {
-            if (s.charAt(i) == '(') {
-                stack.push(')');
-            } else if (s.charAt(i) == '[') {
-                stack.push(']');
-            } else if (s.charAt(i) == '{') {
-                stack.push('}');
-            } else {
-                if (stack.isEmpty() || stack.pop() != s.charAt(i)) {
-                    return false;
-                }
-            }
-        }
-        return stack.isEmpty();
-    }
-
     public static int numJewelsInStones(String jewels, String stones) {
         int num = 0;
         for (int i = 0; i < stones.length(); i++) {
@@ -5984,23 +5918,6 @@ public class LeetCode {
             }
         }
         return Math.min(count1, count2);
-    }
-
-    public static int countKDifference(int[] nums, int k) {
-        Map<Integer, Integer> map = new HashMap<>();
-        int res = 0;
-        for (int num : nums) {
-            if (map.containsKey(num - k)) {
-                res += map.get(num - k);
-                System.out.println(map.get(num - k));
-            }
-            if (map.containsKey(num + k)) {
-                res += map.get(num + k);
-            }
-            map.put(num, map.getOrDefault(num, 0) + 1);
-        }
-        System.out.println(map);
-        return res;
     }
 
     public int maxSum(int[][] grid) {
@@ -6485,19 +6402,36 @@ public class LeetCode {
         return list;
     }
 
-    public static int similarPairs(String[] words) {
+    public static int minimumRounds(int[] tasks) {
+        HashMap<Integer, Integer> hashtable = new HashMap<>();
         int count = 0;
-
+        for (int i : tasks){
+            if (hashtable.containsKey(i)){
+                hashtable.put(i, hashtable.get(i) + 1);
+            }else {
+                hashtable.put(i, 1);
+            }
+        }
+        for (Map.Entry<Integer, Integer> i : hashtable.entrySet()){
+            int freq = i.getValue();
+            if (freq == 1){ return -1;}
+            if (freq % 3 != 0){
+                count += freq / 3 + 1;
+            }else {
+                count += freq / 3;
+            }
+        }
         return count;
     }
 
-
     public static void main(String[] args) {
-        String[] words = {"aba", "aabb", "abcd", "bac", "aabc"};
+        int []nums = {2,2,3,3,2,4,4,4,4,4};
+        
+        /*String[] words = {"aba", "aabb", "abcd", "bac", "aabc"};
         HashSet<String> hashSet = new HashSet<>();
         for (String i : words) hashSet.add(i);
         System.out.println(words[0].contentEquals(words[1]));
-        System.out.println(hashSet);
+        System.out.println(hashSet);*/
 
        // System.out.println(similarPairs(words));
         /*int [][]grid = {{0,0},
