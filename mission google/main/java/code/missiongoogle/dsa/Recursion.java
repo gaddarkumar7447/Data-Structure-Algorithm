@@ -36,26 +36,23 @@ public class Recursion {
     }
 */
 
-    public static void print(int num){
-        if (num == 0){
+    public static void print(int num) {
+        if (num == 0) {
             return;
         }
-        System.out.println("%d "+num%2);
-        print(num/2);
+        System.out.println("%d " + num % 2);
+        print(num / 2);
 
     }
 
-   static String fun2(String  str)
-
-    {
-
-        String s1=null;
-        for(int i = str.length()-1; i > 0; i-- ){
-            s1+=str.charAt(i);
+    /*static String fun2(String str) {
+        String s1 = null;
+        for (int i = str.length() - 1; i > 0; i--) {
+            s1 += str.charAt(i);
         }
 
         return str;
-    }
+    }*/
         /*if (n <= 0) return;
         if (n > 1000) return;
 

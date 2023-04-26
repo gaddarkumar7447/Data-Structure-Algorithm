@@ -112,12 +112,13 @@ public class Tree {
         if (root == null) return newNode;
         increasingBST(root.left);
         newNode.right = new Node(root.data);
+        
         newNode = newNode.right;
         increasingBST(root.right);
         return head.right;
     }
 
-    public static List<String> possibleChanges(List<String> usernames) {
+    /*public static List<String> possibleChanges(List<String> usernames) {
         List<String> list = new ArrayList<>();
         for(int i = 0; i < usernames.size(); i++){
             String s = usernames.get(i);
@@ -136,7 +137,7 @@ public class Tree {
         }
         return list;
 
-    }
+    }*/
 
     public static int filledOrders(List<Integer> order, int k) {
         int len = order.size();

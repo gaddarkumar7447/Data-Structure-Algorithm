@@ -117,13 +117,10 @@ public class LinkedList {
     }
 
 
-
-
     public static void main(String[] args) {
 
 
         LinkedList la = new LinkedList();
-
         Node a = new Node(23);
 
         la.addFirst(100);
