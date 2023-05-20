@@ -1,5 +1,7 @@
 package code.missiongoogle;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.math.BigInteger;
@@ -2296,9 +2298,9 @@ public class GFG {
     public static boolean validateStackSequences(int[] pushed, int[] popped) {
         Stack<Integer> stack = new Stack<>();
         int j = 0;
-        for (int i : pushed){
+        for (int i : pushed) {
             stack.push(i);
-            while (!stack.isEmpty() && stack.peek() == popped[j]){
+            while (!stack.isEmpty() && stack.peek() == popped[j]) {
                 stack.pop();
                 j++;
             }
@@ -2306,7 +2308,7 @@ public class GFG {
         return stack.isEmpty();
     }
 
-    public static void GetWalletApi() throws Exception{
+    public static void GetWalletApi() throws Exception {
         String userId = "c919a907-7da0-4987-86b6-a3334e163cc3";
         String url = "http://ec2-3-110-216-86.ap-south-1.compute.amazonaws.com:8080/d11/v1/user/get-wallet-data?userId=" + userId;
 
@@ -2328,22 +2330,231 @@ public class GFG {
             System.out.println("API request failed with HTTP status code: " + status);
         }
     }
+
     public static List<Boolean> kidsWithCandies(int[] nums, int num) {
         List<Boolean> list = new ArrayList<>();
         int max = Arrays.stream(nums).max().getAsInt();
-        for(int i : nums){
-            if (i + num >= max){
+        for (int i : nums) {
+            if (i + num >= max) {
                 list.add(true);
-            }else {
+            } else {
                 list.add(false);
             }
         }
         return list;
     }
+
+    public static List<List<Integer>> findDifference(int[] nums1, int[] nums2) {
+        List<List<Integer>> list = new ArrayList<>();
+        list.add(duplicate(nums1, nums2));
+        list.add(duplicate(nums2, nums1));
+        return list;
+    }
+
+    public static List<Integer> duplicate(int[] nums1, int[] nums2) {
+        List<Integer> num1dis = new ArrayList<>();
+        for (int k : nums1) {
+            int f = 0;
+            for (int i : nums2) {
+                if (k == i) {
+                    f = 1;
+                    break;
+                }
+            }
+            if (f == 0) {
+                if (!num1dis.contains(k))
+                    num1dis.add(k);
+            }
+        }
+        return num1dis;
+    }
+
+    public static String predictPartyVictory(String senate) {
+        Queue<Integer> dare = new LinkedList<>();
+        Queue<Integer> radient = new LinkedList<>();
+        for (int i = 0; i < senate.length(); i++) {
+            if (senate.charAt(i) == 'R') {
+                radient.add(i);
+            } else {
+                dare.add(i);
+            }
+        }
+        if (dare.isEmpty()) return "Radiant";
+        else if (radient.isEmpty()) return "Dire";
+        while (!dare.isEmpty() && !radient.isEmpty()) {
+            if (radient.peek() < dare.peek()) {
+                dare.remove();
+                int r = radient.peek();
+                radient.add(senate.length() + r);
+                radient.remove();
+            } else {
+                radient.remove();
+                int d = dare.peek();
+                dare.add(senate.length() + d);
+                dare.remove();
+            }
+        }
+
+        return radient.size() == 0 ? "Radiant" : "Dire";
+    }
+
+    public static int findSuf(int j, int[] nums) {
+        HashSet<Integer> hashSet = new HashSet<>();
+        for (int i = j + 1; i < nums.length; i++) {
+            hashSet.add(nums[i]);
+        }
+        return hashSet.size();
+    }
+
+    public static int findPref(int j, int[] nums) {
+        HashSet<Integer> hashSet = new HashSet<>();
+        for (int i = 0; i <= j; i++) {
+            hashSet.add(nums[i]);
+        }
+        return hashSet.size();
+    }
+
+    public static int[] distinctDifferenceArray(int[] nums) {
+        int[] arr = new int[nums.length];
+        for (int i = 0; i < nums.length; i++) {
+            int prefix = findPref(i, nums);
+            int sufix = findSuf(i, nums);
+            arr[i] = prefix - sufix;
+        }
+        return arr;
+    }
+
+    public static int getCount(int[] arr) {
+        int count = 0;
+        for (int i = 1; i < arr.length; i++) {
+            if (arr[i] == 0) continue;
+            if (arr[i - 1] == arr[i]) ++count;
+        }
+        return count;
+    }
+
+    public static int[] colorTheArray(int n, int[][] q) {
+        int[] arr = new int[n];
+        int[] result = new int[q.length];
+        for (int i = 0; i < q.length; i++) {
+            int index = q[i][0];
+            int col = q[i][1];
+            arr[index] = col;
+            result[i] = getCount(arr);
+        }
+        return result;
+    }
+    public static long mostPoints(int[][] q) {
+        long max = 0;
+        for(int i = 0; i < q.length; i++){
+            long p = 0;
+            for (int j = i; j < q.length; j++) {
+                p += q[j][0];
+                long b = q[j][1];
+                j += b;
+                max = Math.max(max, p);
+            }
+        }
+        return max;
+    }
+
+    public static void setZero(int [][]matrix){
+        HashSet<Integer> row = new HashSet<>();
+        HashSet<Integer> col = new HashSet<>();
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[i].length; j++) {
+                if (matrix[i][j] == 0){
+                    row.add(i);
+                    col.add(j);
+                }
+            }
+        }
+        Iterator<Integer> rowIt = row.iterator(), colIt = col.iterator();
+        while (rowIt.hasNext()){
+            int r = rowIt.next();
+            for (int i = 0; i < matrix[r].length; i++) {
+                matrix[r][i] = 0;
+            }
+        }
+        while (colIt.hasNext()){
+            int c = colIt.next();
+            for (int i = 0; i < matrix.length; i++) {
+                matrix[i][c] = 0;
+            }
+        }
+        System.out.println(Arrays.deepToString(matrix));
+    }
+    public static List<List<Integer>> generate(int numRows) {
+        List<List<Integer>> list = new ArrayList<>();
+        List<Integer> pre = null;
+        for (int i = 0; i < numRows; i++) {
+            List<Integer> row = new ArrayList<>();
+            for (int j = 0; j <= i; j++) {
+                if (j == 0 || j == i){
+                    row.add(1);
+                }else {
+                    row.add(pre.get(j - 1) + pre.get(j));
+                }
+            }
+            pre = row;
+            list.add(row);
+        }
+        return list;
+    }
+    public static int matrixSum(int[][] nums) {
+        /*int max = 0;
+        for (int i = 0; i < nums.length; i++) {
+            max += sumMax(nums);
+        }
+        System.out.println(Arrays.deepToString(nums));
+        return max;*/
+        int ans = 0;
+        for(int []i : nums){
+            Arrays.sort(i);
+        }
+        for (int i = 0; i < nums[0].length; i++) {
+            int max = 0;
+            for (int j = 0; j < nums.length; j++) {
+                max = Math.max(max, nums[j][i]);
+            }
+            ans += max;
+        }
+        return ans;
+    }
+
+    private static int sumMax(int [][]nums) {
+        int max = 0;
+        Set<Integer> set = new HashSet<>();
+        for (int i = 0; i < nums.length; i++) {
+            int maxOfAll = 0;
+            int c = 0;
+            for (int j = 0; j < nums[i].length; j++) {
+                maxOfAll = Math.max(maxOfAll, nums[i][j]);
+                if (maxOfAll <= nums[i][j]){
+                    c = j;
+                }
+            }
+            nums[i][c] = 0;
+            set.add(maxOfAll);
+        }
+        max += Collections.max(set);
+        return max;
+    }
+
+    public static List<Integer> findDisappearedNumbers(int[] nums) {
+        Set<Integer> set = new HashSet<>();
+        for (int i = 1; i <= nums.length; i++){
+            set.add(i);
+        }
+        int max = Collections.max(set);
+        for (int i = 0; i < max; i++){
+            set.remove(nums[i]);
+        }
+        return new ArrayList<>(set);
+    }
     public static void main(String[] args) {
-        UUID uuid = UUID.randomUUID();
-        String userId = uuid.toString();
-        System.out.println(userId);
+        int []nums = {4,3,2,7,8,2,3,1};
+
 
 
         //System.out.println(validateStackSequences(pushed, popped));
