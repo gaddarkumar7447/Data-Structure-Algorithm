@@ -1,7 +1,5 @@
 package code.missiongoogle;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.math.BigInteger;
@@ -2444,9 +2442,10 @@ public class GFG {
         }
         return result;
     }
+
     public static long mostPoints(int[][] q) {
         long max = 0;
-        for(int i = 0; i < q.length; i++){
+        for (int i = 0; i < q.length; i++) {
             long p = 0;
             for (int j = i; j < q.length; j++) {
                 p += q[j][0];
@@ -2458,25 +2457,25 @@ public class GFG {
         return max;
     }
 
-    public static void setZero(int [][]matrix){
+    public static void setZero(int[][] matrix) {
         HashSet<Integer> row = new HashSet<>();
         HashSet<Integer> col = new HashSet<>();
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[i].length; j++) {
-                if (matrix[i][j] == 0){
+                if (matrix[i][j] == 0) {
                     row.add(i);
                     col.add(j);
                 }
             }
         }
         Iterator<Integer> rowIt = row.iterator(), colIt = col.iterator();
-        while (rowIt.hasNext()){
+        while (rowIt.hasNext()) {
             int r = rowIt.next();
             for (int i = 0; i < matrix[r].length; i++) {
                 matrix[r][i] = 0;
             }
         }
-        while (colIt.hasNext()){
+        while (colIt.hasNext()) {
             int c = colIt.next();
             for (int i = 0; i < matrix.length; i++) {
                 matrix[i][c] = 0;
@@ -2484,15 +2483,16 @@ public class GFG {
         }
         System.out.println(Arrays.deepToString(matrix));
     }
+
     public static List<List<Integer>> generate(int numRows) {
         List<List<Integer>> list = new ArrayList<>();
         List<Integer> pre = null;
         for (int i = 0; i < numRows; i++) {
             List<Integer> row = new ArrayList<>();
             for (int j = 0; j <= i; j++) {
-                if (j == 0 || j == i){
+                if (j == 0 || j == i) {
                     row.add(1);
-                }else {
+                } else {
                     row.add(pre.get(j - 1) + pre.get(j));
                 }
             }
@@ -2501,6 +2501,7 @@ public class GFG {
         }
         return list;
     }
+
     public static int matrixSum(int[][] nums) {
         /*int max = 0;
         for (int i = 0; i < nums.length; i++) {
@@ -2509,7 +2510,7 @@ public class GFG {
         System.out.println(Arrays.deepToString(nums));
         return max;*/
         int ans = 0;
-        for(int []i : nums){
+        for (int[] i : nums) {
             Arrays.sort(i);
         }
         for (int i = 0; i < nums[0].length; i++) {
@@ -2522,7 +2523,7 @@ public class GFG {
         return ans;
     }
 
-    private static int sumMax(int [][]nums) {
+    private static int sumMax(int[][] nums) {
         int max = 0;
         Set<Integer> set = new HashSet<>();
         for (int i = 0; i < nums.length; i++) {
@@ -2530,7 +2531,7 @@ public class GFG {
             int c = 0;
             for (int j = 0; j < nums[i].length; j++) {
                 maxOfAll = Math.max(maxOfAll, nums[i][j]);
-                if (maxOfAll <= nums[i][j]){
+                if (maxOfAll <= nums[i][j]) {
                     c = j;
                 }
             }
@@ -2543,18 +2544,54 @@ public class GFG {
 
     public static List<Integer> findDisappearedNumbers(int[] nums) {
         Set<Integer> set = new HashSet<>();
-        for (int i = 1; i <= nums.length; i++){
+        for (int i = 1; i <= nums.length; i++) {
             set.add(i);
         }
         int max = Collections.max(set);
-        for (int i = 0; i < max; i++){
+        for (int i = 0; i < max; i++) {
             set.remove(nums[i]);
         }
         return new ArrayList<>(set);
     }
-    public static void main(String[] args) {
-        int []nums = {4,3,2,7,8,2,3,1};
 
+    public static boolean armStrongNumber(int num) {
+        int sum = 0;
+        int arm = num;
+        while (num != 0) {
+            int rem = num % 10;
+            sum += (rem * rem * rem);
+            num /= 10;
+        }
+        if (sum == arm) System.out.println("Arms trong number: " + sum);
+        else System.out.println("Not armStrong number: " + arm);
+        return sum == arm;
+    }
+
+    public static void rotate(int[][] matrix) {
+        int [][]nums = new int[matrix.length][matrix[0].length];
+        for(int i = 0; i < matrix.length; i++){
+            for(int j = 0; j < matrix[0].length; j++){
+                nums[j][i] = matrix[i][j];
+            }
+        }
+        System.out.println(Arrays.deepToString(nums));
+
+        for (int i = 0; i < nums.length; i++){
+            for (int j = 0; j < nums[0].length/2; j++){
+               int temp = nums[i][j];
+               nums[i][j] = nums[i][nums.length - j - 1];
+               nums[i][nums.length - j - 1] = temp;
+            }
+        }
+        for (int i = 0; i < matrix.length; i++) {
+            System.arraycopy(nums[i], 0, matrix[i], 0, matrix[0].length);
+        }
+        System.out.println(Arrays.deepToString(matrix));
+
+    }
+
+    public static void main(String[] args) {
+        int []nums = {3,2,1,5,6,4};
 
 
         //System.out.println(validateStackSequences(pushed, popped));
