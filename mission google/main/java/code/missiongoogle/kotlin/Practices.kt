@@ -2,6 +2,7 @@ package code.missiongoogle.kotlin
 
 import code.missiongoogle.oopsdesign.generic
 import jdk.swing.interop.DispatcherWrapper
+import java.time.LocalDate
 import java.util.*
 import java.util.function.Predicate
 import kotlin.coroutines.CoroutineContext
@@ -322,10 +323,34 @@ class PrintValue(private val message: String){
         })
     }
 }
+// return more than one value
+data class PersonData(val name : String, val age : Int, val phone : Int)
 
-
+fun getPersonDetails(name : String, age: Int, phone: Int) : PersonData{
+    val name = name
+    val age = age
+    val phone = phone
+    return PersonData(name, age, phone)
+}
+fun getFData(name : String, age: Int) : Pair<String, Int>{
+    val name = name
+    val age = age
+    return Pair(name, age)
+}
+fun getModeData(name: String, age: Int, phone: Int, date: Long) : Array<Any>{
+    val name = name
+    val age = age
+    val phone = phone
+    val date = date
+    return arrayOf(name, age, phone, date)
+}
 fun main(args: Array<String>) {
-    println(Thread.activeCount())
+    val (name1, age1, phone1, date) = getModeData("Gafa", 231, 9082, Date().time)
+    println("$name1 $age1 $phone1 $date")
+
+    val (name, age, phone) = getPersonDetails("Gaddar", 21, 89237)
+    println(name)
+    /*println(Thread.activeCount())
     val list1 : List<Movie> = listOf(Movie("gaddar", 10), Movie("kumar", 11), Movie("chaudhary", 12))
     list1.stream().map { movie -> movie.name}.forEach { name -> println(name) }
     val predicate = Predicate { m: Movie -> m.id > 10 }
@@ -353,7 +378,7 @@ fun main(args: Array<String>) {
 
     println(b.value)
     println("sdj $b")
-    println(b.isInitialized())
+    println(b.isInitialized())*/
     
     //println(splitFilename("gaddar.kill"))
 
@@ -364,7 +389,7 @@ fun main(args: Array<String>) {
     val a = 21
 //    println("bbc" < "ba")
 
-    (0 .. 10).forEach { print(it) }
+    //(0 .. 10).forEach { print(it) }
     val ar = mutableListOf(1,12,3,25,42,5)
     ar.add(32)
     ar += 12
@@ -376,13 +401,13 @@ fun main(args: Array<String>) {
     val aray = arrayOf(arrayOf(2,3,4), arrayOf(2,4,5,5,3))
     finWinner(aray)
 
-    println(higherOderFunction(2, 3, ::cHigh))
+    //println(higherOderFunction(2, 3, ::cHigh))
     /*val doubleAddFun = ::addDoubleValue
     println(doubleAddFun(1212.1, 2.12))*/
 
     val student = listOf(Student(1,"Gaddar",3), Student(2,"Kumar",34))
 
-    println(student.map(Student::name).filter { it.startsWith("K") })
+    //println(student.map(Student::name).filter { it.startsWith("K") })
     val listInteger : List<List<Int>> = ArrayList()
     val treeMap = TreeMap<Int, Int>()
 
@@ -427,7 +452,7 @@ fun main(args: Array<String>) {
     val cleanedValues = regex.replace(values, "")
     val valuesArray = cleanedValues.split(",").toTypedArray()
     list.addAll(valuesArray.map { it.toInt() }) //
-    println("List : ${list[3]}")
+    //println("List : ${list[3]}")
     /*nameNot("Gaddar")
     val user = User("name", "s", "Er")
     user.validBeforeSave {  }
