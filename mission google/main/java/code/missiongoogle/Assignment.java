@@ -1,6 +1,5 @@
 package code.missiongoogle;
 
-import javax.swing.plaf.synth.SynthTextAreaUI;
 import java.util.Scanner;
 
 public  class Assignment {
@@ -116,8 +115,24 @@ public  class Assignment {
 
     }
 
+    record PersonData(String name, Integer age){ }
+
+    public static PersonData getPersonData(String name, Integer age){
+        String n = "Gaffa";
+        Integer a = 12;
+        return new PersonData(n, a);
+    }
+    public static Object []getDetails(String name, String details, Integer age){
+        String n = name;
+        String d = details;
+        Integer a = age;
+        return new Object[]{n, d, a};
+    }
 
     public static void main(String[] args) {
-        System.out.println("Gaddar");
+        var a = getPersonData("Gaddar", 21);
+        System.out.println(a.name +" "+a.age);
+        var ob = getDetails("Gaddar","Patna", 2);
+        System.out.println(ob[1]);
     }
 }
