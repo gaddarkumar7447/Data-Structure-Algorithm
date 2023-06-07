@@ -2568,19 +2568,19 @@ public class GFG {
     }
 
     public static void rotate(int[][] matrix) {
-        int [][]nums = new int[matrix.length][matrix[0].length];
-        for(int i = 0; i < matrix.length; i++){
-            for(int j = 0; j < matrix[0].length; j++){
+        int[][] nums = new int[matrix.length][matrix[0].length];
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[0].length; j++) {
                 nums[j][i] = matrix[i][j];
             }
         }
         System.out.println(Arrays.deepToString(nums));
 
-        for (int i = 0; i < nums.length; i++){
-            for (int j = 0; j < nums[0].length/2; j++){
-               int temp = nums[i][j];
-               nums[i][j] = nums[i][nums.length - j - 1];
-               nums[i][nums.length - j - 1] = temp;
+        for (int i = 0; i < nums.length; i++) {
+            for (int j = 0; j < nums[0].length / 2; j++) {
+                int temp = nums[i][j];
+                nums[i][j] = nums[i][nums.length - j - 1];
+                nums[i][nums.length - j - 1] = temp;
             }
         }
         for (int i = 0; i < matrix.length; i++) {
@@ -2593,44 +2593,60 @@ public class GFG {
     public static int maxSubArray(int[] nums) {
         int currMax = nums[0];
         int max = nums[0];
-        for(int i = 1; i < nums.length; i++){
+        for (int i = 1; i < nums.length; i++) {
             currMax = Integer.max(nums[i], currMax + nums[i]);
             max = Integer.max(currMax, max);
         }
         return max;
     }
+
     public static int longestConsecutive(int[] nums) {
-        if(nums.length == 0 || nums.length == 1) return nums.length;
+        if (nums.length == 0 || nums.length == 1) return nums.length;
         Set<Integer> set = new HashSet<>();
-        for (int i : nums){ set.add(i); }
-        int []arr = new int[set.size()];
+        for (int i : nums) {
+            set.add(i);
+        }
+        int[] arr = new int[set.size()];
         int j = 0, count = 1, max = 1;
-        for (int i : set){arr[j++] = i;}
+        for (int i : set) {
+            arr[j++] = i;
+        }
         Arrays.sort(arr);
-        for (int i = 0; i < arr.length - 1; i++){
-            if (arr[i]  == arr[i + 1] - 1){
+        for (int i = 0; i < arr.length - 1; i++) {
+            if (arr[i] == arr[i + 1] - 1) {
                 count++;
                 max = Integer.max(max, count);
-            }else {
+            } else {
                 count = 1;
             }
         }
         return max;
     }
+
     public static String removeTrailingZeros(String num) {
         StringBuilder str = new StringBuilder();
-        for(int i = 0; i < num.length() - 1; i++){
-            if (num.charAt(i) == '0' && num.charAt(i + 1) == '0'){
+        for (int i = 0; i < num.length() - 1; i++) {
+            if (num.charAt(i) == '0' && num.charAt(i + 1) == '0') {
                 i++;
-            }else {
+            } else {
                 str.append(num.charAt(i));
             }
         }
         if (num.charAt(num.length() - 1) != '0') str.append(num.charAt(num.length() - 1));
         return str.toString();
     }
+
+    public static int maxMinimizeSum(int[] nums, int k) {
+        int max = Arrays.stream(nums).max().getAsInt();
+        int sum = 0;
+        for (int i = 0; i < k; i++) {
+            sum = sum + max + i;
+        }
+        return sum;
+    }
+
     public static void main(String[] args) {
-        int []nums = {-6,-1,-1,9,-8,-6,-6,4,4,-3,-8,-1};
+        int[] nums = {-6, -1, -1, 9, -8, -6, -6, 4, 4, -3, -8, -1};
         System.out.println(removeTrailingZeros("512301001"));
 
         //System.out.println(validateStackSequences(pushed, popped));
